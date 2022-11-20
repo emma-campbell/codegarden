@@ -27,7 +27,7 @@ const navItems = [
   },
 ];
 
-export const Feeds = () => {
+const Feeds = () => {
   return (
     <Layout showNav={true} navItems={navItems}>
       <section className="flex flex-col w-full justify-start pb-5 align-bottom">

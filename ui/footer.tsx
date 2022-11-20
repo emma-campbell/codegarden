@@ -11,7 +11,7 @@ export const Footer: FC = () => {
               <a href="/feeds">RSS Feeds</a>
             </div>
             <div>
-              <p>Contact</p>
+              <a href="/contact">Contact</a>
             </div>
             <div>
               <a href="https://github.com/emma-campbell">Github</a>
@@ -23,7 +23,7 @@ export const Footer: FC = () => {
               <p>Made with ❤️ by Emma Campbell</p>
             </div>
             <div>
-              <p>© {moment().format('YYYY').toString()}</p>
+              <p>© {moment().format("YYYY").toString()}</p>
             </div>
           </div>
         </div>
