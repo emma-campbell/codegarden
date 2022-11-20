@@ -4,6 +4,14 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        mobile: { max: "412px" },
+        tablet: { min: "413px", max: "768px" },
+        laptop: { min: "769px", max: "1024px" },
+        desktop: { min: "1025px", max: "1279px" },
+        "desktop-xl": { min: "1280px", max: "1535px" },
+        "desktop-2xl": { min: "1536px" },
+      },
       colors: {
         green: {
           100: "#51C5D1",

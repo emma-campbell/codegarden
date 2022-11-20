@@ -34,7 +34,7 @@ export const Layout: FC<LayoutProps> = ({
 }) => {
   return (
     <>
-      <main className="relative z-10 mx-6 2xl:mx-144 xl:mx-128 lg:mx-44 md:mx-24 pt-20 text-lg text-white">
+      <main className="relative z-10 mx-6 tablet:mx-24 laptop:mx-36 desktop:mx-72 desktop-xl:mx-96 desktop-2xl:mx-128 pt-20 text-lg text-white">
         {showNav ? <Navigation items={navItems} /> : null}
         <div className="-mt-10 sm:mt-0">
           <div className="flex flex-col items-center">{children}</div>
