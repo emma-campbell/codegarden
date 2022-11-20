@@ -1,17 +1,39 @@
-import { FeedCard } from "../ui/feed-card";
+import { Card } from "../ui/card";
+import { Search } from "../ui/search";
+import moment from "moment";
 
-const feeds = [
+const articles = [
   {
-    name: "Tech",
-    url: "",
+    title:
+      "Build a Personal Blog using Next.JS, TailwindCSS, MDX, Prisma, and Typescript",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed egestas egestas fringilla phasellus faucibus. Lacinia at quis risus sed vulputate odio ut enim. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Libero volutpat sed cras ornare arcu. Tortor condimentum lacinia",
+    slug: "building-a-blog",
+    published: moment().subtract(1, "month"),
   },
   {
-    name: "Chronic Illness",
-    url: "",
+    title:
+      "Build a Personal Blog using Next.JS, TailwindCSS, MDX, Prisma, and Typescript",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed egestas egestas fringilla phasellus faucibus. Lacinia at quis risus sed vulputate odio ut enim. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Libero volutpat sed cras ornare arcu. Tortor condimentum lacinia",
+    slug: "building-a-blog-2",
+    published: moment().subtract(2, "month").subtract(4, "days"),
   },
   {
-    name: "Healthcare IT",
-    url: "",
+    title:
+      "Build a Personal Blog using Next.JS, TailwindCSS, MDX, Prisma, and Typescript",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed egestas egestas fringilla phasellus faucibus. Lacinia at quis risus sed vulputate odio ut enim. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Libero volutpat sed cras ornare arcu. Tortor condimentum lacinia",
+    slug: "building-a-blog-3",
+    published: moment().subtract(5, "month").subtract(20, "days"),
+  },
+  {
+    title:
+      "Build a Personal Blog using Next.JS, TailwindCSS, MDX, Prisma, and Typescript",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed egestas egestas fringilla phasellus faucibus. Lacinia at quis risus sed vulputate odio ut enim. Ultricies lacus sed turpis tincidunt id aliquet risus feugiat. Libero volutpat sed cras ornare arcu. Tortor condimentum lacinia",
+    slug: "building-a-blog-4",
+    published: moment().subtract(5, "month").subtract(26, "days"),
   },
 ];
 export const Posts = () => {
@@ -24,21 +46,20 @@ export const Posts = () => {
           </h1>
         </div>
         <div className="flex flex-col space-y-5">
-          <p className="text-sm font-['Work_Sans']">
-            I recognize that I tend to write about different niches that don’t
-            interest every human that stumbles across my content. As a result,
-            I’ve set up different feeds for the different type of content that I
-            write.
-          </p>
-          <p className="text-sm font-['Work_Sans']">
-            If you are someone who is interested in all the content I have to
-            offer, there’s a feed for that too!
-          </p>
+          <Search />
         </div>
       </section>
       <section className="w-full space-y-5">
-        {feeds.map((feed) => {
-          return <FeedCard key={feed.name} title={feed.name} url={feed.url} />;
+        {articles.map((article) => {
+          return (
+            <Card
+              key={article.title}
+              title={article.title}
+              content={article.content}
+              slug={article.slug}
+              published={article.published}
+            />
+          );
         })}
       </section>
     </>
