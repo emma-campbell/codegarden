@@ -55,6 +55,7 @@ const Contact = () => {
             <select className="form-select w-full bg-transparent-black rounded-full drop-shadow-md text-lg pl-4">
               <option>Software Engineering Roles and Opportunity</option>
               <option>Chronic Illness and Management</option>
+              <option>Suggestions</option>
               <option>Other</option>
             </select>
           </div>

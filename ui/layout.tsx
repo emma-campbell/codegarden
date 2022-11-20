@@ -34,11 +34,9 @@ export const Layout: FC<LayoutProps> = ({
 }) => {
   return (
     <>
-      <main className="relative z-10 mx-6 tablet:mx-24 laptop:mx-36 desktop:mx-72 desktop-xl:mx-96 desktop-2xl:mx-128 pt-20 text-lg text-white">
+      <main className="relative z-10 mobile:mx-4 tablet:mx-24 laptop:mx-36 desktop:mx-72 desktop-xl:mx-96 desktop-2xl:mx-128 pt-10 tablet:pt-12 laptop:pt-20 desktop:pt-20 desktop-xl:pt-20 desktop-2xl:pt-20 text-white">
         {showNav ? <Navigation items={navItems} /> : null}
-        <div className="-mt-10 sm:mt-0">
-          <div className="flex flex-col items-center">{children}</div>
-        </div>
+        <div className="flex flex-col items-center w-full pt-2 tablet">{children}</div>
         <Footer />
       </main>
       <GradientBackground />
