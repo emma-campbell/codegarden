@@ -16,7 +16,8 @@ module.exports = {
         orange: {
           100: '#FFB2B5',
           200: '#FF8588',
-          300: '#FF5A5F'
+          300: '#FF5A5F',
+          400: '#D0494D'
         },
         yellow: {
           100: '#FFF0BD',
@@ -38,5 +39,7 @@ module.exports = {
       
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
 }
