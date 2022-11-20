@@ -30,7 +30,7 @@ module.exports = {
           200: '#6B6B6B'
         },
         'transparent-black': 'rgba(38, 38, 38, 0.6)',
-        'transparent-gray': 'rgba(167, 167, 167, 0.26)'
+        'transparent-gray': 'rgba(55, 55, 55, 0.79)'
       },
       fontFamily: {
         sans: ["'Montserrat', sans-serif", "'Work Sans', sans-serif"]

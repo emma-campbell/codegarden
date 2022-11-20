@@ -14,10 +14,7 @@ export const Footer: FC = () => {
               <p>Contact</p>
             </div>
             <div>
-              <p>Twitter</p>
-            </div>
-            <div>
-              <p>Github</p>
+              <a href="https://github.com/emma-campbell">Github</a>
             </div>
           </div>
 

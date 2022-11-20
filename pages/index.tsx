@@ -1,5 +1,13 @@
-import { Card } from "../ui/card";
+import { PostPreview } from "../ui/post-preview";
 import moment from "moment";
+import { Layout } from "../ui/layout";
+
+const navItems = [
+  {
+    name: "Posts ✏️",
+    url: "/posts",
+  },
+];
 
 const articles = [
   {
@@ -38,10 +46,12 @@ const articles = [
 
 export const Home = () => {
   return (
-    <>
+    <Layout showNav={true} navItems={navItems}>
       <section className="flex flex-col w-fit justify-start">
         <div className="flex flex-col">
-          <h1 className="text-4xl font-['Montserrat'] font-black pb-4">Emma 🤟</h1>
+          <h1 className="text-4xl font-['Montserrat'] font-black pb-4">
+            Emma 🤟
+          </h1>
         </div>
         <div className="flex flex-col space-y-5">
           <p className="text-sm font-['Work_Sans']">
@@ -73,7 +83,7 @@ export const Home = () => {
           return (
             <>
               <div className="pb-2">
-                <Card
+                <PostPreview
                   key={article.slug}
                   title={article.title}
                   content={article.content}
@@ -85,7 +95,7 @@ export const Home = () => {
           );
         })}
       </section>
-    </>
+    </Layout>
   );
 };
 

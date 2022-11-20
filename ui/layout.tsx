@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import { useWindowScroll } from "react-use";
 import { Footer } from "./footer";
-import { Navigation } from "./navigation";
+import { Navigation, NavigationItem } from "./navigation";
 
 const GradientBackground = () => {
   const { y } = useWindowScroll();
@@ -22,18 +22,20 @@ const GradientBackground = () => {
 type LayoutProps = {
   children?: ReactNode;
   showNav?: boolean;
+  navItems?: NavigationItem[];
   filters?: any;
 };
 
 export const Layout: FC<LayoutProps> = ({
   children,
   showNav = true,
+  navItems,
   filters,
 }) => {
   return (
     <>
       <main className="relative z-10 lg:mx-96 md:mx-48 sm:mx-28 xs:mx-28 pt-20 text-lg text-white">
-        {showNav ? <Navigation /> : null}
+        {showNav ? <Navigation items={navItems} /> : null}
         <div className="-mt-10 sm:mt-0">
           <div className="flex flex-col items-center">{children}</div>
         </div>

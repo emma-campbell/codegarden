@@ -1,6 +1,14 @@
-import { Card } from "../ui/card";
+import { PostPreview } from "../ui/post-preview";
 import { Search } from "../ui/search";
 import moment from "moment";
+import { Layout } from "../ui/layout";
+
+const navItems = [
+  {
+    name: "Home 🏠",
+    url: "/",
+  },
+];
 
 const articles = [
   {
@@ -36,9 +44,10 @@ const articles = [
     published: moment().subtract(5, "month").subtract(26, "days"),
   },
 ];
+
 export const Posts = () => {
   return (
-    <>
+    <Layout showNav={true} navItems={navItems}>
       <section className="flex flex-col w-full justify-start pb-5 align-bottom">
         <div className="flex flex-row w-full space-x-2">
           <h1 className="text-4xl font-['Montserrat'] font-black pb-4">
@@ -52,7 +61,7 @@ export const Posts = () => {
       <section className="w-full space-y-5">
         {articles.map((article) => {
           return (
-            <Card
+            <PostPreview
               key={article.title}
               title={article.title}
               content={article.content}
@@ -62,7 +71,7 @@ export const Posts = () => {
           );
         })}
       </section>
-    </>
+    </Layout>
   );
 };
 
