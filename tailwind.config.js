@@ -5,12 +5,13 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        mobile: { max: "412px" },
-        tablet: { min: "413px", max: "768px" },
-        laptop: { min: "769px", max: "1024px" },
-        desktop: { min: "1025px", max: "1279px" },
-        "desktop-xl": { min: "1280px", max: "1535px" },
-        "desktop-2xl": { min: "1536px" },
+        mobile: { max: "411px" },
+        "mobile-lg": { min: "412px", max: "767px" },
+        tablet: { min: "768px", max: "1024px" },
+        laptop: { min: "1025px", max: "1279px" },
+        desktop: { min: "1280px", max: "1535px" },
+        "desktop-xl": { min: "1536px", max: "1699px" },
+        "desktop-2xl": { min: "1700px" },
       },
       colors: {
         green: {
