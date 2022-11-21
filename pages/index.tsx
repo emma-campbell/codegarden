@@ -3,23 +3,22 @@ import { compareDesc } from "date-fns";
 import { Layout } from "../ui/layout";
 import { allPosts } from "contentlayer/generated";
 
-const navItems = [
-  {
-    name: "Posts ✏️",
-    url: "/posts",
-  },
-];
-
 export async function getStaticProps() {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
   });
+
+  if (process.env.NODE_ENV == "production") {
+    const published = posts.filter((a) => a.status === "published");
+    return { props: { published } };
+  }
+
   return { props: { posts } };
 }
 
 export const Home = ({ posts }) => {
   return (
-    <Layout showNav={true} navItems={navItems}>
+    <Layout>
       <section className="flex flex-col w-fit justify-start">
         <div className="flex flex-col">
           <h1 className="text-4xl font-['Montserrat'] font-black pb-4">
@@ -52,7 +51,7 @@ export const Home = ({ posts }) => {
             Latest Writing
           </h1>
         </div>
-        {posts.map((article) => {
+        {posts?.map((article) => {
           return (
             <>
               <div className="pb-2">

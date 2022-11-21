@@ -13,7 +13,7 @@ const navItems = [
 
 const Contact = () => {
   return (
-    <Layout showNav={true} navItems={navItems}>
+    <Layout>
       <div className="flex flex-row w-full justify-start">
         <h1 className="text-4xl font-black font-['Montserrat'] pb-5">
           Contact ✉️
