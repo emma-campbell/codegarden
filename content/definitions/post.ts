@@ -53,14 +53,14 @@ export const Post = defineDocumentType(() => ({
     formattedDate: {
       type: "string",
       resolve: async (doc) => {
-        return moment(doc.publishedAt, "YYYY-MM-DD").format("MMM Do, YYYY").toString();
+        return moment(doc.publishedAt, "YYYY-MM-DD")
+          .format("MMM Do, YYYY")
+          .toString();
       },
     },
     slug: {
       type: "string",
-      resolve: (doc) => {
-        doc._raw.sourceFileName.replace(/\.mdx$/, "");
-      },
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
     },
   },
 }));

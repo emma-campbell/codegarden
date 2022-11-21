@@ -2,15 +2,16 @@ import { FC, ReactNode } from "react";
 import { useWindowScroll } from "react-use";
 import { Footer } from "./footer";
 import { Navigation, NavigationItem } from "./navigation";
+import { NAV_ITEMS } from "../lib/constants";
 
 const GradientBackground = () => {
   const { y } = useWindowScroll();
 
   return (
     <>
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="h-full blur-xl bg-[url('https://res.cloudinary.com/domnvvqdl/image/upload/v1668909709/bgblur_u33jee.png')] bg-no-repeat bg-center"
+          className="h-full blur-xl bg-[url('https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png')] bg-no-repeat bg-center"
           style={{
             transform: `translateY(${Math.min(y / 3, 167)}px)`,
           }}
@@ -19,27 +20,36 @@ const GradientBackground = () => {
     </>
   );
 };
+
+export enum NavAlign {
+  LEFT,
+  RIGHT
+}
+
 type LayoutProps = {
   children?: ReactNode;
-  showNav?: boolean;
-  navItems?: NavigationItem[];
-  filters?: any;
+  alignNav?: NavAlign
 };
 
 export const Layout: FC<LayoutProps> = ({
   children,
-  showNav = true,
-  navItems,
-  filters,
+  alignNav
 }) => {
   return (
     <>
-      <main className="relative z-10 mx-4 mobile-lg:mx-12 tablet:mx-24 laptop:mx-36 desktop:mx-72 desktop-xl:mx-128 desktop-2xl:mx-144 pt-10 tablet:pt-12 laptop:pt-20 desktop:pt-20 desktop-xl:pt-20 desktop-2xl:pt-20 text-white">
-        {showNav ? <Navigation items={navItems} /> : null}
-        <div className="flex flex-col items-center w-full pt-2 tablet">
-          {children}
-          <Footer />
-        </div>
+      {/* <div className="pointer-events-none fixed top-6 z-30 grid w-full grid-cols-[1fr,min(640px,100%),1fr] px-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-6">
+              <Navigation items={navItems} />
+            </div>
+          </div>
+        </div> */}
+      <div className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-24 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+        <Navigation items={NAV_ITEMS} align={alignNav}/>
+      </div>
+      <main className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-24 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+        {children}
+        <Footer />
       </main>
       <GradientBackground />
     </>

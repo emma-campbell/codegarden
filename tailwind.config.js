@@ -4,15 +4,6 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      screens: {
-        mobile: { max: "411px" },
-        "mobile-lg": { min: "412px", max: "767px" },
-        tablet: { min: "768px", max: "1024px" },
-        laptop: { min: "1025px", max: "1279px" },
-        desktop: { min: "1280px", max: "1535px" },
-        "desktop-xl": { min: "1536px", max: "1699px" },
-        "desktop-2xl": { min: "1700px" },
-      },
       colors: {
         green: {
           100: "#51C5D1",
