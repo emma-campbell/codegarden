@@ -12,7 +12,7 @@ export const createOgImage = ({
 }) =>
   [
     // ACCOUNT PREFIX
-    `https://res.cloudinary.com/emmacampbell/image/upload`,
+    `https://res.cloudinary.com/emmacampbell/image/upload/v1669149729`,
     // Composed Image Transformations
     `w_1600,h_836,q_100`,
 
