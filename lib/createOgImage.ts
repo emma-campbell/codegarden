@@ -37,5 +37,5 @@ export const createOgImage = ({
     `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
 
     // BG
-    `social_card_wmo71r.png`,
+    `social_card.png`,
   ].join("/");
