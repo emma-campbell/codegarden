@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import { NavAlign } from "./layout";
 
 export type NavigationItem = {
   name?: string;
@@ -8,11 +9,12 @@ export type NavigationItem = {
 
 type NavigationProps = {
   items?: NavigationItem[];
+  align?: NavAlign;
 };
 
-export const Navigation: FC<NavigationProps> = ({ items }) => {
+export const Navigation: FC<NavigationProps> = ({ items, align }) => {
   return (
-    <div className="flex flex-row justify-end space-x-5">
+    <div className={`flex flex-row justify-${align == NavAlign.LEFT ? 'start' : 'end'} space-x-5`}>
       {items?.map((item) => {
         return (
           <a
