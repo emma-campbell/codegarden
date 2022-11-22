@@ -17,7 +17,7 @@ export const generateSocialImage = ({
   textAreaWidth = 630,
   textAreaHeight = 450,
   textLeftOffset = 45,
-  textBottomOffset = 20,
+  textBottomOffset = 0,
   textColor = "FFFFFF",
   titleFontSize = 60,
 }) => {
@@ -44,7 +44,7 @@ export const generateSocialImage = ({
   const socialImageConfig = [
     `l_twitter_name:${twitterName}`,
     `c_thumb,g_face,r_max,w_130,h_130`,
-    `fl_layer_apply,g_north_west,x_45,y_45`,
+    `fl_layer_apply,g_north_west,x_45,y_75`,
   ].join(",");
 
   // combine all the pieces required to generate a Cloudinary URL
