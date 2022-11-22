@@ -21,9 +21,9 @@ export const Posts = ({ posts }) => {
             Posts ✏️
           </h1>
         </div>
-        <div className="flex flex-col space-y-5">
+        {/* <div className="flex flex-col space-y-5">
           <Search />
-        </div>
+        </div> */}
       </section>
       <section className="w-full space-y-5">
         {posts?.map((article) => {
