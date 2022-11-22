@@ -11,7 +11,7 @@ const GradientBackground = () => {
     <>
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="h-full blur-xl bg-[url('https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png')] bg-no-repeat bg-center"
+          className="h-full bg-[url('https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png')] bg-no-repeat bg-top bg-center will-change-transform"
           style={{
             transform: `translateY(${Math.min(y / 3, 167)}px)`,
           }}
@@ -37,13 +37,6 @@ export const Layout: FC<LayoutProps> = ({
 }) => {
   return (
     <>
-      {/* <div className="pointer-events-none fixed top-6 z-30 grid w-full grid-cols-[1fr,min(640px,100%),1fr] px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-6">
-              <Navigation items={navItems} />
-            </div>
-          </div>
-        </div> */}
       <div className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-24 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
         <Navigation items={NAV_ITEMS} align={alignNav}/>
       </div>
