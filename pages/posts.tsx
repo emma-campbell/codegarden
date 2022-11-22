@@ -7,7 +7,7 @@ import { Search } from "../ui/search";
 export async function getStaticProps() {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
-  });
+  }).filter(p => p.status === "published");
 
   return { props: { posts } };
 }
