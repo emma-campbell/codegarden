@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "../lib/constants";
 import cx from "clsx";
 import type { ImageProps } from "next/image";

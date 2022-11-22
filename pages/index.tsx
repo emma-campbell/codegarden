@@ -8,11 +8,6 @@ export async function getStaticProps() {
     return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
   });
 
-  if (process.env.NODE_ENV == "production") {
-    const published = posts.filter((a) => a.status === "published");
-    return { props: { published } };
-  }
-
   return { props: { posts } };
 }
 
@@ -51,7 +46,7 @@ export const Home = ({ posts }) => {
             Latest Writing
           </h1>
         </div>
-        {posts?.map((article) => {
+        {posts?.slice(0, 4).map((article) => {
           return (
             <>
               <div className="pb-2">
