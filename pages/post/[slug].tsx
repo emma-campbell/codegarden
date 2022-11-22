@@ -5,7 +5,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { getPartialPost } from "../../lib/contentlayer";
-import { createOgImage } from "../../lib/createOgImage";
+import { generateSocialImage } from "../../lib/createOgImage";
 import { Layout, NavAlign } from "../../ui/layout";
 import { components } from "../../ui/mdx";
 import { Series } from "../../ui/series";
@@ -42,9 +42,10 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const path = `/post/${post.slug}`;
   const url = `https://emmacampbell.dev${path}`;
   const title = `${post.title} | emmacampbell.dev`;
-  const ogImage = createOgImage({
+  const ogImage = generateSocialImage({
     title: post.title,
-    meta: "emmacampbell.dev · " + post.formattedDate,
+    cloudName: "emmacampbell",
+    imagePublicId: "social-card.png",
   });
 
   return (

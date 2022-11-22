@@ -1,39 +1,60 @@
 // https://delba.dev/blog/next-blog-generate-og-image
 
 // double escape for commas and slashes
-const e = (str: string) => encodeURIComponent(encodeURIComponent(str));
+const encode = (str: string) => encodeURIComponent(encodeURIComponent(str));
 
-export const createOgImage = ({
+export const generateSocialImage = ({
   title,
-  meta,
-}: {
-  title: string;
-  meta: string;
-}) =>
-  [
-    // ACCOUNT PREFIX
-    `https://res.cloudinary.com/emmacampbell/image/upload`,
+  cloudName,
+  imagePublicId,
+  cloudinaryBase = "https://res.cloudinary.com",
+  version = null,
+  titleFont = "Montserrat",
+  titleWeight = "_bold",
+  imageWidth = 1200,
+  imageHeight = 630,
+  textAreaWidth = 630,
+  textAreaHeight = 450,
+  textLeftOffset = 45,
+  textBottomOffset = -40,
+  textColor = "FFFFFF",
+  titleFontSize = 60,
+}) => {
+  const imageConfig = [
+    `w_${imageWidth}`,
+    `h_${imageHeight}`,
+    "c_fill",
+    "f_auto",
+  ].join(",");
 
-    // TITLE
-    // Karla google font in light rose
-    `l_text:Montserrat_72_bold:${e(title)},co_rgb:ffe4e6,c_fit,w_1400,h_240`,
-    // Positioning
-    `fl_layer_apply,g_south_west,x_100,y_180`,
+  const titleConfig = [
+    `w_${textAreaWidth}`,
+    `h_${textAreaHeight}`,
+    "c_fit",
+    `co_rgb:${textColor}`,
+    "g_west",
+    `x_${textLeftOffset}`,
+    `y_${textBottomOffset}`,
+    `l_text:${titleFont}_${titleFontSize}${titleWeight}:${encodeURIComponent(
+      title
+    )}`,
+  ].join(",");
 
-    // META
-    // Karla, but smaller
-    `l_text:Karla_48:${e(meta)},co_rgb:ffe4e680,c_fit,w_1400`,
-    // Positioning
-    `fl_layer_apply,g_south_west,x_100,y_100`,
+  // combine all the pieces required to generate a Cloudinary URL
+  const urlParts = [
+    cloudinaryBase,
+    cloudName,
+    "image",
+    "upload",
+    imageConfig,
+    titleConfig,
+    version,
+    imagePublicId,
+  ];
 
-    // PROFILE IMAGE
-    // dynamically fetched from my twitter profile
-    `l_twitter_name:emmacampbelll14`,
-    // Transformations
-    `c_thumb,g_face,r_max,w_380,h_380,q_100`,
-    // Positioning
-    `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
+  // remove any falsy sections of the URL (e.g. an undefined version)
+  const validParts = urlParts.filter(Boolean);
 
-    // BG
-    `social_card.png`,
-  ].join("/");
+  // join all the parts into a valid URL to the generated image
+  return validParts.join("/");
+};
