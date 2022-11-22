@@ -11,7 +11,7 @@ const GradientBackground = () => {
     <>
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="h-full bg-[url('https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png')] bg-no-repeat bg-top bg-center will-change-transform"
+          className="h-full blur-xl bg-[url('https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png')] bg-no-repeat bg-top bg-center will-change-transform"
           style={{
             transform: `translateY(${Math.min(y / 3, 167)}px)`,
           }}
