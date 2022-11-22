@@ -8,6 +8,7 @@ import { getPartialPost } from "../../lib/contentlayer";
 import { createOgImage } from "../../lib/createOgImage";
 import { Layout, NavAlign } from "../../ui/layout";
 import { components } from "../../ui/mdx";
+import { Series } from "../../ui/series";
 
 export const getStaticPaths = () => {
   return {
@@ -119,6 +120,10 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
             </div>
           </div>
         </div>
+
+        {post.series && post.series.posts.length > 1 ? (
+          <Series series={post.series} interactive={true} />
+        ) : null}
 
         <MDXContent
           components={{
