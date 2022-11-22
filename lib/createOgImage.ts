@@ -30,7 +30,7 @@ export const createOgImage = ({
 
     // PROFILE IMAGE
     // dynamically fetched from my twitter profile
-    `l_twitter_name:emmacampbell114`,
+    `l_twitter_name:emmacampbelll14`,
     // Transformations
     `c_thumb,g_face,r_max,w_380,h_380,q_100`,
     // Positioning
