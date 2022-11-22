@@ -45,7 +45,8 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const ogImage = generateSocialImage({
     title: post.title,
     cloudName: "emmacampbell",
-    imagePublicId: "social-card.png",
+    imagePublicId: "social_card.png",
+    twitterName: "emmacampbelll14",
   });
 
   return (

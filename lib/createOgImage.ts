@@ -7,16 +7,17 @@ export const generateSocialImage = ({
   title,
   cloudName,
   imagePublicId,
+  twitterName,
   cloudinaryBase = "https://res.cloudinary.com",
   version = null,
   titleFont = "Montserrat",
-  titleWeight = "_bold",
+  titleWeight = "_medium",
   imageWidth = 1200,
   imageHeight = 630,
   textAreaWidth = 630,
   textAreaHeight = 450,
   textLeftOffset = 45,
-  textBottomOffset = -40,
+  textBottomOffset = 20,
   textColor = "FFFFFF",
   titleFontSize = 60,
 }) => {
@@ -40,6 +41,12 @@ export const generateSocialImage = ({
     )}`,
   ].join(",");
 
+  const socialImageConfig = [
+    `l_twitter_name:${twitterName}`,
+    `c_thumb,g_face,r_max,w_130,h_130`,
+    `fl_layer_apply,g_north_west,x_45,y_45`,
+  ].join(",");
+
   // combine all the pieces required to generate a Cloudinary URL
   const urlParts = [
     cloudinaryBase,
@@ -47,6 +54,7 @@ export const generateSocialImage = ({
     "image",
     "upload",
     imageConfig,
+    socialImageConfig,
     titleConfig,
     version,
     imagePublicId,
