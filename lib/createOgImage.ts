@@ -12,7 +12,7 @@ export const createOgImage = ({
 }) =>
   [
     // ACCOUNT PREFIX
-    `https://res.cloudinary.com/emmacampbell/image/upload/v1669149729`,
+    `https://res.cloudinary.com/emmacampbell/image/upload`,
     // Composed Image Transformations
     `w_1600,h_836,q_100`,
 
@@ -37,5 +37,5 @@ export const createOgImage = ({
     `fl_layer_apply,w_140,g_north_west,x_100,y_100`,
 
     // BG
-    `og_image_background_gesaa1.png`,
+    `social_card_wmo71r.png`,
   ].join("/");
