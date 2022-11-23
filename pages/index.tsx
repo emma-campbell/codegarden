@@ -49,9 +49,8 @@ export const Home = ({ posts }) => {
         {posts?.slice(0, 4).map((article) => {
           return (
             <>
-              <div className="pb-2">
+              <div key={article.slug} className="pb-2">
                 <PostPreview
-                  key={article.slug}
                   title={article.title}
                   description={article.description}
                   publishedAt={article.publishedAt}
