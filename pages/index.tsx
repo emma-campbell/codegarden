@@ -1,19 +1,47 @@
-import { PostPreview } from "../ui/post-preview";
+import { PostPreview } from "@/ui/post-preview";
 import { compareDesc } from "date-fns";
-import { Layout } from "../ui/layout";
+import { Layout } from "@/ui/layout";
 import { allPosts } from "contentlayer/generated";
+import { NextSeo } from "next-seo";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { generateSocialImage } from "@/lib/createOgImage";
 
 export async function getStaticProps() {
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
-  }).filter(p => p.status === "published");
+  const posts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.publishedAt), new Date(b.publishedAt));
+    })
+    .filter((p) => p.status === "published");
 
   return { props: { posts } };
 }
 
 export const Home = ({ posts }) => {
+  const socialImage: string = generateSocialImage({
+    title: SITE_NAME,
+    cloudName: "emmacampbell",
+    imagePublicId: "social_card.png",
+    twitterName: "emmacampbelll14",
+  });
   return (
     <Layout>
+      <NextSeo
+        title={SITE_NAME}
+        description={SITE_DESCRIPTION}
+        openGraph={{
+          url: SITE_URL,
+          title: SITE_NAME,
+          description: SITE_DESCRIPTION,
+          images: [
+            {
+              url: socialImage,
+              width: 1200,
+              height: 630,
+              alt: SITE_NAME,
+            },
+          ],
+        }}
+      />
       <section className="flex flex-col w-fit justify-start">
         <div className="flex flex-col">
           <h1 className="text-4xl font-['Montserrat'] font-black pb-4">

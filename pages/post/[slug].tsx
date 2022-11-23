@@ -63,8 +63,8 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           images: [
             {
               url: ogImage,
-              width: 1600,
-              height: 836,
+              width: 1200,
+              height: 630,
               alt: post.title,
             },
           ],

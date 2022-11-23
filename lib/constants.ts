@@ -9,10 +9,14 @@ export const HEADING_LINK_ANCHOR = `before:content-['#'] before:absolute before:
 export const NAV_ITEMS = [
   {
     name: "Home 🏠",
-    url: "/"
+    url: "/",
   },
   {
     name: "Posts ✏️",
-    url: "/posts"
+    url: "/posts",
   },
 ];
+
+export const SITE_NAME = "emmacampbell.dev";
+export const SITE_DESCRIPTION = "emma's digital garden";
+export const SITE_URL = "https://emmacampbell.dev";
