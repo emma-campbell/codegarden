@@ -28,7 +28,7 @@ yarn add contentlayer next-contentlayer
 
 ### 2. Wrap your Next Config with the `withContentLayer` Function
 
-```js
+```js showLineNumbers title="next.config.js" {1, 9}
 import { withContentLayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
@@ -42,7 +42,7 @@ module.exports = withContentlayer(nextConfig);
 
 ### 3. Add the Generated Contentlayer to your `tsconfig.json`
 
-```json
+```json showLineNumbers title="tsconfig.json" {5, 12}
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -71,7 +71,7 @@ I started by creating a `/content` folder within my project directory. Within th
 
 I then put my content schemas within the `/definitions` folder, starting with `Post`.
 
-```typescript
+```typescript showLineNumbers title="./content/definitions/post.tsx"
 import { defineDocumentType } from "contentlayer/source-files";
 
 export const Post = defineDocumentType(() => ({
@@ -94,7 +94,7 @@ export const Post = defineDocumentType(() => ({
 There's two more schemas I need to define: `Tag` and `Series`. Tags will be used
 to properly divide post topics, while Series will link togther posts that are sequential.
 
-```typescript
+```typescript showLineNumbers title="./content/definitions/tag.tsx"
 import { definedNestedType } from "contentlayer/source-files";
 
 // define tags elsewhere (in a constants file)
@@ -117,7 +117,7 @@ export const Tag = definedNestedType(() => ({
 }));
 ```
 
-```typescript
+```typescript showLineNumbers title="./content/definitions/series.tsx"
 import { definedNestedType } from "contentlayer/source-files";
 
 export const Series = definedNestedType(() => ({
@@ -138,7 +138,7 @@ export const Series = definedNestedType(() => ({
 Once I've defined `Series` and `Tag`, I can import them and use their definitions to finish
 out the fields in a `Post`.
 
-```typescript
+```typescript showLineNumbers title="./content/definitions/post.tsx"
 import { defineDocumentType } from "contentlayer/source-files";
 
 import { Tag } from "./tag";
@@ -174,7 +174,7 @@ export const Post = defineDocumentType(() => ({
 Now, we need to feed the post schema definition to `contentlayer`. In the root directory,
 create a `contentlayer.config.js` file.
 
-```js
+```js showLineNumbers title="contentlayer.config.js"
 import { makeSource } from "contentlayer/source-files";
 
 import { Post } from "./content/defintions/post";
@@ -203,13 +203,13 @@ nifty, and we can use all sorts of plugins during the content generation.
 [Github Flavored Markdown](https://github.github.com/gfm/) is a subset of markdown that Github
 uses in its readme files. We can enable it in our content using `remark-gfm`. Install it using
 
-```bash
+```bash title="terminal"
 yarn add remark-gfm
 ```
 
 then, add it to `contentlayer.config.js`
 
-```js
+```js showLineNumbers title="contentlayer.config.js" {5, 11}
 import { makeSource } from "contentlayer/source-files";
 
 import { Post } from "./content/defintions/post";
@@ -231,13 +231,13 @@ export default makeSource({
 We can automatically wrap our markdown headers with `<a>` tags for our table of contents.
 Add the following packages using yarn (or another package manager)
 
-```bash
+```bash title="terminal"
 yarn add rehype-autolink-headings github-slugger rehype-slug
 ```
 
 then, add it to the list of rehype plugins in your `contentlayer.config.js`.
 
-```js
+```js showLineNumbers title="contentlayer.config.js" {6,7,15,16,17,18,19,20,21,22,23,24}
 import { makeSource } from "contentlayer/source-files";
 
 import { Post } from "./content/defintions/post";
@@ -270,7 +270,7 @@ export default makeSource({
 Finally, you need to go to the `Post` model and parse the headings directly from the
 content.
 
-```typescript
+```typescript showLineNumbers title="./content/definitions/post.tsx" {6,10-34}
 import { defineDocumentType } from "contentlayer/source-files";
 
 import { Tag } from "./tag";
@@ -314,7 +314,7 @@ export const Post = defineDocumentType(() => ({
 We need to generate a slug in order to render a page per post using Next.js. Add another `computedField` to the
 `Post` schema.
 
-```ts
+```ts showLineNumbers title="./content/definitions/post.tsx" {12-16}
 import { defineDocumentType } from "contentlayer/source-files";
 
 import { Tag } from "./tag";

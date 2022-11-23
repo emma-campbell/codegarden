@@ -73,13 +73,13 @@ Now, let's get into the code. We will start by spinning up a [Next.js](https://n
 
 There are a couple of ways to do this, which you can find [here](https://nextjs.org/docs/getting-started).
 
-```bash
+```sh title="terminal"
 yarn create next-app
 ```
 
 Follow the prompts to generate the following directory structure (I added eslint and typescript support).
 
-```bash
+```sh
 ├── README.md
 ├── next-env.d.ts
 ├── next.config.js
@@ -99,7 +99,7 @@ Follow the prompts to generate the following directory structure (I added eslint
 
 Running this command will generate `tailwind.config.js` and `postcss.config.js` for configuring tailwind.
 
-```bash
+```sh title="terminal"
 yarn add -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
@@ -108,7 +108,7 @@ npx tailwindcss init -p
 
 Edit the `tailwind.config.js` file and add the directories where you will have your `.tsx` files.
 
-```js
+```js showLineNumber title="tailwind.config.js" {4,5}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [

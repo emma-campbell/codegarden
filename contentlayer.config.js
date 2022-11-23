@@ -3,6 +3,8 @@ import { makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
+import { rehypePrettyCodeClasses, rehypePrettyCodeOptions } from "./lib/rehypePrettyCode";
 
 import { Post } from "./content/definitions/post";
 
@@ -28,6 +30,8 @@ export default makeSource({
           },
         },
       ],
+      [rehypePrettyCode, rehypePrettyCodeOptions],
+      [rehypePrettyCodeClasses]
     ],
   },
 });
