@@ -85,7 +85,7 @@ export const Series: FC<SeriesProps> = ({ series, interactive }) => {
                   <span className="text-white/90">{post.title}</span>
                 ) : (
                   <Link
-                    href={`/posts/${post.slug}`}
+                    href={`/post/${post.slug}`}
                     className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
                   >
                     {post.title}
