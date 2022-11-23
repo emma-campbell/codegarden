@@ -9,6 +9,7 @@ import { generateSocialImage } from "../../lib/createOgImage";
 import { Layout, NavAlign } from "../../ui/layout";
 import { components } from "../../ui/mdx";
 import { Series } from "../../ui/series";
+import { SeriesNav } from "../../ui/series-navigation";
 
 export const getStaticPaths = () => {
   return {
@@ -132,6 +133,10 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
             ...components,
           }}
         />
+
+        {post.series && post.series.posts.length > 1 ? (
+          <SeriesNav series={post.series} />
+        ) : null}
       </Layout>
     </>
   );
