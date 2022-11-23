@@ -23,6 +23,7 @@ export const Home = ({ posts }) => {
     imagePublicId: "social_card.png",
     twitterName: "emmacampbelll14",
   });
+
   return (
     <Layout>
       <NextSeo

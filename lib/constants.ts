@@ -18,5 +18,5 @@ export const NAV_ITEMS = [
 ];
 
 export const SITE_NAME = "emmacampbell.dev";
-export const SITE_DESCRIPTION = "My digital space where I share the things that I learn.";
+export const SITE_DESCRIPTION = "My digital space where I share my growth as a software engineer.";
 export const SITE_URL = "https://emmacampbell.dev";
