@@ -18,7 +18,7 @@ export async function getStaticProps() {
 
 export const Home = ({ posts }) => {
   const socialImage: string = generateSocialImage({
-    title: SITE_NAME,
+    title: `Emma's Digital Garden 🌱`,
     cloudName: "emmacampbell",
     imagePublicId: "social_card.png",
     twitterName: "emmacampbelll14",
@@ -26,7 +26,7 @@ export const Home = ({ posts }) => {
   return (
     <Layout>
       <NextSeo
-        title={SITE_NAME}
+        title={`Emma's Digital Garden 🌱 ${SITE_NAME}`}
         description={SITE_DESCRIPTION}
         openGraph={{
           url: SITE_URL,
