@@ -15,7 +15,7 @@ const Contact = () => {
   return (
     <Layout>
       <div className="flex flex-row w-full justify-start">
-        <h1 className="text-4xl font-black font-['Montserrat'] pb-5">
+        <h1 className="text-4xl font-black pb-5">
           Contact ✉️
         </h1>
       </div>

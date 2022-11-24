@@ -8,14 +8,17 @@ export const Footer: FC = () => {
       <div className="text-gray-100">
         <div className="flex flex-col font-medium justify-between space-y-5">
           <div className="flex space-x-5">
-            <div>
+            {/* <div>
               <Link href={"/feeds"}>RSS Feeds</Link>
             </div>
             <div>
               <Link href={"/contact"}>Contact</Link>
-            </div>
+            </div> */}
             <div>
               <a href="https://github.com/emma-campbell">Github</a>
+            </div>
+            <div>
+              <a href="https://twitter.com/spoonsandcode">Twitter</a>
             </div>
           </div>
 

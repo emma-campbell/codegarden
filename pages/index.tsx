@@ -1,10 +1,12 @@
-import { PostPreview } from "@/ui/post-preview";
-import { compareDesc } from "date-fns";
-import { Layout } from "@/ui/layout";
-import { allPosts } from "contentlayer/generated";
-import { NextSeo } from "next-seo";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
 import { generateSocialImage } from "@/lib/createOgImage";
+import { FeaturedPost } from "@/ui/featured-post";
+import { Layout } from "@/ui/layout";
+import { allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
+import { NextSeo } from "next-seo";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const posts = allPosts
@@ -15,6 +17,12 @@ export async function getStaticProps() {
 
   return { props: { posts } };
 }
+
+const gradients = [
+  "from-green-300 to-orange-300",
+  "from-orange-300 to-yellow-300",
+  "from-yellow-300 to-green-300",
+];
 
 export const Home = ({ posts }) => {
   const socialImage: string = generateSocialImage({
@@ -45,52 +53,48 @@ export const Home = ({ posts }) => {
       />
       <section className="flex flex-col w-fit justify-start">
         <div className="flex flex-col">
-          <h1 className="text-4xl font-['Montserrat'] font-black pb-4">
-            Emma 🤟
-          </h1>
+          <h1 className="text-4xl font-black pb-4">Emma Campbell 🤟</h1>
         </div>
-        <div className="flex flex-col space-y-5">
-          <p className="text-sm font-['Work_Sans']">
+        <div className="flex flex-col space-y-5 text-white/80 text-sm">
+          <p>
             I am a 24 year old software engineer living in Arlington, Virginia.
             I have my B.A in Computer Science from the University of Rochester,
             and spend a lot of my time building digital health data systems that
             help facilitate critical research with{" "}
             <a href="https://hugo.health">Hugo Health</a>.
           </p>
-          <p className="text-sm font-['Work_Sans']">
+          <p>
             This is a space where I write about the things I learn, the things I
             struggle with, and the things that I feel. As someone who is
             learning to manage chronic illness, I find pride in helping to share
             what I learn, and as someone who tries to take on technical
             challenges daily, I like to share what I find.
           </p>
-          <p className="text-sm font-['Work_Sans']">
-            Thank you, and welcome to my digital garden 🌱
-          </p>
+          <p>Thank you, and welcome to my digital garden 🌱</p>
         </div>
       </section>
       <section className="flex flex-col w-fit justify-start">
-        <div className="flex flex-row w-full justify-end pb-2 pt-2">
-          <h1 className="text-2xl font-['Montserrat'] font-black">
-            Latest Writing
-          </h1>
+        <div className="flex flex-row w-full pb-2 pt-2">
+          <h1 className="text-2xl font-black">Latest Writing</h1>
         </div>
-        {posts?.slice(0, 4).map((article) => {
-          return (
-            <>
-              <div key={article.slug} className="pb-2">
-                <PostPreview
-                  title={article.title}
-                  description={article.description}
-                  publishedAt={article.publishedAt}
-                  formattedDate={article.formattedDate}
-                  slug={article.slug}
-                  status={article.status}
-                />
-              </div>
-            </>
-          );
-        })}
+        <div className="flex flex-col gap-6 md:flex-row mb-4">
+          {posts?.slice(0, 4).map((article, i) => {
+            return (
+              <FeaturedPost
+                key={article.slug}
+                post={article}
+                gradient={gradients[i]}
+              />
+            );
+          })}
+        </div>
+        <Link
+          href="/posts"
+          className="flex flex-row justify-start text-gray-100 font-medium hover:underline hover:[&>*]text-white transition-all"
+        >
+          <p>All Posts</p>
+          <ArrowRightCircleIcon className="w-4" />
+        </Link>
       </section>
     </Layout>
   );

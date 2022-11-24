@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/montserrat": "^4.5.13",
-    "@fontsource/work-sans": "^4.5.12",
+    "@fontsource/inter": "^4.5.14",
     "@heroicons/react": "^2.0.13",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "classnames": "^2.3.2",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.9",
     "date-fns": "^2.29.3",

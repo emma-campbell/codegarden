@@ -6,11 +6,9 @@ import NextLink from "next/link";
 import React from "react";
 import { LoadingImage } from "./loading-image";
 import { Aside } from "./aside";
-import { Code } from "./code";
 
 export const components = {
   Aside,
-  Code,
   h1: (props: any) => (
     <h2
       className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-black text-white/90 sm:text-3xl"

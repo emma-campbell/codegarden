@@ -14,7 +14,6 @@ export const SeriesNav: FC<SeriesNavProps> = ({ series }) => {
   const published = series.posts?.filter((post) => post.status === "published");
 
   const index = published?.findIndex((post) => post?.isCurrent);
-  const curr = published?.at(index);
 
   const prev = index != 0 ? published?.at(index - 1) : null;
   const next = index + 1 < published?.length ? published?.at(index + 1) : null;

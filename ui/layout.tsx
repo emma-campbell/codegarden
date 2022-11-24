@@ -1,8 +1,7 @@
 import { FC, ReactNode } from "react";
 import { useWindowScroll } from "react-use";
 import { Footer } from "./footer";
-import { Navigation, NavigationItem } from "./navigation";
-import { NAV_ITEMS } from "../lib/constants";
+import { Navigation } from "./navigation";
 
 const GradientBackground = () => {
   const { y } = useWindowScroll();
@@ -37,10 +36,10 @@ export const Layout: FC<LayoutProps> = ({
 }) => {
   return (
     <>
-      <div className="relative z-10 grid overflow-x-hidden grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-24 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
-        <Navigation items={NAV_ITEMS} align={alignNav}/>
+      <div className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-48 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+        <Navigation align={alignNav}/>
       </div>
-      <main className="relative z-10 grid overflow-x-hidden grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-24 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
+      <main className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-48 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3">
         {children}
         <Footer />
       </main>

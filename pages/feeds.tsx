@@ -32,7 +32,7 @@ const Feeds = () => {
     <Layout>
       <section className="flex flex-col w-full justify-start pb-5 align-bottom">
         <div className="flex flex-row w-full space-x-2">
-          <h1 className="text-4xl font-['Montserrat'] font-black pb-4">
+          <h1 className="text-4xl font-black pb-4">
             Feeds
           </h1>
           <svg
