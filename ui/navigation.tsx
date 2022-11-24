@@ -53,9 +53,9 @@ export const Navigation: FC<NavigationProps> = ({ align }) => {
             href={item.url}
             className="font-semibold text-xl"
           >
-            <button className="surface-elevation-low bg-white/10 rounded-full p-2">
-              <span className="text-white/80">{item.icon}</span>
-            </button>
+            <span className="text-white/80">{item.label}</span>
+            {/* <button className="surface-elevation-low bg-white/10 rounded-full p-2">
+            </button> */}
           </Link>
         ) : null;
       })}

@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -40,7 +42,7 @@ module.exports = {
         144: "36rem",
       },
       fontFamily: {
-        sans: ["'Montserrat', sans-serif", "'Work Sans', sans-serif"],
+        sans: ['Inter', ...fontFamily.sans],
       },
       boxShadow: ({ theme }) => ({
         // inspired by https://www.joshwcomeau.com/shadow-palette/
