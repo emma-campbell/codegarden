@@ -8,7 +8,7 @@ cloudinary.config({
 
 export const generateSocialImage = ({
   title,
-  date = '',
+  date = "",
   imagePublicId,
   twitterName,
   titleFont = "ABeeZee",
@@ -30,77 +30,51 @@ export const generateSocialImage = ({
   textColor = "FFFFFF",
   titleFontSize = 60,
 }) => {
-  const transformation = [
-    {
-      width: imageWidth,
-      height: imageHeight,
-      fetch_format: "auto",
-      crop: "fill",
-    },
-    // Twitter Image Overlay
-    {
-      overlay: `twitter_name:${twitterName}`,
-    },
-    {
-      width: twitterWidth,
-      height: twitterHeight,
-      crop: "thumb",
-      gravity: "faces",
-      radius: "max",
-      border: `${twitterBorderWidth}_solid_rgb:${textColor}`,
-    },
-    {
-      flags: "layer_apply",
-      gravity: "north_west",
-      x: twitterLeftOffset,
-      y: twitterBottomOffset,
-    },
-    // Text Overlay
-    {
-      overlay: {
-        font_family: titleFont,
-        font_size: titleFontSize,
-        font_weight: titleWeight,
-        text: title,
-      },
-      width: textAreaWidth,
-      height: textAreaHeight,
-      crop: "fit",
-      color: `#${textColor}`,
-    },
-    {
-      flags: "layer_apply",
-      gravity: "west",
-      x: textLeftOffset,
-      y: textBottomOffset,
-    },
-  ];
-
-  if (date != '') {
-    transformation.push(
-      ...[
-        {
-          overlay: {
-            font_family: titleFont,
-            font_size: dateFontSize,
-            font_weight: titleWeight,
-            text: date,
-          },
-          width: textAreaWidth,
-          height: textAreaHeight,
-          crop: "fit",
-          color: "#909090",
-        },
-        {
-          flags: "layer_apply",
-          gravity: "west",
-          x: dateLeftOffset,
-          y: dateBottomOffset,
-        },
-      ]
-    );
-  }
   return cloudinary.url(imagePublicId, {
-    transformation: transformation
+    transformation: [
+      {
+        width: imageWidth,
+        height: imageHeight,
+        fetch_format: "auto",
+        crop: "fill",
+      },
+      // Twitter Image Overlay
+      {
+        overlay: `twitter_name:${twitterName}`,
+      },
+      {
+        width: twitterWidth,
+        height: twitterHeight,
+        crop: "thumb",
+        gravity: "faces",
+        radius: "max",
+        border: `${twitterBorderWidth}_solid_rgb:${textColor}`,
+      },
+      {
+        flags: "layer_apply",
+        gravity: "north_west",
+        x: twitterLeftOffset,
+        y: twitterBottomOffset,
+      },
+      // Text Overlay
+      {
+        overlay: {
+          font_family: titleFont,
+          font_size: titleFontSize,
+          font_weight: titleWeight,
+          text: title,
+        },
+        width: textAreaWidth,
+        height: textAreaHeight,
+        crop: "fit",
+        color: `#${textColor}`,
+      },
+      {
+        flags: "layer_apply",
+        gravity: "west",
+        x: textLeftOffset,
+        y: textBottomOffset,
+      },
+    ],
   });
 };
