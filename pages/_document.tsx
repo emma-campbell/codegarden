@@ -8,7 +8,7 @@ export default function Document() {
         <link
           rel="preload"
           as="image"
-          href="https://res.cloudinary.com/domnvvqdl/image/upload/v1668888307/Background_Blur_sirqpx.png"
+          href="https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png"
         />
       </Head>
       <body className="bg-black antialiased selection:bg-purple-500/90 selection:text-white">
