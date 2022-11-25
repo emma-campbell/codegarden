@@ -20,6 +20,9 @@ export const Footer: FC = () => {
             <div>
               <a href="https://twitter.com/spoonsandcode">Twitter</a>
             </div>
+            <div>
+              <a href="https://disabled.social/@spoonsandcode#">Mastadon</a>
+            </div>
           </div>
 
           <div className="flex flex-col justify-left text-gray-200">
