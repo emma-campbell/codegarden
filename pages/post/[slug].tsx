@@ -72,6 +72,10 @@ const PostPage = ({ post, image }: InferGetStaticPropsType<typeof getStaticProps
             },
           ],
         }}
+        twitter={{
+          handle: "@spoonsandcode",
+          cardType: "summary_image_large"
+        }}
       />
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
