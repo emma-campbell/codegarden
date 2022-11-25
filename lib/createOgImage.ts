@@ -1,68 +1,80 @@
-// https://delba.dev/blog/next-blog-generate-og-image
+const cloudinary = require("cloudinary");
 
-// double escape for commas and slashes
-const encode = (str: string) => encodeURIComponent(encodeURIComponent(str));
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export const generateSocialImage = ({
   title,
-  cloudName,
+  date = "",
   imagePublicId,
   twitterName,
-  cloudinaryBase = "https://res.cloudinary.com",
-  version = null,
-  titleFont = "Montserrat",
-  titleWeight = "_medium",
+  titleFont = "ABeeZee",
+  titleWeight = "bold",
   imageWidth = 1200,
   imageHeight = 630,
   textAreaWidth = 630,
   textAreaHeight = 450,
   textLeftOffset = 45,
-  textBottomOffset = 60,
+  textBottomOffset = 50,
+  dateLeftOffset = 45,
+  dateBottomOffset = 160,
+  dateFontSize = 30,
+  twitterBorderWidth = "5px",
+  twitterWidth = 130,
+  twitterHeight = 130,
+  twitterLeftOffset = 45,
+  twitterBottomOffset = 75,
   textColor = "FFFFFF",
   titleFontSize = 60,
-}): string => {
-  const imageConfig = [
-    `w_${imageWidth}`,
-    `h_${imageHeight}`,
-    "c_fill",
-    "f_auto",
-  ].join(",");
-
-  const titleConfig = [
-    `w_${textAreaWidth}`,
-    `h_${textAreaHeight}`,
-    "c_fit",
-    `co_rgb:${textColor}`,
-    "g_west",
-    `x_${textLeftOffset}`,
-    `y_${textBottomOffset}`,
-    `l_text:${titleFont}_${titleFontSize}${titleWeight}:${encodeURIComponent(
-      title
-    )}`,
-  ].join(",");
-
-  const socialImageConfig = [
-    `l_twitter_name:${twitterName}`,
-    `c_thumb,g_face,r_max,w_130,h_130`,
-    `fl_layer_apply,g_north_west,x_45,y_75`,
-  ].join(",");
-
-  // combine all the pieces required to generate a Cloudinary URL
-  const urlParts = [
-    cloudinaryBase,
-    cloudName,
-    "image",
-    "upload",
-    imageConfig,
-    socialImageConfig,
-    titleConfig,
-    version,
-    imagePublicId,
-  ];
-
-  // remove any falsy sections of the URL (e.g. an undefined version)
-  const validParts = urlParts.filter(Boolean);
-
-  // join all the parts into a valid URL to the generated image
-  return validParts.join("/");
+}) => {
+  return cloudinary.url(imagePublicId, {
+    transformation: [
+      {
+        width: imageWidth,
+        height: imageHeight,
+        fetch_format: "auto",
+        crop: "fill",
+      },
+      // Twitter Image Overlay
+      {
+        overlay: `twitter_name:${twitterName}`,
+      },
+      {
+        width: twitterWidth,
+        height: twitterHeight,
+        crop: "thumb",
+        gravity: "faces",
+        radius: "max",
+        border: `${twitterBorderWidth}_solid_rgb:${textColor}`,
+      },
+      {
+        flags: "layer_apply",
+        gravity: "north_west",
+        x: twitterLeftOffset,
+        y: twitterBottomOffset,
+      },
+      // Text Overlay
+      {
+        overlay: {
+          font_family: titleFont,
+          font_size: titleFontSize,
+          font_weight: titleWeight,
+          text: title,
+        },
+        width: textAreaWidth,
+        height: textAreaHeight,
+        crop: "fit",
+        color: `#${textColor}`,
+      },
+      {
+        flags: "layer_apply",
+        gravity: "west",
+        x: textLeftOffset,
+        y: textBottomOffset,
+      },
+    ],
+  });
 };

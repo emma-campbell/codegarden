@@ -20,6 +20,7 @@ export const getStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps<{
   post: ReturnType<typeof getPartialPost>;
+  image: string
 }> = async ({ params }) => {
   const post = allPosts.find((post) => post.slug === params?.slug);
 
@@ -29,26 +30,28 @@ export const getStaticProps: GetStaticProps<{
     };
   }
 
+  const ogImage = generateSocialImage({
+    title: post.title,
+    date: post.formattedDate,
+    imagePublicId: "social_card.png",
+    twitterName: "spoonsandcode",
+  });
+
   return {
     props: {
       post: getPartialPost(post, allPosts),
+      image: ogImage
     },
   };
 };
 
-const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const PostPage = ({ post, image }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXContent = useMDXComponent(post.body.code);
   const router = useRouter();
 
   const path = `/post/${post.slug}`;
   const url = `https://emmacampbell.dev${path}`;
   const title = `${post.title} | emmacampbell.dev`;
-  const ogImage = generateSocialImage({
-    title: post.title,
-    cloudName: "emmacampbell",
-    imagePublicId: "social_card.png",
-    twitterName: "emmacampbelll14",
-  });
 
   return (
     <>
@@ -62,12 +65,16 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           description: post.description ?? undefined,
           images: [
             {
-              url: ogImage,
+              url: image,
               width: 1200,
               height: 630,
               alt: post.title,
             },
           ],
+        }}
+        twitter={{
+          handle: "@spoonsandcode",
+          cardType: "summary_image_large"
         }}
       />
       <Layout alignNav={NavAlign.LEFT}>

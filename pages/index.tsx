@@ -15,7 +15,12 @@ export async function getStaticProps() {
     })
     .filter((p) => p.status === "published");
 
-  return { props: { posts } };
+  const ogImage = generateSocialImage({
+    title: `Emma's Digital Garden 🌱`,
+    imagePublicId: "social_card.png",
+    twitterName: "emmacampbelll14",
+  });
+  return { props: { posts: posts, image: ogImage } };
 }
 
 const gradients = [
@@ -24,14 +29,7 @@ const gradients = [
   "from-yellow-300 to-green-300",
 ];
 
-export const Home = ({ posts }) => {
-  const socialImage: string = generateSocialImage({
-    title: `Emma's Digital Garden 🌱`,
-    cloudName: "emmacampbell",
-    imagePublicId: "social_card.png",
-    twitterName: "emmacampbelll14",
-  });
-
+export const Home = ({ posts, image }) => {
   return (
     <Layout>
       <NextSeo
@@ -43,7 +41,7 @@ export const Home = ({ posts }) => {
           description: SITE_DESCRIPTION,
           images: [
             {
-              url: socialImage,
+              url: image,
               width: 1200,
               height: 630,
               alt: SITE_NAME,
@@ -78,7 +76,7 @@ export const Home = ({ posts }) => {
           <h1 className="text-2xl font-black">Latest Writing</h1>
         </div>
         <div className="flex flex-col gap-6 md:flex-row mb-4">
-          {posts?.slice(0, 4).map((article, i) => {
+          {posts?.slice(0, 3).map((article, i) => {
             return (
               <FeaturedPost
                 key={article.slug}
