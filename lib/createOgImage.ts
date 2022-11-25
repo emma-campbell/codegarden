@@ -20,7 +20,7 @@ export const generateSocialImage = ({
   textBottomOffset = 60,
   textColor = "FFFFFF",
   titleFontSize = 60,
-}) => {
+}): string => {
   const imageConfig = [
     `w_${imageWidth}`,
     `h_${imageHeight}`,

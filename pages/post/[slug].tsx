@@ -63,8 +63,8 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           images: [
             {
               url: ogImage,
-              width: 1600,
-              height: 836,
+              width: 1200,
+              height: 630,
               alt: post.title,
             },
           ],
@@ -72,9 +72,7 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
       />
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
-          <h1 className="text-2xl font-black xl:text-3xl font-['Montserrat']">
-            {post.title}
-          </h1>
+          <h1 className="text-2xl font-black xl:text-3xl">{post.title}</h1>
           <div className="mt-2 flex space-x-2 text-lg text-rose-100/50">
             <div>{post.formattedDate}</div>
           </div>
@@ -84,26 +82,25 @@ const PostPage = ({ post }: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className="space-y-6">
             {post.headings ? (
               <div className="space-y-2 text-sm">
-                <div>
-                  {post.headings.map((heading) => {
-                    return (
-                      <div key={heading.slug}>
-                        <a
-                          href={`#${heading.slug}`}
-                          className={clsx(
-                            "block underline-offset-2 transition-all hover:underline",
-                            {
-                              "pl-2": heading.heading === 2,
-                              "pl-4": heading.heading === 3,
-                            }
-                          )}
-                        >
-                          {heading.text}
-                        </a>
-                      </div>
-                    );
-                  })}
-                </div>
+                <div className="uppercase text-white/30">On this page</div>
+                {post.headings.map((heading) => {
+                  return (
+                    <div key={heading.slug}>
+                      <a
+                        href={`#${heading.slug}`}
+                        className={clsx(
+                          "block underline-offset-2 transition-all text-white/60 hover:underline hover:text-white",
+                          {
+                            "pl-2": heading.heading === 2,
+                            "pl-4": heading.heading === 3,
+                          }
+                        )}
+                      >
+                        {heading.text}
+                      </a>
+                    </div>
+                  );
+                })}
               </div>
             ) : null}
             <div className="border-t border-white-200"></div>
