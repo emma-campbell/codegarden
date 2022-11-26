@@ -49,6 +49,10 @@ export const Home = ({ posts, image }) => {
             },
           ],
         }}
+        twitter={{
+          handle: "@spoonsandcode",
+          cardType: "summary_large_image",
+        }}
       />
       <section className="flex flex-col w-fit justify-start">
         <div className="flex flex-col">
