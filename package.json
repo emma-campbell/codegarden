@@ -19,6 +19,7 @@
     "cloudinary": "^1.32.0",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.9",
+    "crypto": "^1.0.1",
     "date-fns": "^2.29.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",

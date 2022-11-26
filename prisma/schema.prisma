@@ -17,3 +17,8 @@ model Stats {
   likes Int    @default(0)
   views Int    @default(0)
 }
+
+model Session {
+  id        String   @id
+  createdAt DateTime @default(now())
+}

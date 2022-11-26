@@ -21,7 +21,7 @@ export const SeriesNav: FC<SeriesNavProps> = ({ series }) => {
   return (
     <div className="grid grid-rows-1 grid-cols-2 gap-x-3">
       {prev ? (
-        <Link href={`/post/${prev?.slug}`}>
+        <Link href={`/blog/${prev?.slug}`}>
           <button className="h-48 text-left border-2 border-white/50 rounded-md px-4 py-2 hover:border-white">
             <h4 className="font-medium text-right">{prev?.title}</h4>
             <div className="flex flex-row justify-between">
@@ -36,7 +36,7 @@ export const SeriesNav: FC<SeriesNavProps> = ({ series }) => {
         <span></span>
       )}
       {next ? (
-        <Link href={`/post/${next?.slug}`}>
+        <Link href={`/blog/${next?.slug}`}>
           <button className="h-48 w-full text-left border-2 border-white/50 rounded-md px-4 py-2 hover:border-white">
             <h4 className="font-medium">{next?.title}</h4>
             <div className="flex flex-row justify-between">

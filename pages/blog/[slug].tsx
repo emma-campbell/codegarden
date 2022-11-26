@@ -1,3 +1,5 @@
+import LikeCounter from "@/ui/likes-counter";
+import ViewCounter from "@/ui/view-counter";
 import clsx from "clsx";
 import { allPosts } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -10,8 +12,6 @@ import { Layout, NavAlign } from "../../ui/layout";
 import { components } from "../../ui/mdx";
 import { Series } from "../../ui/series";
 import { SeriesNav } from "../../ui/series-navigation";
-import { EyeIcon } from "@heroicons/react/24/outline";
-import ViewCounter from "@/ui/view-counter";
 
 export const getStaticPaths = () => {
   return {
@@ -54,7 +54,7 @@ const PostPage = ({
   const MDXContent = useMDXComponent(post.body.code);
   const router = useRouter();
 
-  const path = `/post/${post.slug}`;
+  const path = `/blog/${post.slug}`;
   const url = `https://emmacampbell.dev${path}`;
   const title = `${post.title} | emmacampbell.dev`;
 
@@ -89,6 +89,8 @@ const PostPage = ({
             <div>{post.formattedDate}</div>
             <p>•</p>
             <ViewCounter slug={post.slug} />
+            <p>•</p>
+            <LikeCounter slug={post.slug} />
           </div>
         </div>
 

@@ -1,3 +1,8 @@
 export type Views = {
-    total;
-}
+  total: number;
+};
+
+export type Likes = {
+  total?: number;
+  user?: boolean;
+};
