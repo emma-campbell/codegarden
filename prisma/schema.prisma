@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Stats {
+  slug  String @id @db.VarChar(128)
+  likes Int    @default(0)
+  views Int    @default(0)
+}
+
+model Session {
+  id        String   @id
+  createdAt DateTime @default(now())
+}

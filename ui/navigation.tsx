@@ -16,8 +16,8 @@ export const NAV_ITEMS = [
   },
   {
     icon: <PencilSquareIcon className="w-5" />,
-    label: "Posts",
-    url: "/posts",
+    label: "Blog",
+    url: "/blog",
   },
   // {
   //   icon: <CommandLineIcon className="w-5" />,

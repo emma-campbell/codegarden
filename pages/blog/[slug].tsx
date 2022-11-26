@@ -1,3 +1,5 @@
+import LikeCounter from "@/ui/likes-counter";
+import ViewCounter from "@/ui/view-counter";
 import clsx from "clsx";
 import { allPosts } from "contentlayer/generated";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -20,7 +22,7 @@ export const getStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps<{
   post: ReturnType<typeof getPartialPost>;
-  image: string
+  image: string;
 }> = async ({ params }) => {
   const post = allPosts.find((post) => post.slug === params?.slug);
 
@@ -40,16 +42,19 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       post: getPartialPost(post, allPosts),
-      image: ogImage
+      image: ogImage,
     },
   };
 };
 
-const PostPage = ({ post, image }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const PostPage = ({
+  post,
+  image,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const MDXContent = useMDXComponent(post.body.code);
   const router = useRouter();
 
-  const path = `/post/${post.slug}`;
+  const path = `/blog/${post.slug}`;
   const url = `https://emmacampbell.dev${path}`;
   const title = `${post.title} | emmacampbell.dev`;
 
@@ -74,14 +79,18 @@ const PostPage = ({ post, image }: InferGetStaticPropsType<typeof getStaticProps
         }}
         twitter={{
           handle: "@spoonsandcode",
-          cardType: "summary_image_large"
+          cardType: "summary_image_large",
         }}
       />
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
           <h1 className="text-2xl font-black xl:text-3xl">{post.title}</h1>
-          <div className="mt-2 flex space-x-2 text-lg text-rose-100/50">
+          <div className="mt-2 flex space-x-2 text-lg text-white/50">
             <div>{post.formattedDate}</div>
+            <p>•</p>
+            <ViewCounter slug={post.slug} />
+            <p>•</p>
+            <LikeCounter slug={post.slug} />
           </div>
         </div>
 

@@ -12,13 +12,13 @@ export async function getStaticProps() {
   return { props: { posts } };
 }
 
-export const Posts = ({ posts }) => {
+export const Blog = ({ posts }) => {
   return (
     <Layout>
-      <section className="flex flex-col w-full justify-start pb-5 align-bottom">
+      <section className="flex flex-col w-full justify-start pb-2 align-bottom">
         <div className="flex flex-row w-full space-x-2">
-          <h1 className="text-4xl font-black pb-4">
-            Posts ✏️
+          <h1 className="text-4xl font-black pb-0">
+            Blog
           </h1>
         </div>
         {/* <div className="flex flex-col space-y-5">
@@ -45,4 +45,4 @@ export const Posts = ({ posts }) => {
   );
 };
 
-export default Posts;
+export default Blog;
