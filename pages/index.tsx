@@ -20,6 +20,7 @@ export async function getStaticProps() {
     imagePublicId: "social_card.png",
     twitterName: "emmacampbelll14",
   });
+
   return { props: { posts: posts, image: ogImage } };
 }
 
@@ -87,7 +88,7 @@ export const Home = ({ posts, image }) => {
           })}
         </div>
         <Link
-          href="/posts"
+          href="/blog"
           className="flex flex-row justify-start text-gray-100 font-medium hover:underline hover:[&>*]text-white transition-all"
         >
           <p>All Posts</p>
