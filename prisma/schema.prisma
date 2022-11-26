@@ -15,5 +15,5 @@ datasource db {
 model Stats {
   slug  String @id @db.VarChar(128)
   likes Int    @default(0)
-  view  Int    @default(0)
+  views Int    @default(0)
 }

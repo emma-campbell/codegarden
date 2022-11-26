@@ -20,6 +20,7 @@ export async function getStaticProps() {
     imagePublicId: "social_card.png",
     twitterName: "emmacampbelll14",
   });
+
   return { props: { posts: posts, image: ogImage } };
 }
 

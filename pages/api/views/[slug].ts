@@ -12,6 +12,7 @@ export default async function handler(
       const newOrUpdatedViews = await prisma.stats.upsert({
         where: { slug },
         create: {
+          // @ts-ignore
           slug,
         },
         update: {
@@ -33,7 +34,7 @@ export default async function handler(
         },
       });
 
-      return res.status(200).json({ total: stats.views.toString() });
+      return res.status(200).json({ total: stats?.views.toString() });
     }
   } catch (e: any) {
     return res.status(500).json({ message: e.message });
