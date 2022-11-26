@@ -6,6 +6,11 @@ status: "published"
 series:
   order: 2
   title: "Engineering a Blog"
+tags:
+  - { title: "contentlayer", slug: "contentlayer" }
+  - { title: "Tech", slug: "tech" }
+  - { title: "Next.js", slug: "nextjs" }
+  - { title: "MDX", slug: "mdx" }
 ---
 
 Previously, we talked through the choices behind the tech stack used to build my developer blog. The next logic step is wiring
@@ -361,6 +366,6 @@ export async function getStaticProps() {
 
 # What's Next?
 
-A nice-to-have for any blog is the able to have visitors "like" your article, and for you to be able to track analytics. Next up, we 
+A nice-to-have for any blog is the able to have visitors "like" your article, and for you to be able to track analytics. Next up, we
 will set up a (free) [PlanetScale](https://planetscale.com) database with [Prisma](https://www.prisma.io) schemas and type-safe client
 generation to work with the database.

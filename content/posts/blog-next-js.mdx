@@ -6,14 +6,20 @@ status: "published"
 series:
   order: 1
   title: "Engineering a Blog"
+tags:
+  - { title: "Next.js", slug: "nextjs" }
+  - { title: "Tech", slug: "tech" }
+  - { title: "Typescript", slug: "typescript" }
+  - { title: "Tailwindcss", slug: "tailwind" }
+  - { title: "MDX", slug: "mdx" }
 ---
 
-Almost every developer dreams of creating a stylish and functional blog for sharing their journeys about learning in tech. I want to quickly 
+Almost every developer dreams of creating a stylish and functional blog for sharing their journeys about learning in tech. I want to quickly
 talk through my design choices for the beginning stages of building my own blog.
 
 # Content Management
 
-The key part to this all working nicely is being able to manage content well. As a developer who's already familiar with markdown, the next 
+The key part to this all working nicely is being able to manage content well. As a developer who's already familiar with markdown, the next
 logical step would be using MDX to write all content.
 
 ## MDX
@@ -111,10 +117,7 @@ Edit the `tailwind.config.js` file and add the directories where you will have y
 ```js showLineNumber title="tailwind.config.js" {4,5}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}", 
-    "./ui/**/*.{js,ts,jsx,tsx}"
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./ui/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
