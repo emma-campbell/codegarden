@@ -79,7 +79,7 @@ const PostPage = ({
         }}
         twitter={{
           handle: "@spoonsandcode",
-          cardType: "summary_image_large",
+          cardType: "summary_large_image",
         }}
       />
       <Layout alignNav={NavAlign.LEFT}>
