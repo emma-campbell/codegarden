@@ -16,7 +16,7 @@ export default function LikeCounter({ slug }) {
   return (
     <div className="flex flex-row space-x-2" ref={intersectionRef}>
       <div ref={intersectionRef}>
-        {isError || isLoading ? <LoadingDots /> : <Metric stat={likes} />} views
+        {isError || isLoading ? <LoadingDots /> : <Metric stat={likes} />} likes
       </div>
       <button
         className={`hover:text-white/60 ${user ? "text-blue-300" : ""}`}
