@@ -13,9 +13,9 @@ tags:
   - { title: "MDX", slug: "mdx" }
 ---
 
-Previously, we talked through the choices behind the tech stack used to build my developer blog. The next logic step is wiring
-up [contentlayer](https://www.contentlayer.dev/docs/getting-started), an SDK for transforming unstructured content into type-safe
-json data structure. Contentlayer is a breeze to use, but in case you're stuck, here is how I set it up.
+Previously, we talked through the choices behind the tech stack used to build my developer blog. The step towards building a functional
+blog is wiring up [contentlayer](https://www.contentlayer.dev/docs/getting-started), an SDK for transforming unstructured content into type-safe
+json data structures. Contentlayer is a breeze to use, but in case you're stuck, here is how I set it up.
 
 # Installation
 
@@ -29,7 +29,7 @@ Begin by adding `contentlayer` and `next-contentlayer` to your project.
 yarn add contentlayer next-contentlayer
 ```
 
-`contentlayer` is the actual package, while `next-contentlayer` provides the utilities for interacting with your Next.js site.
+`contentlayer` is the actual package, while `next-contentlayer` provides the utilities for interacting with your Next.js app.
 
 ### 2. Wrap your Next Config with the `withContentLayer` Function
 
@@ -136,7 +136,7 @@ export const Series = definedNestedType(() => ({
 ```
 
 Once I've defined `Series` and `Tag`, I can import them and use their definitions to finish
-out the fields in a `Post`.
+out the fields in the `Post` model.
 
 ```typescript showLineNumbers title="./content/definitions/post.tsx"
 import { defineDocumentType } from "contentlayer/source-files";
@@ -196,7 +196,7 @@ export default makeSource({
 # Plugins
 
 Make note of the `remarkPlugins` and `rehypePlugins` fields in `contentlayer.config.js`. Contentlayer is pretty
-nifty, and we can use all sorts of plugins during the content generation.
+nifty, and we can use all sorts of plugins during the content generation process.
 
 ## Github Flavored Markdown
 
@@ -336,7 +336,6 @@ export const Post = defineDocumentType(() => ({
 
 # Rendering Content
 
-First, we need a little helper
 We can render our posts now using Next.js [Dynamic Routes](https://nextjs.org/docs/routing/dynamic-routes). In the `/pages`
 folder, create a new folder `/post` and a file `[slug].tsx`. Adding brackets to the file name treats it as a parameter.
 
@@ -366,6 +365,6 @@ export async function getStaticProps() {
 
 # What's Next?
 
-A nice-to-have for any blog is the able to have visitors "like" your article, and for you to be able to track analytics. Next up, we
+A nice-to-have for any blog is to be able to have visitors "like" your article, and for you to be able to track analytics. Next up, we
 will set up a (free) [PlanetScale](https://planetscale.com) database with [Prisma](https://www.prisma.io) schemas and type-safe client
 generation to work with the database.

@@ -13,17 +13,18 @@ tags:
   ✨ _I originally published this article on
   [Kindred](https://www.kindred.hugo.health), my companies health network. I've
   taken a lot of the "how", and added some of my own personal opinions on how
-  this affects us, as patients. All opinions are my own, and not representative
+  this affects us as patients. All opinions are my own, and not representative
   of Hugo Health._
 </Aside>
+
 While the digital world around us moves onward and upward into the 21st century,
 the healthcare space is seemingly stuck. This past year I moved, and had to have
 ankle surgery for a chronic injury that I had spent the last 12 years dealing with
-in (_now_) three different states.
+in three different states.
 
-To prepare for my appointment with my surgeon, I was tasked with collecting all imaging (XRays, MRIs, and CTs) along with their corresponding notes,
+To prepare for my appointment with my surgeon, I was tasked with collecting all imaging (x-rays, MRIs, and CTs) along with their corresponding notes,
 as well as surgical notes for my past two failed procedures. In a world where I can email my absentee ballot registration to my local DMV,
-I had to collect disks and physical paper reports to hand over to my new surgical team. It was a painful process, full of back and forths,
+I had to collect disks and physical paper reports to hand over to my new surgical team. It was a painful process, full of back and forths
 and waiting on snail-mail. All in all it took over a month to get everything together.
 
 Many people who move, or change medical teams, have gone through this process and know just how painful it can be. Why is it that medicine is
@@ -32,8 +33,8 @@ stuck in the early 2000's when the rest of the world is well into the digital ag
 # 21st Century Cures
 
 On December 13th, 2016, the [21st Century Cures Act](https://www.govinfo.gov/content/pkg/PLAW-114publ255/pdf/PLAW-114publ255.pdf), called the Cures Act for
-short, was passed with the goal of accelerating disease research and streamline the development of drugs and medical devices. The United States House and Senate
-voted in favor of it, with strong bipartisan support in both chambers.
+short, was passed with the goal of accelerating disease research and streamlining the development of drugs and medical devices. The United States House and Senate
+voted in favor of it with strong bipartisan support in both chambers.
 
 <Aside>
   💡 **Interoperability** refers to the ability of various computer software to
@@ -42,13 +43,13 @@ voted in favor of it, with strong bipartisan support in both chambers.
   their power to limit the sharing of your information that they store.
 </Aside>
 
-One of the largest provisions passed within the Cures Act related to **interoperability** and **information blocking**. More specfically, Title IV
+One of the largest provisions passed within the Cures Act was related to **interoperability** and **information blocking**. More specifically, Title IV
 of the act states that health information technology developers or entities may not "take any action that constitutes information blocking" and need
 to provide an application programming interface (API) to facilitate easy data transfer.
 
 ## What Is an API?
 
-For those who don't know what an API is, it basically is a specification that describes how different softwares can communicate with each other. Here
+For those who don't know what an API is, it basically is a specification that describes how different software can communicate with each other. Here
 are a couple of key terms
 
 - **Client**: the user, website, or software making the request.
@@ -57,7 +58,7 @@ are a couple of key terms
 - **Server**: the behind-the-scenes software that processes the request and returns the appropriate response.
 
 The easiest way to tie this all together is through metaphor. Imagine you are a patron at a restaurant and a waiter comes to take your order. The waiter
-writes down your order on a peice of paper, and take it to the kitchen. The kitchen staff takes the order, prepares your meal, and returns it to the waiter
+writes down your order on a piece of paper, and takes it to the kitchen. The kitchen staff takes the order, prepares your meal, and returns it to the waiter
 who serves it to you.
 
 In this hypothetical scenario, you are the client, and the waiter is the API. The request is your order, the kitchen is the server, and your meal is the response.
@@ -77,31 +78,31 @@ FHIR defines the way to access the information that your healthcare providers ar
 - healthcare team
 - medications
 - vitals
-- diagnostic reports (MRI reports, Xray reports, etc)
+- diagnostic reports (MRI reports, x-ray reports, etc)
 
 There are additional standards that define how to format requests and responses, but FHIR allows third-party developers (software developers _not_ affiliated with your EHR)
 to write code that can access data from your EHR, and only need to write it once.
 
 # I'm Not a Developer, How Does This Effect Me?
 
-The FHIR standards essentially gaurantee that your health data will move to where it needs to be even quicker. If your cardiologist practices somewhere that uses an
+The FHIR standards essentially guarantee that your health data will move to where it needs to be even quicker. If your cardiologist practices somewhere that uses an
 Epic EHR, your primary care doctor at a health system using a Cerner EHR will be able to access that information with ease. It also means that you can use something 
 called a PHR (personal health record) to congregate all of your personal health data into one centralized location, so you never need to call around to all your 
 various doctors again.
 
 Another **huge** benefit to quicker data transfer is speeding up research. Research, as we know it right now, involves a lot of manual labor in regards to collecting 
-all the data needed to run statistcal analysis. Research assistants often need to consent, and then reach out to a particpants doctors to have information faxed.
-They often need to score physical surveys or manually record lab and test results. Research today, is slow. With data collection being the lengthy-est process, having 
-standards regarding data transfer consequently speeds up research and can develop treatments and cures for diseases which don't exist today.
+all the data needed to run statistical analysis. Research assistants often need to consent, and then reach out to a particpant's doctors to have information faxed.
+They often need to score physical surveys or manually record lab and test results. Research today, is slow. With data collection being the longest part of the process, 
+having standards regarding data transfer consequently speeds up research and can develop treatments and cures for diseases which don't exist today.
 
 # What's the Hold Up?
 
 Well, long story short, COVID hit. Deadlines for compliance kept getting pushed, and pushed until they couldn't put it off any longer. The newest compliance date for
-API implementation is _December 31st, 2022_, so technically providers have about a year before they're the imangined ease of data sharing is in place. However, EHR 
+API implementation is _December 31st, 2022_, so technically providers have about a month before the imagined ease of data sharing is in place. However, EHR 
 providers like Epic and Cerner, along with pharmacy systems like CVS have faught tooth and nail to stop the Cures Act, and have lobbied to continue pushing back compliance
 dates. 
 
-Why? Your health data is digital gold. In the US, where healthcare and pharmacueticals are some of the top lucrative industries, you data can be sold and utilized to 
+Why? Your health data is digital gold. In the US, where healthcare and pharmaceuticals are some of the top lucrative industries, your data can be sold and utilized to 
 generate targeted advertisements for various drugs and medical equipment. Ever notice that after being perscribed a certain treatment, you start getting adverts for 
 alternative treatments? Big health profits off your data, while you're stuck lugging pages between care providers.
 
@@ -110,7 +111,7 @@ Seem fair to you?
 Lobbying from EHR providers and other health industries that collect your data has forced the bill to include "reasonable" exemptions for these companies. These exemptions
 were originally included for smaller companies, but now allow for large corperations like CVS to claim "technical infeasibility" and "too costly" despite $292 billion in 
 revenue in 2021. These exemptions also allow EHR providers like Epic to gatekeep and only allow a small subset of required resources to be shared so their highly profitable
-App Orchard can continue to bring in money, using _your_ data. 
+App Orchard can continue to bring in money using _your_ data. 
 
 Because the Cures Act is in its early stages and there are minimal resources to reinforce the new rules, health-data companies are getting away with too much. There are
 minimal penalties for violating the policies made to protect your health information.
@@ -120,7 +121,7 @@ minimal penalties for violating the policies made to protect your health informa
 
 As of _October 6th, 2022_, your healthcare providers are required to share your information at your request. If you're curious if your health provider is compliant
 with the new rules -- request your data! Leave a paper trail, and see how long it takes to get your information. Does it take them longer than 10 days to get back to
-you? [Submit a compliant with the ONC!](https://inquiry.healthit.gov/support/plugins/servlet/desk/portal/6)
+you? [Submit a complaint with the ONC!](https://inquiry.healthit.gov/support/plugins/servlet/desk/portal/6)
 
 Unfortunately, issues like this are only solved through regulation via policy. You can write your senator or representative and ask that they impose strict punishment
 for information blockers and Cures Act violators, and reduce the amount of exemptions in the legislation. Exemptions are loopholes that work in favor of corporations
