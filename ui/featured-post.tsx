@@ -1,11 +1,8 @@
-import { FC } from "react";
 import { getPartialPost } from "@/lib/contentlayer";
-import Link from "next/link";
 import cn from "classnames";
+import Link from "next/link";
+import { FC } from "react";
 
-import useSwr from "swr";
-import { Views } from "@/lib/types";
-import fetcher from "@/lib/fetcher";
 import { PostMetrics } from "./post-metrics";
 
 type FeaturedPostProps = {

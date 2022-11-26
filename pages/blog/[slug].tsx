@@ -1,4 +1,5 @@
 import LikeCounter from "@/ui/likes-counter";
+import { TagList } from "@/ui/tag-list";
 import ViewCounter from "@/ui/view-counter";
 import clsx from "clsx";
 import { allPosts } from "contentlayer/generated";
@@ -58,6 +59,14 @@ const PostPage = ({
   const url = `https://emmacampbell.dev${path}`;
   const title = `${post.title} | emmacampbell.dev`;
 
+  const meta: any[] = [];
+  if (post.tags) {
+    meta.push({
+      property: "keywords",
+      content: post.tags.map(t => t.title).join(','),
+    });
+  }
+
   return (
     <>
       <NextSeo
@@ -81,6 +90,7 @@ const PostPage = ({
           handle: "@spoonsandcode",
           cardType: "summary_large_image",
         }}
+        additionalMetaTags={meta}
       />
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
@@ -146,6 +156,8 @@ const PostPage = ({
             ...components,
           }}
         />
+
+        {post.tags ? <TagList tags={post.tags} /> : null}
 
         {post.series && post.series.posts.length > 1 ? (
           <SeriesNav series={post.series} />
