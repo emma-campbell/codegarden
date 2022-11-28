@@ -22,7 +22,7 @@
     "crypto": "^1.0.1",
     "date-fns": "^2.29.3",
     "eslint": "8.28.0",
-    "eslint-config-next": "13.0.4",
+    "eslint-config-next": "13.0.5",
     "github-slugger": "^2.0.0",
     "moment": "^2.29.4",
     "next": "13.0.5",
