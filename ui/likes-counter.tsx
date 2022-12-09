@@ -30,7 +30,7 @@ export default function LikeCounter({ slug }) {
           }
         }}
       >
-        <HandThumbUpIcon className="w-5" />
+        <HandThumbUpIcon className="w-4 md:w-5" />
       </button>
     </div>
   );
