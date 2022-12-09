@@ -12,7 +12,7 @@ tags:
   - { title: "Prisma", slug: "prisma" }
 ---
 
-Adding metrics to a post is both a fun coding challenge as well as a nice to have. We are going to utilize a [PlanetScale](https://planetscale.com) database, which has a generous "Hobby" plan. This plan inludes
+Adding metrics to a post is both a fun coding challenge as well as a nice to have. We are going to utilize a [PlanetScale](https://planetscale.com) database, which has a generous "Hobby" plan. This plan includes
 
 - 5 GB of storage
 - 1 billion row reads per month
@@ -33,7 +33,7 @@ You will also want to [make a new branch](https://planetscale.com/docs/concepts/
 
 # Installing Prisma
 
-Once your Planetscale database is up and running, we can go ahead and set up prisma. Primsa is a type-safe database client, where the one of the main selling points is the "human-readable" schema files. We will start by installing prisma.
+Once your Planetscale database is up and running, we can go ahead and set up Prisma. Prisma is a type-safe database client, where the one of the main selling points is the "human-readable" schema files. We will start by installing Prisma.
 
 ```bash
 yarn add prisma
@@ -46,8 +46,6 @@ npx prisma init
 ```
 
 The above command creates the `/prisma` directory, with a file called `schema.prisma`. This is where we will define our schemas. The command also creates a `.env` file in the project directory.
-
-It also creates a `.env` file.
 
 ## Connecting Planetscale to Prisma
 
@@ -93,7 +91,7 @@ generator client {
 ## Setting Up the Prisma client
 
 I keep many of my helper methods in a directory called `/lib`. There, we are going to create a new file called `prisma.ts`. Our goal with this
-helper is to follow the [best Next.js practices](https://pris.ly/d/help/next-js-best-practices) according to primsa.
+helper is to follow the [best Next.js practices](https://pris.ly/d/help/next-js-best-practices) according to Prisma.
 
 ```ts showLineNumbers title="lib/prisma.ts"
 import { PrismaClient } from "@prisma/client";
@@ -122,7 +120,7 @@ You may get an error in your IDE saying that it can't find the client. Not to wo
 
 # Supporting Metrics from the Backend
 
-Now that we got the setup out of the way, we can move on to adding the feature -- which is the post metrics! I use the term "backend" loosely here, basically just referring to defining our schema in Prisma and defining the Next.js API routes and react hooks to access the data.
+Now that we got the setup out of the way, we can move on to adding the feature -- which is the post metrics! I use the term "backend" loosely here, basically just referring to defining our schema in Prisma and defining the Next.js API routes and React hooks to access the data.
 
 <Aside>
   ✨ _Note: this next part assumes you followed the [last part of this
@@ -158,7 +156,7 @@ After making any schema changes, be sure to run `npx prisma db push` to update t
 
 Now, we can use a [Next.js API Route](https://nextjs.org/docs/api-routes/introduction) in tandem with the global prisma instance we created to query our database for a post's number of views.
 
-In the `/pages` directory, the following structure.
+In the `/pages` directory, create the following structure.
 
 ```bash
 └── api
@@ -180,8 +178,7 @@ export default async function handler(
 }
 ```
 
-We want to handle two cases, the `POST` and the `GET`. We also watch to make sure we have
-adequate error handling.
+We want to handle two cases, the `POST` and the `GET`. We also want to make sure we have adequate error handling.
 
 ```ts showLineNumbers title="/pages/api/view/[slug].ts" {9-22}
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -431,7 +428,7 @@ So how do we fix that?
 
 ### Schema
 
-Well, we represent the concept of a `Session` within our database. We will utilize the user's IP address (hashed for privacy) along with the the slug of the article to generate a id for the row in the database, and each row in the database will represent a like.
+Well, we represent the concept of a `Session` within our database. We will utilize the user's IP address (hashed for privacy) along with the slug of the article to generate a ID for the row in the database, and each row in the database will represent a like.
 
 ```prisma showLineNumbers title="/prisma/schema.prisma" {5, 9-12}
 // ...
@@ -496,7 +493,7 @@ export default async function handler(
 }
 ```
 
-We can use this `userId` to create an id for our session.
+We can use this `userId` to create an ID for our session.
 
 ```typescript showLineNumbers title="/pages/api/likes/[slug].ts" {21}
 import prisma from "@/lib/prisma";
@@ -528,7 +525,7 @@ export default async function handler(
 }
 ```
 
-To handle the get, we will need to return whether the current user (IP address) has previously liked this article, and the number of likes for the article. We can accomplish this using a `Promise.all`
+To handle the `GET`, we will need to return whether the current user (IP address) has previously liked this article, and the number of likes for the article. We can accomplish this using a `Promise.all`
 
 ```typescript showLineNumbers title="/pages/api/likes/[slug].ts" {23-37}
 import prisma from "@/lib/prisma";
@@ -576,7 +573,7 @@ export default async function handler(
 }
 ```
 
-Then, to handle the post, we will need to determine whether there exists a row in the `Session` table that matches the user's IP. If there is a row, there is no change to the number of likes. Otherwise, we create a new row in the `Session` table and increment the number of likes in the `Stats` table.
+Then, to handle the `POST`, we will need to determine whether there exists a row in the `Session` table that matches the user's IP. If there is a row, there is no change to the number of likes. Otherwise, we create a new row in the `Session` table and increment the number of likes in the `Stats` table.
 
 ```typescript showLineNumbers title="/pages/api/likes/[slug].ts" {39-69}
 import prisma from "@/lib/prisma";
@@ -946,7 +943,7 @@ export const Metric = ({ stat }: { stat: number | undefined }) => {
 
 We can use that component inside a reusable `PostMetrics` component that displays both views and likes of a given article.
 
-Before we can do that, we need to introduce the concept of polling into our application. We we have data that could (_theroretically_) be changing any given second, we don't want to use our applications resources to constantly be updating this information. We want to **poll** this data in intervals.
+Before we can do that, we need to introduce the concept of polling into our application. We have data that could (_theroretically_) be changing any given second, we don't want to use our applications resources to constantly be updating this information. We want to **poll** this data in intervals.
 
 Create a new file in `/lib` called `usePolling.ts`. In this file, we will define a hook to poll on an interval.
 
@@ -988,7 +985,7 @@ export const usePolling = (interval: number = 1000, max: number = 3) => {
 };
 ```
 
-We can then use this hook to determine when we should poll for new data withing the article metrics display.
+We can then use this hook to determine when we should poll for new data within the article metrics display.
 
 ```tsx showLineNumbers title="/ui/post-metrics.tsx"
 import { usePolling } from "@/lib/usePolling";
