@@ -14,6 +14,7 @@ import { components } from "@/ui/mdx";
 import { Series } from "@/ui/series";
 import { SeriesNav } from "@/ui/series-navigation";
 import { ReadingTime } from "@/ui/reading-time";
+import { motion } from "framer-motion";
 
 export const getStaticPaths = () => {
   return {
@@ -26,7 +27,6 @@ export const getStaticProps: GetStaticProps<{
   post: ReturnType<typeof getPartialPost>;
   image: string;
 }> = async ({ params }) => {
-
   const post = allPosts.find((post) => post.slug === params?.slug);
 
   if (!post) {
@@ -104,12 +104,26 @@ const PostPage = ({
             <p>•</p>
             <LikeCounter slug={post.slug} />
             <p>•</p>
-            <ReadingTime minutes={post.readingTime?.minutes} words={post.readingTime?.words}></ReadingTime>
+            <ReadingTime
+              minutes={post.readingTime?.minutes}
+              words={post.readingTime?.words}
+            ></ReadingTime>
           </div>
         </div>
 
         <div className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block">
-          <div className="space-y-6">
+          <motion.div
+            className="space-y-6"
+            initial={{ y: 300, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 300, opacity: 0 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              delay: 0.2,
+            }}
+          >
             {post.headings ? (
               <div className="space-y-2 text-sm">
                 <div className="uppercase text-white/30">On this page</div>
@@ -148,7 +162,7 @@ const PostPage = ({
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {post.series && post.series.posts.length > 1 ? (
