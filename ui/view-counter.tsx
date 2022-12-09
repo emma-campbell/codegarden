@@ -11,9 +11,9 @@ export default function ViewCounter({ slug }) {
 
   const {
     views,
-    isLoading: viewsIsLoading,
-    isError: viewsIsError,
-    increment: incrementViews,
+    isLoading,
+    isError,
+    increment
   } = usePostViews(slug, {
     revalidateOnMount: false,
     refreshInterval: shouldPoll ? interval : 0,
@@ -21,12 +21,12 @@ export default function ViewCounter({ slug }) {
   });
 
   useEffect(() => {
-    incrementViews();
+    increment();
   }, []);
 
   return (
     <div ref={intersectionRef}>
-      {viewsIsError || viewsIsLoading ? (
+      {isError || isLoading ? (
         <LoadingDots />
       ) : (
         <Metric key={views} stat={views} />

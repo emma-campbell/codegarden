@@ -1,7 +1,5 @@
-import { Views } from "@/lib/types";
 import Link from "next/link";
 import { FC } from "react";
-import useSWR from "swr";
 import { PostMetrics } from "./post-metrics";
 
 enum Status {
@@ -25,9 +23,6 @@ export const PostPreview: FC<PostPreviewProps> = ({
   description,
   formattedDate,
 }) => {
-  const { data } = useSWR<Views>(`/api/views/${slug}`);
-  const views = data?.total;
-
   return (
     <>
       <Link href={`/blog/${slug}`}>

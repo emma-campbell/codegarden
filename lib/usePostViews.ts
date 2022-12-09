@@ -1,5 +1,8 @@
 import useSWR, { SWRConfiguration } from "swr";
-import { Views } from "./types";
+
+export type Views = {
+  total: number;
+};
 
 const API_URL = `/api/views`;
 

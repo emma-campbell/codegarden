@@ -7,12 +7,12 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { getPartialPost } from "../../lib/contentlayer";
-import { generateSocialImage } from "../../lib/createOgImage";
-import { Layout, NavAlign } from "../../ui/layout";
-import { components } from "../../ui/mdx";
-import { Series } from "../../ui/series";
-import { SeriesNav } from "../../ui/series-navigation";
+import { getPartialPost } from "@/lib/contentlayer";
+import { generateSocialImage } from "@/lib/createOgImage";
+import { Layout, NavAlign } from "@/ui/layout";
+import { components } from "@/ui/mdx";
+import { Series } from "@/ui/series";
+import { SeriesNav } from "@/ui/series-navigation";
 
 export const getStaticPaths = () => {
   return {
@@ -63,7 +63,7 @@ const PostPage = ({
   if (post.tags) {
     meta.push({
       property: "keywords",
-      content: post.tags.map(t => t.title).join(','),
+      content: post.tags.map((t) => t.title).join(","),
     });
   }
 

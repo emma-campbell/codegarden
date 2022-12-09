@@ -1,12 +1,15 @@
 import React from "react";
-import { useDebounce } from "react-use";
 import useSWR, { SWRConfiguration } from "swr";
-import { Likes } from "./types";
+
+export type Likes = {
+  total?: number;
+  user?: boolean;
+};
 
 const API_URL = `/api/likes`;
 
 async function getPostLikes(slug: string): Promise<Likes> {
-  const res = await fetch(API_URL + `/${slug}`);
+  const res = await fetch(`${API_URL}/${slug}`);
   if (!res.ok) {
     throw new Error("An error occurred while fetching the data.");
   }
@@ -14,7 +17,7 @@ async function getPostLikes(slug: string): Promise<Likes> {
 }
 
 async function updatePostLikes(slug: string): Promise<Likes> {
-  const res = await fetch(API_URL + `/${slug}`, {
+  const res = await fetch(`${API_URL}/${slug}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
   });
@@ -27,7 +30,7 @@ async function updatePostLikes(slug: string): Promise<Likes> {
 }
 
 async function deletePostLikes(slug): Promise<Likes> {
-  const res = await fetch(API_URL + `/${slug}`, {
+  const res = await fetch(`${API_URL}/${slug}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   });
@@ -53,7 +56,7 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
   const [liked, setLiked] = React.useState(data?.user);
 
   const increment = () => {
-    // Prevent the user from liking more than 3 times
+    // do nothing if the user has already liked
     if (!data || data.user) {
       return;
     }

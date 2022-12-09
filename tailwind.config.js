@@ -43,6 +43,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
+        mono: ['Fira Code', ...fontFamily.mono]
       },
       boxShadow: ({ theme }) => ({
         // inspired by https://www.joshwcomeau.com/shadow-palette/
