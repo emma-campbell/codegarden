@@ -1,46 +1,40 @@
+import { getPartialPost } from "@/lib/contentlayer";
 import Link from "next/link";
-import { FC } from "react";
 import { PostMetrics } from "./post-metrics";
+import { ReadingTime } from "./reading-time";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
 
-enum Status {
-  "draft",
-  "published",
-}
-
-type PostPreviewProps = {
-  title: string;
-  slug: string;
-  description: string;
-  publishedAt: string;
-  formattedDate: string;
-  status: Status;
-  body?: object;
-};
-
-export const PostPreview: FC<PostPreviewProps> = ({
-  title,
-  slug,
-  description,
-  formattedDate,
+export const PostPreview = ({
+  post,
+}: {
+  post: ReturnType<typeof getPartialPost>;
 }) => {
   return (
     <>
-      <Link href={`/blog/${slug}`}>
-        <div className="flex flex-col w-full bg-black/60 drop-shadow-md rounded-md px-4 py-4">
-          <div className="flex flex-col">
-            <h5 className="text-md font-semibold">{title}</h5>
-            <div className="flex flex-row justify-between">
-              <p className="font-medium text-sm text-gray-100">
-                {formattedDate.split(",")[0]}
-              </p>
-              <div className="flex flew-row space-x-1 text-gray-100 text-sm">
-                <PostMetrics slug={slug} />
-              </div>
+      <div className="flex flex-col w-full bg-black/60 drop-shadow-md rounded-md px-4 py-4">
+        <div className="flex flex-col">
+          <h5 className="text-md font-semibold">{post.title}</h5>
+          <div className="flex flex-row justify-between font-medium text-gray-100 text-sm items-center">
+            <div className="flex flex-row space-x-2">
+              <PostMetrics slug={post.slug} />
+              <p>&middot;</p>
+              <ReadingTime
+                minutes={post.readingTime?.minutes}
+                words={post.readingTime?.words}
+              />
             </div>
           </div>
-          <p className="text-sm opacity-100">{description}</p>
         </div>
-      </Link>
+        <p className="text-sm opacity-100 pt-2">{post.description}</p>
+        <div className="pt-2 flex flex-row justify-between text-xs text-gray-100 font-medium">
+          <p>{post.formattedDate.split(",")[0]}</p>
+          <Link className="transition ease-in-out rounded-md px-2 py-1 hover:scale-[1.03] hover:bg-green-300 hover:text-white"href={`/blog/${post.slug}`}>
+            <button className="flex flex-row items-center content-center">
+              Read More <ChevronRightIcon className="w-3 font-bold" />
+            </button>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };

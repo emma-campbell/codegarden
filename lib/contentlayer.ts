@@ -4,12 +4,13 @@ export const tagNames = ["Next.js", "MDX", "Typescript", "Tech", "Tailwindcss", 
 export const tagSlugs = ["nextjs", "mdx", "ts", "tech", "tailwind", "contentlayer", "cures-act", "fhir", "health-it", "planetscale", "prisma"];
 
 export const getPartialPost = (
-  { title, slug, tags, formattedDate, description, body, series, headings }: Post,
+  { title, slug, tags, formattedDate, description, body, series, headings, readingTime }: Post,
   allPosts: Post[]
 ) => ({
   title,
   slug,
   formattedDate,
+  readingTime,
   tags: tags ?? null,
   description: description ?? null,
   body: {

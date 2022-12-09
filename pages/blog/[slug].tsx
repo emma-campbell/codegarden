@@ -13,6 +13,7 @@ import { Layout, NavAlign } from "@/ui/layout";
 import { components } from "@/ui/mdx";
 import { Series } from "@/ui/series";
 import { SeriesNav } from "@/ui/series-navigation";
+import { ReadingTime } from "@/ui/reading-time";
 
 export const getStaticPaths = () => {
   return {
@@ -25,6 +26,7 @@ export const getStaticProps: GetStaticProps<{
   post: ReturnType<typeof getPartialPost>;
   image: string;
 }> = async ({ params }) => {
+
   const post = allPosts.find((post) => post.slug === params?.slug);
 
   if (!post) {
@@ -101,6 +103,8 @@ const PostPage = ({
             <ViewCounter slug={post.slug} />
             <p>•</p>
             <LikeCounter slug={post.slug} />
+            <p>•</p>
+            <ReadingTime minutes={post.readingTime?.minutes} words={post.readingTime?.words}></ReadingTime>
           </div>
         </div>
 
