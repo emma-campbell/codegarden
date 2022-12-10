@@ -7,12 +7,14 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { getPartialPost } from "../../lib/contentlayer";
-import { generateSocialImage } from "../../lib/createOgImage";
-import { Layout, NavAlign } from "../../ui/layout";
-import { components } from "../../ui/mdx";
-import { Series } from "../../ui/series";
-import { SeriesNav } from "../../ui/series-navigation";
+import { getPartialPost } from "@/lib/contentlayer";
+import { generateSocialImage } from "@/lib/generateSocialImage";
+import { Layout, NavAlign } from "@/ui/layout";
+import { components } from "@/ui/mdx";
+import { Series } from "@/ui/series";
+import { SeriesNav } from "@/ui/series-navigation";
+import { ReadingTime } from "@/ui/reading-time";
+import { motion } from "framer-motion";
 
 export const getStaticPaths = () => {
   return {
@@ -63,7 +65,7 @@ const PostPage = ({
   if (post.tags) {
     meta.push({
       property: "keywords",
-      content: post.tags.map(t => t.title).join(','),
+      content: post.tags.map((t) => t.title).join(","),
     });
   }
 
@@ -95,16 +97,32 @@ const PostPage = ({
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
           <h1 className="text-2xl font-black xl:text-3xl">{post.title}</h1>
-          <div className="mt-2 flex space-x-2 text-lg text-white/50">
-            <div>{post.formattedDate}</div>
+          <div className="mt-2 flex space-x-1 text-xs sm:text-lg text-white/50">
+            <p>{post.formattedDate.split(",")[0]}</p>
             <p>•</p>
             <ViewCounter slug={post.slug} />
             <p>•</p>
             <LikeCounter slug={post.slug} />
+            <p>•</p>
+            <ReadingTime
+              minutes={post.readingTime?.minutes}
+              words={post.readingTime?.words}
+            ></ReadingTime>
           </div>
         </div>
 
-        <div className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block">
+        <motion.div
+          className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block"
+          initial={{ y: 300, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 300, opacity: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+            delay: 0.2,
+          }}
+        >
           <div className="space-y-6">
             {post.headings ? (
               <div className="space-y-2 text-sm">
@@ -145,7 +163,7 @@ const PostPage = ({
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {post.series && post.series.posts.length > 1 ? (
           <Series series={post.series} interactive={true} />

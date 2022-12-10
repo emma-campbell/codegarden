@@ -1,15 +1,16 @@
 import { Post } from "contentlayer/generated";
 
-export const tagNames = ["Next.js", "MDX", "Typescript", "Tech", "Tailwindcss", "contentlayer", "Cures Act", "FHIR", "Health IT"];
-export const tagSlugs = ["nextjs", "mdx", "ts", "tech", "tailwind", "contentlayer", "cures-act", "fhir", "health-it"];
+export const tagNames = ["Next.js", "MDX", "Typescript", "Tech", "Tailwindcss", "contentlayer", "Cures Act", "FHIR", "Health IT", "Planetscale", "Prisma"];
+export const tagSlugs = ["nextjs", "mdx", "ts", "tech", "tailwind", "contentlayer", "cures-act", "fhir", "health-it", "planetscale", "prisma"];
 
 export const getPartialPost = (
-  { title, slug, tags, formattedDate, description, body, series, headings }: Post,
+  { title, slug, tags, formattedDate, description, body, series, headings, readingTime }: Post,
   allPosts: Post[]
 ) => ({
   title,
   slug,
   formattedDate,
+  readingTime,
   tags: tags ?? null,
   description: description ?? null,
   body: {

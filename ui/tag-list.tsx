@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { Tag } from "contentlayer/generated";
 import classNames from "classnames";
+import { Tag } from "contentlayer/generated";
+import { FC, useState } from "react";
 
 type TagListProps = {
   tags: Tag[];
@@ -11,6 +11,7 @@ const gradients = [
   "from-orange-300 to-yellow-300",
   "from-yellow-300 to-green-300",
 ];
+
 let count = 0;
 
 const getNextGradient = () => {
@@ -19,6 +20,7 @@ const getNextGradient = () => {
   if (count == gradients.length) count = 0;
   return g;
 };
+
 export const TagList: FC<TagListProps> = ({ tags }) => {
   return (
     <div className="flex flex-row flex-wrap space-x-4">

@@ -30,12 +30,7 @@ export const Blog = ({ posts }) => {
           return (
             <div key={article.slug}>
               <PostPreview
-                title={article.title}
-                description={article.description}
-                publishedAt={article.publishedAt}
-                formattedDate={article.formattedDate}
-                slug={article.slug}
-                status={article.status}
+                post={article}
               />
             </div>
           );

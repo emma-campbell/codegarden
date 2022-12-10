@@ -13,7 +13,6 @@ export const PostMetrics = ({ slug }: { slug: string }) => {
     views,
     isLoading: viewsIsLoading,
     isError: viewsIsError,
-    increment: incrementViews,
   } = usePostViews(slug, {
     revalidateOnMount: false,
     refreshInterval: shouldPoll ? interval : 0,
@@ -28,10 +27,6 @@ export const PostMetrics = ({ slug }: { slug: string }) => {
     refreshInterval: shouldPoll ? interval : 0,
   });
 
-  // React.useEffect(() => {
-  //   incrementViews();
-  // }, []);
-
   return (
     <>
       <div ref={intersectionRef}>
@@ -43,7 +38,7 @@ export const PostMetrics = ({ slug }: { slug: string }) => {
         views
       </div>
 
-      <div className="text-rose-100/30">&middot;</div>
+      <div className="text-white-100/30">&middot;</div>
 
       <div>
         {likesIsError || likesIsLoading ? (

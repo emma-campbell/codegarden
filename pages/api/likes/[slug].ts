@@ -74,7 +74,7 @@ export default async function handler(
         },
       });
 
-      await prisma.stats.update({
+      const stats = await prisma.stats.update({
         where: {
           slug,
         },
@@ -83,6 +83,11 @@ export default async function handler(
             decrement: 1,
           },
         },
+      });
+      
+      res.status(200).json({
+	      total: stats.likes.toString(),
+	      user: false
       });
     }
   } catch (e: any) {

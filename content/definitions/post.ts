@@ -5,6 +5,9 @@ import { Tag } from "./tag";
 import { Series } from "./series";
 import moment from "moment";
 
+import readingTime from "reading-time";
+import { ReadingTime } from "./reading-time";
+
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: "posts/*.mdx",
@@ -61,6 +64,14 @@ export const Post = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ""),
+    },
+    readingTime: {
+      type: "nested",
+      of: ReadingTime,
+      resolve: (doc) => {
+        const time = readingTime(doc.body.raw);
+        return { minutes: Math.floor(time.minutes), words: time.words };
+      },
     },
   },
 }));

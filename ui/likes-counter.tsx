@@ -14,7 +14,7 @@ export default function LikeCounter({ slug }) {
     });
 
   return (
-    <div className="flex flex-row space-x-2" ref={intersectionRef}>
+    <div className="flex flex-row space-x-2">
       <div ref={intersectionRef}>
         {isError || isLoading ? <LoadingDots /> : <Metric stat={likes} />} likes
       </div>
@@ -30,7 +30,7 @@ export default function LikeCounter({ slug }) {
           }
         }}
       >
-        <HandThumbUpIcon className="w-5" />
+        <HandThumbUpIcon className="w-4 md:w-5" />
       </button>
     </div>
   );
