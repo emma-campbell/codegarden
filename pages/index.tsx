@@ -1,11 +1,9 @@
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
 import { generateSocialImage } from "@/lib/generateSocialImage";
 import { FeaturedPost } from "@/ui/featured-post";
 import { Layout } from "@/ui/layout";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
-import { NextSeo } from "next-seo";
-import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 export async function getStaticProps() {
@@ -30,7 +28,7 @@ const gradients = [
   "from-yellow-300 to-green-300",
 ];
 
-export const Home = ({ posts, image }) => {
+export const Home = ({ posts }) => {
   return (
     <Layout>
       <section className="flex flex-col w-fit justify-start">
