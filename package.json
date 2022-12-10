@@ -12,7 +12,7 @@
     "@fontsource/fira-code": "^4.5.12",
     "@fontsource/inter": "^4.5.14",
     "@heroicons/react": "^2.0.13",
-    "@prisma/client": "^4.6.1",
+    "@prisma/client": "^4.7.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
