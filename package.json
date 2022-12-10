@@ -25,7 +25,7 @@
     "eslint": "8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "framer-motion": "^7.6.19",
-    "eslint-config-next": "13.0.5",
+    "eslint-config-next": "13.0.6",
     "github-slugger": "^2.0.0",
     "moment": "^2.29.4",
     "next": "13.0.5",
