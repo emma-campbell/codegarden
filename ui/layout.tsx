@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Footer } from "./footer";
 import { Navigation } from "./navigation";
 
+import isMobile from "@/lib/isMobile";
+
 const GradientBackground = () => {
   const { y } = useWindowScroll();
 
@@ -33,31 +35,43 @@ type LayoutProps = {
 };
 
 export const Layout: FC<LayoutProps> = ({ children, alignNav }) => {
+  let animation = {
+    initial: {
+      x: isMobile ? undefined : 300,
+      opacity: 0,
+    },
+    animate: {
+      x: isMobile ? undefined : 0,
+      opacity: 1,
+    },
+    exit: {
+      x: isMobile ? undefined : 300,
+      opacity: 0,
+    },
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20,
+    },
+  };
+
   return (
     <>
       <motion.div
         className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-32 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3"
-        initial={{ x: 300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 300, opacity: 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-        }}
+        initial={animation.initial}
+        animate={animation.animate}
+        exit={animation.exit}
+        transition={animation.transition}
       >
         <Navigation align={alignNav} />
       </motion.div>
       <motion.main
         className="relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-12 font-sans text-base text-white/90 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3"
-        initial={{ x: 300, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: 300, opacity: 0 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-        }}
+        initial={animation.initial}
+        animate={animation.animate}
+        exit={animation.exit}
+        transition={animation.transition}
       >
         {children}
         <Footer />

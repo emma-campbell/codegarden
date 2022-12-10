@@ -1,5 +1,5 @@
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
-import { generateSocialImage } from "@/lib/createOgImage";
+import { generateSocialImage } from "@/lib/generateSocialImage";
 import { FeaturedPost } from "@/ui/featured-post";
 import { Layout } from "@/ui/layout";
 import { allPosts } from "contentlayer/generated";
@@ -33,27 +33,6 @@ const gradients = [
 export const Home = ({ posts, image }) => {
   return (
     <Layout>
-      <NextSeo
-        title={`Emma's Digital Garden 🌱 ${SITE_NAME}`}
-        description={SITE_DESCRIPTION}
-        openGraph={{
-          url: SITE_URL,
-          title: SITE_NAME,
-          description: SITE_DESCRIPTION,
-          images: [
-            {
-              url: image,
-              width: 1200,
-              height: 630,
-              alt: SITE_NAME,
-            },
-          ],
-        }}
-        twitter={{
-          handle: "@spoonsandcode",
-          cardType: "summary_large_image",
-        }}
-      />
       <section className="flex flex-col w-fit justify-start">
         <div className="flex flex-col">
           <h1 className="text-4xl font-black pb-4">Emma Campbell 🤟</h1>

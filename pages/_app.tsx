@@ -14,11 +14,26 @@ import "@fontsource/fira-code";
 
 import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
+import { DefaultSeo, DefaultSeoProps } from "next-seo";
+import { seo } from "@/lib/seo";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-export default function App({ Component, pageProps, router }: AppProps) {
+export async function getStaticProps() {
+  return { seo: seo };
+}
+
+export default function App({
+  Component,
+  pageProps,
+  router,
+  seo
+}: AppProps & InferGetStaticPropsType<GetStaticProps>) {
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Component {...pageProps} key={router.asPath}/>
-    </AnimatePresence>
-  )
+    <>
+      <DefaultSeo {...seo} />
+      <AnimatePresence mode="wait" initial={false}>
+        <Component {...pageProps} key={router.asPath} />
+      </AnimatePresence>
+    </>
+  );
 }

@@ -4,6 +4,7 @@ import cx from "clsx";
 import Link from "next/link";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "../lib/constants";
+import { motion } from "framer-motion";
 
 type TitleProps = {
   children?: ReactNode;
@@ -57,47 +58,59 @@ export const Series: FC<SeriesProps> = ({ series, interactive }) => {
       ) : (
         <Title>{series.title}</Title>
       )}
-      <div
-        className={cx({
-          hidden: !isOpen,
-          block: isOpen,
-        })}
-      >
-        <hr className="my-5 border-t-2 border-white/5" />
+      {isOpen && (
+        <motion.div
+          initial="collapsed"
+          animate="open"
+          exit="collapsed"
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          variants={{
+            open: {
+              opacity: 1,
+              height: "auto",
+            },
+            collapsed: {
+              opacity: 0,
+              height: 0,
+            },
+          }}
+        >
+          <hr className="my-5 border-t-2 border-white/5" />
 
-        <ul className="text-base">
-          {series.posts?.map((post) => (
-            <li
-              key={post.slug}
-              className={cx(
-                "relative my-3 pl-7 before:absolute before:left-1 before:top-[9px] before:h-1.5 before:w-1.5 before:rounded-full",
-                {
-                  "before:bg-white/90 before:ring-[3px] before:ring-yellow-300/20 before:ring-offset-1 before:ring-offset-black/10":
-                    post.isCurrent,
-                  "before:bg-white/30":
-                    post.status === "published" && !post.isCurrent,
-                  "before:bg-white/10": post.status !== "published",
-                }
-              )}
-            >
-              {post.status === "published" ? (
-                post.isCurrent ? (
-                  <span className="text-white/90">{post.title}</span>
+          <ul className="text-base">
+            {series.posts?.map((post) => (
+              <li
+                key={post.slug}
+                className={cx(
+                  "relative my-3 pl-7 before:absolute before:left-1 before:top-[9px] before:h-1.5 before:w-1.5 before:rounded-full",
+                  {
+                    "before:bg-white/90 before:ring-[3px] before:ring-yellow-300/20 before:ring-offset-1 before:ring-offset-black/10":
+                      post.isCurrent,
+                    "before:bg-white/30":
+                      post.status === "published" && !post.isCurrent,
+                    "before:bg-white/10": post.status !== "published",
+                  }
+                )}
+              >
+                {post.status === "published" ? (
+                  post.isCurrent ? (
+                    <span className="text-white/90">{post.title}</span>
+                  ) : (
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
+                    >
+                      {post.title}
+                    </Link>
+                  )
                 ) : (
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
-                  >
-                    {post.title}
-                  </Link>
-                )
-              ) : (
-                <span className="text-white/40">{post.title}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
+                  <span className="text-white/40">{post.title}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
     </div>
   );
 };
