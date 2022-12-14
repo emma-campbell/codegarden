@@ -1,15 +1,60 @@
+import { motion, Transition } from "framer-motion";
+
 export const LoadingDots = () => {
+  const container = {
+    initial: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+    animate: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const dotVariants = {
+    initial: {
+      y: "0%",
+      opacity: 0,
+    },
+    animate: {
+      y: "15%",
+      opacity: 1
+    },
+  };
+
+  const dotTransition: Transition = {
+    duration: 0.5,
+    repeat: Infinity,
+    repeatType: "reverse",
+    ease: "easeIn",
+  };
+
   return (
-    <span className="space-x-1">
-      <span className="inline-flex animate-[loading_1.4s_ease-in-out_infinite] rounded-full">
+    <motion.span variants={container} initial="initial" animate="animate" className="space-x-1">
+      <motion.span
+        variants={dotVariants}
+        transition={dotTransition}
+        className="inline-flex rounded-full"
+      >
         &bull;
-      </span>
-      <span className="inline-flex animate-[loading_1.4s_ease-in-out_0.2s_infinite] rounded-full">
+      </motion.span>
+      <motion.span
+        variants={dotVariants}
+        transition={dotTransition}
+        className="inline-flex rounded-full"
+      >
         &bull;
-      </span>
-      <span className="inline-flex animate-[loading_1.4s_ease-in-out_0.4s_infinite] rounded-full">
+      </motion.span>
+      <motion.span
+        variants={dotVariants}
+        transition={dotTransition}
+        className="inline-flex rounded-full"
+      >
         &bull;
-      </span>
-    </span>
+      </motion.span>
+    </motion.span>
   );
 };
