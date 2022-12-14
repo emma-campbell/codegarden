@@ -43,7 +43,9 @@ export const useStatistics = (config?: SWRConfiguration) => {
   return {
     views,
     likes,
-    isLoading: !(viewsError && likesError) && !(views && likes),
-    isError: !!(viewsError && likesError),
+    viewsIsLoading: !viewsError && !views,
+    likesIsLoading: !likesError && !likes,
+    viewsIsError: !!viewsError,
+    likesIsError: !!likesError,
   };
 };

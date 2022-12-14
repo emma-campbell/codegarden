@@ -3,7 +3,14 @@ import { Layout } from "@/ui/layout";
 import { Statistic } from "@/ui/statistic";
 
 export const Statistics = () => {
-  const { views, likes, isLoading, isError } = useStatistics();
+  const {
+    views,
+    likes,
+    viewsIsLoading,
+    likesIsLoading,
+    viewsIsError,
+    likesIsError,
+  } = useStatistics();
 
   return (
     <Layout>
@@ -14,11 +21,15 @@ export const Statistics = () => {
       <section>
         <div className="grid xl:grid-cols-2 xl:gap-4">
           <Statistic
-            value={views}
+            value={viewsIsError ? 0 : views}
             label={"Total Article Views"}
-            isLoading={true}
+            isLoading={viewsIsLoading}
           />
-          <Statistic value={likes} label={"Total Article Likes"} />
+          <Statistic
+            value={likesIsError ? 0 : likes}
+            label={"Total Article Likes"}
+            isLoading={likesIsLoading}
+          />
         </div>
       </section>
     </Layout>
