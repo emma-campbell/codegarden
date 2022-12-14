@@ -8,6 +8,7 @@
         "ignore": ["contentlayer/generated", "next-contentlayer/hooks"]
       }
     ],
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "react-hooks/exhaustive-deps": ["off"]
   }
 }

@@ -26,7 +26,7 @@ export default function App({
   Component,
   pageProps,
   router,
-  seo
+  seo,
 }: AppProps & InferGetStaticPropsType<GetStaticProps>) {
   return (
     <>

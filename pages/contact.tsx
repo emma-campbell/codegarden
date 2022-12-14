@@ -15,9 +15,7 @@ const Contact = () => {
   return (
     <Layout>
       <div className="flex flex-row w-full justify-start">
-        <h1 className="text-4xl font-black pb-5">
-          Contact ✉️
-        </h1>
+        <h1 className="text-4xl font-black pb-5">Contact ✉️</h1>
       </div>
       <section className="flex flex-col justify-start w-full space-y-5">
         <div className="">
@@ -64,7 +62,12 @@ const Contact = () => {
             <textarea className="form-textarea bg-transparent-black rounded-lg drop-shadow-md text-lg pl-4" />
           </div>
           <div className="flex flex-row justify-end">
-            <button type="submit" className="rounded-full bg-orange-300 px-4 py-2 hover:bg-orange-400">Submit</button>
+            <button
+              type="submit"
+              className="rounded-full bg-orange-300 px-4 py-2 hover:bg-orange-400"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </section>

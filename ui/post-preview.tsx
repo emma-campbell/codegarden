@@ -26,11 +26,15 @@ export const PostPreview = ({
           </div>
         </div>
         <p className="text-sm opacity-100 pt-2">{post.description}</p>
-        <div className="pt-2 flex flex-row justify-between text-xs text-gray-100 font-medium">
+        <div className="pt-2 flex flex-row justify-between text-xs text-gray-100 font-medium items-center align-center">
           <p>{post.formattedDate.split(",")[0]}</p>
-          <Link className="transition ease-in-out rounded-md px-2 py-1 hover:scale-[1.03] hover:bg-green-300 hover:text-white"href={`/blog/${post.slug}`}>
-            <button className="flex flex-row items-center content-center">
-              Read More <ChevronRightIcon className="w-3 font-bold" />
+          <Link
+            className="transition ease-in-out rounded-md px-2 py-1 hover:scale-[1.03] hover:bg-green-300 hover:text-white"
+            href={`/blog/${post.slug}`}
+          >
+            <button className="flex flex-row content-center">
+              <p>Read More</p>
+              <ChevronRightIcon className="w-3 font-bold" />
             </button>
           </Link>
         </div>

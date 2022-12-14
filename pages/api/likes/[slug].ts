@@ -29,7 +29,7 @@ export default async function handler(
         }),
       ]);
 
-      res.status(200).json({
+      return res.status(200).json({
         total: stats?.likes,
         user: userHasLiked != null,
       });
@@ -61,7 +61,7 @@ export default async function handler(
         },
       });
 
-      res.status(200).json({
+      return res.status(200).json({
         total: newOrUpdatedLikes.likes.toString(),
         user: true,
       });
@@ -84,14 +84,14 @@ export default async function handler(
           },
         },
       });
-      
-      res.status(200).json({
-	      total: stats.likes.toString(),
-	      user: false
+
+      return res.status(200).json({
+        total: stats.likes.toString(),
+        user: false,
       });
     }
   } catch (e: any) {
-    res.status(500).json({
+    return res.status(500).json({
       message: e.message,
     });
   }

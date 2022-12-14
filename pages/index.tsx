@@ -70,7 +70,7 @@ export const Home = ({ posts }) => {
         </div>
         <Link
           href="/blog"
-          className="flex flex-row justify-start text-gray-100 font-medium hover:underline hover:[&>*]text-white transition-all"
+          className="flex flex-row justify-start text-gray-100 font-medium hover:underline [&>*]:hover:text-white transition-all"
         >
           <p>All Posts</p>
           <ArrowRightCircleIcon className="w-4" />
