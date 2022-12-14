@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --fix",
     "format": "prettier --write",
-    "staged": "lint-staged", 
+    "staged": "lint-staged",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -26,10 +26,11 @@
     "crypto": "^1.0.1",
     "date-fns": "^2.29.3",
     "eslint": "8.29.0",
+    "eslint-config-next": "13.0.6",
     "eslint-config-prettier": "^8.5.0",
     "framer-motion": "^7.7.2",
-    "eslint-config-next": "13.0.6",
     "github-slugger": "^2.0.0",
+    "lint-staged": "^13.1.0",
     "moment": "^2.29.4",
     "next": "13.0.5",
     "next-contentlayer": "^0.2.9",
@@ -51,6 +52,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "autoprefixer": "^10.4.13",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
     "postcss": "^8.4.20",
     "prisma": "^4.6.1",
     "tailwindcss": "^3.2.4"
