@@ -10,7 +10,7 @@ export type Tool = {
 
 export const ToolCard = ({ title, tags, description, link }: Tool) => {
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="h-full flex flex-col justify-between pb-2">
       <div>
         <div className="mb-2">
           <h4 className="font-semibold">{title}</h4>

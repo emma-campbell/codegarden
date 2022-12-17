@@ -166,18 +166,9 @@ export const Tools = () => {
             out by subcategory.
           </p>
         </div>
-
-        <div className="mb-4">
-          <h4 className="text-xl font-bold mb-2">Coding Specific</h4>
-          <ToolList
-            items={software.filter((item) => item.category === "coding")}
-          />
-        </div>
-
-        <div>
-          <h4 className="text-xl font-bold mb-2">Other</h4>
-          <ToolList items={software.filter((i) => i.category !== "coding")} />
-        </div>
+        <ToolList
+          items={software.filter((item) => item.category === "coding")}
+        />
       </section>
       <hr />
       <section>
