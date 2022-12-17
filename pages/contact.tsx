@@ -15,7 +15,7 @@ const Contact = () => {
   return (
     <Layout>
       <div className="flex flex-row w-full justify-start">
-        <h1 className="text-4xl font-black pb-5">Contact ✉️</h1>
+        <h1 className="text-4xl font-extrabold pb-5">Contact ✉️</h1>
       </div>
       <section className="flex flex-col justify-start w-full space-y-5">
         <div className="">

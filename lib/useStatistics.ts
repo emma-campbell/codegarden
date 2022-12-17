@@ -1,10 +1,5 @@
 import useSWR, { SWRConfiguration } from "swr";
 
-type Stats = {
-  views: number;
-  likes: number;
-};
-
 async function getTotalViews(): Promise<number> {
   const res = await fetch("/api/views");
   if (!res.ok) {

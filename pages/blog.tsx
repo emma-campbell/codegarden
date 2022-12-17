@@ -1,8 +1,12 @@
+import { useArticleCount } from "@/lib/useArticleCount";
+import { usePopularArticles } from "@/lib/usePopularArticles";
+import classNames from "classnames";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
+import { ChangeEvent, useState } from "react";
 import { Layout } from "../ui/layout";
 import { PostPreview } from "../ui/post-preview";
-import { Search } from "../ui/search";
+import { SearchInput } from "../ui/search";
 
 export async function getStaticProps() {
   const posts = allPosts
@@ -15,23 +19,70 @@ export async function getStaticProps() {
 }
 
 export const Blog = ({ posts }) => {
+  const [search, setSearch] = useState("");
+
+  const [showTopPosts, setShowTopPosts] = useState(true);
+  const [results, setResults] = useState(posts);
+
+  const { topPosts, isLoading, isError } = usePopularArticles();
+  const {
+    count,
+    isLoading: countIsLoading,
+    isError: countIsError,
+  } = useArticleCount();
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value != "") {
+      setShowTopPosts(false);
+    } else {
+      setShowTopPosts(true);
+    }
+    e.preventDefault();
+    setSearch(e.target.value);
+
+    setResults(
+      e.target.value != ""
+        ? posts.filter((p) => {
+            return p.title.toLowerCase().includes(e.target.value.toLowerCase());
+          })
+        : posts
+    );
+  };
+
   return (
     <Layout>
-      <section className="flex flex-col w-full justify-start pb-2 align-bottom">
-        <div className="flex flex-row w-full space-x-2">
-          <h1 className="text-4xl font-black pb-0">Blog</h1>
+      <section className="flex flex-col w-full justify-start align-bottom">
+        <div className="w-full space-y-2">
+          <h1 className="text-3xl md:text-5xl font-extrabold">Blog</h1>
+          <p className="text-white/60 pb-4">
+            I&apos;ve written {count} articles since I started this blog in
+            November 2022. I write about things like web development, health
+            information technology, and chronic illness (like axial psoriatic
+            arthritis).
+          </p>
+          <p className="text-white/60 pb-4">
+            Use the search bar below to filter articles by their titles.
+          </p>
+          <div className="flex flex-col space-y-5">
+            <SearchInput search={search} onChange={onChange} />
+          </div>
         </div>
-        {/* <div className="flex flex-col space-y-5">
-          <Search />
-        </div> */}
+      </section>
+      <section
+        className={classNames(
+          "w-full space-y-5",
+          showTopPosts ? null : "hidden"
+        )}
+      >
+        <h2 className="text-xl md:text-2xl font-bold">Popular Posts</h2>
+        {topPosts?.map((article) => {
+          return <PostPreview key={article?.slug} post={article} />;
+        })}
       </section>
       <section className="w-full space-y-5">
-        {posts?.map((article) => {
-          return (
-            <div key={article.slug}>
-              <PostPreview post={article} />
-            </div>
-          );
+        <h2 className="text-xl md:text-2xl font-bold">All Posts</h2>
+        {results?.map((article) => {
+          return <PostPreview key={article.slug} post={article} />;
         })}
       </section>
     </Layout>

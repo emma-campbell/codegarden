@@ -96,7 +96,9 @@ const PostPage = ({
       />
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
-          <h1 className="text-2xl font-black xl:text-3xl">{post.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-bold xl:text-3xl">
+            {post.title}
+          </h1>
           <div className="mt-2 flex space-x-1 text-xs sm:text-lg text-white/50">
             <p>{post.formattedDate.split(",")[0]}</p>
             <p>•</p>
