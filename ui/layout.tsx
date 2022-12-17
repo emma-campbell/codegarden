@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import { FC, ReactNode } from "react";
 import { useWindowScroll } from "react-use";
-import { motion } from "framer-motion";
 
 import { Footer } from "./footer";
 import { Navigation } from "./navigation";
@@ -76,7 +76,7 @@ export const Layout: FC<LayoutProps> = ({ children, alignNav }) => {
         {children}
         <Footer />
       </motion.main>
-      <GradientBackground />
+      {/* <GradientBackground /> */}
     </>
   );
 };

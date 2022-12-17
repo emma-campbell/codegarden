@@ -1,20 +1,20 @@
+import { getPartialPost } from "@/lib/contentlayer";
+import { generateSocialImage } from "@/lib/generateSocialImage";
+import { Layout, NavAlign } from "@/ui/layout";
 import LikeCounter from "@/ui/likes-counter";
+import { components } from "@/ui/mdx";
+import { ReadingTime } from "@/ui/reading-time";
+import { Series } from "@/ui/series";
+import { SeriesNav } from "@/ui/series-navigation";
 import { TagList } from "@/ui/tag-list";
 import ViewCounter from "@/ui/view-counter";
 import clsx from "clsx";
 import { allPosts } from "contentlayer/generated";
+import { motion } from "framer-motion";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { getPartialPost } from "@/lib/contentlayer";
-import { generateSocialImage } from "@/lib/generateSocialImage";
-import { Layout, NavAlign } from "@/ui/layout";
-import { components } from "@/ui/mdx";
-import { Series } from "@/ui/series";
-import { SeriesNav } from "@/ui/series-navigation";
-import { ReadingTime } from "@/ui/reading-time";
-import { motion } from "framer-motion";
 
 export const getStaticPaths = () => {
   return {
@@ -96,7 +96,9 @@ const PostPage = ({
       />
       <Layout alignNav={NavAlign.LEFT}>
         <div className="xl:!col-end-5">
-          <h1 className="text-2xl font-black xl:text-3xl">{post.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold xl:text-3xl">
+            {post.title}
+          </h1>
           <div className="mt-2 flex space-x-1 text-xs sm:text-lg text-white/50">
             <p>{post.formattedDate.split(",")[0]}</p>
             <p>•</p>

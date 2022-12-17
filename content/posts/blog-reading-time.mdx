@@ -1,11 +1,85 @@
 ---
-title: "Planned: Added Reading Time to an Article"
-description: ""
-publishedAt: "2022-11-25"
-status: "draft"
+title: "Adding Reading Time to an Article"
+description: "Have you seen the feature on Medium that estimates how much time an article will take to read? Let's learn to replicate it in our Next.js and contentlayer stack."
+publishedAt: "2022-12-17"
+status: "published"
 series:
   order: 4
   title: "Engineering a Blog"
 tags:
   - { title: "Next.js", slug: "nextjs" }
 ---
+
+If you've ever viewed an article on Medium, you'll notice that the preview gives an estimated "read time". This feature is easily to implement using the `reading-time` node pacakge and our existing contentlayer configuration. Begin by installing `reading-time`.
+
+```sh
+yarn add reading-time
+```
+
+We will add reading time by adding a new computed field to our post model and defining the type for ReadingTime.
+
+# Define the ReadingTime Type
+
+We previously kept our type definitions in `/content/defintions`. Create a new file `reading-time.ts` and then use contentlayer's `defineNestedType` to create the new type.
+
+```typescript showLineNumbers title="/content/defintions/reading-time.ts"
+import { defineNestedType } from "contentlayer/source-files";
+
+export const ReadingTime = defineNestedType(() => {
+	name: "ReadingTime",
+	fields: {
+		minutes: {
+			type: "number",
+			required: true
+		},
+		words: {
+			type: "number",
+			required: true
+		}
+	}
+})
+```
+
+# Add the ReadingTime Computed Field
+
+Next, open up the post definition file at `/content/definitions/post.ts` and define the new computed field.
+
+```typescript showLineNumbers title="/content/defintions/post.ts" {17-24}
+import { defineDocumentType } from "contentlayer/source-files";
+import GithubSlugger from "github-slugger";
+import { Tag } from "./tag";
+import { Series } from "./series";
+import moment from "moment";
+import readingTime from "reading-time";
+import { ReadingTime } from "./reading-time";
+
+export const Post = defineDocumentType(() => ({
+  // .
+  // .
+  // .
+  computedFields: {
+    // .
+    // .
+    // .
+    readingTime: {
+      type: "nested",
+      of: ReadingTime,
+      resolve: (doc) => {
+        const time = readingTime(doc.body.raw);
+        return { minutes: Math.floor(time.minutes), words: time.words };
+      },
+    },
+  },
+}));
+```
+
+Now, we contentlayer generates the typesafe JSON, each post will have a new field called "readingTime" -- an object with two nested components; the **minutes** it takes to read, and the number of **words**.
+
+You can then display in a component however you like, accessing those members as follows:
+
+```typescript
+<ReadingTime
+	minutes={post.readingTime?.minutes}
+	words={post.readingTime?.words}
+></ReadingTime>
+```

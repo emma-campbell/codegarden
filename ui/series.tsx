@@ -29,7 +29,7 @@ export const Series: FC<SeriesProps> = ({ series, interactive }) => {
   const index = series.posts?.findIndex((post) => post?.isCurrent) + 1;
 
   return (
-    <div className="rounded bg-black/10 p-5 shadow-surface-elevation-low lg:px-8 lg:py-7">
+    <div className="rounded bg-white/10 p-5 shadow-surface-elevation-low lg:px-8 lg:py-7">
       {interactive ? (
         <button
           className="group flex w-full items center text-left"

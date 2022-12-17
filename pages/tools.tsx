@@ -98,49 +98,58 @@ const stack = [
     description:
       "Next.js is a static site generator, which means I get the benefits of React coupled with the speed of a static website.",
     tags: [],
+    link: "https://nextjs.org",
   },
   {
     title: "Prisma",
     description:
       "Prisma creates a type-safe client for interacting with the database.",
     tags: [],
+    link: "https://www.prisma.io",
   },
   {
     title: "Contentlayer",
     description:
       "Contentlayer acts as a middleware, and turns unstructured content into type-safe data.",
     tags: [],
+    link: "https://www.contentlayer.dev",
   },
   {
     title: "Planetscale",
     description:
       "Advanced, serverless SQL database with branching and a generous free plan.",
     tags: [],
+    link: "https://planetscale.com",
   },
   {
     title: "Cloudinary",
     description:
       "Fully automated, no-code image optimization platform for image hosting.",
     tags: [],
+    link: "https://cloudinary.com",
   },
   {
     title: "TailwindCSS",
     description: "Utility-first CSS framework for quick frontend development.",
     tags: [],
+    link: "https://tailwindcss.com",
   },
 ];
 
 export const Tools = () => {
   return (
     <Layout>
-      <section>
-        <h1 className="text-4xl font-black">Toolbox</h1>
-        <p>Hardware and software tools I use every day.</p>
+      <section className="space-y-2">
+        <h1 className="text-3xl md:text-5xl font-extrabold">Toolbox</h1>
+        <p className="text-white/60">
+          Hardware and software tools I use every day.
+        </p>
       </section>
+      <hr />
       <section id="hardware">
-        <div className="mb-4">
-          <h3 className="text-2xl font-black">Hardware</h3>
-          <p>
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold mb-1">Hardware</h3>
+          <p className="text-white/60">
             Below is a collection of the hardware tools I use on a daily basis.
             I grew up using a Mac, so Apple products tend to be where I feel at
             home.
@@ -148,32 +157,24 @@ export const Tools = () => {
         </div>
         <ToolList items={hardware} />
       </section>
+      <hr />
       <section id="software">
-        <div className="mb-4">
-          <h3 className="text-2xl font-black">Software</h3>
-          <p>
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold mb-1">Software</h3>
+          <p className="text-white/60">
             Listed out is all the software I use to make my life easier. Divided
             out by subcategory.
           </p>
         </div>
-
-        <div className="mb-4">
-          <h4 className="text-xl font-semibold mb-2">Coding Specific</h4>
-          <ToolList
-            items={software.filter((item) => item.category === "coding")}
-          />
-        </div>
-
-        <div>
-          <h4 className="text-xl font-semibold mb-2">Other</h4>
-          <ToolList items={software.filter((i) => i.category !== "coding")} />
-        </div>
+        <ToolList
+          items={software.filter((item) => item.category === "coding")}
+        />
       </section>
-
+      <hr />
       <section>
-        <div className="mb-4">
-          <h3 className="text-2xl font-black">This Site&apos;s Stack</h3>
-          <p>
+        <div className="mb-8">
+          <h3 className="text-2xl font-bold">This Site&apos;s Stack</h3>
+          <p className="text-white/60">
             Curious what goes into building this site? Check out the stack below
             (or take a look at the source code on Github).
           </p>

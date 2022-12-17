@@ -1,6 +1,8 @@
 // global styles
 import "../styles/globals.css";
+
 // fonts
+import "@fontsource/fira-code";
 import "@fontsource/inter/100.css";
 import "@fontsource/inter/200.css";
 import "@fontsource/inter/300.css";
@@ -10,13 +12,12 @@ import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 import "@fontsource/inter/800.css";
 import "@fontsource/inter/900.css";
-import "@fontsource/fira-code";
 
-import type { AppProps } from "next/app";
-import { AnimatePresence } from "framer-motion";
-import { DefaultSeo, DefaultSeoProps } from "next-seo";
 import { seo } from "@/lib/seo";
+import { AnimatePresence } from "framer-motion";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { DefaultSeo } from "next-seo";
+import type { AppProps } from "next/app";
 
 export async function getStaticProps() {
   return { seo: seo };
