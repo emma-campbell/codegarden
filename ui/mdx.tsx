@@ -11,21 +11,21 @@ export const components = {
   Aside,
   h1: (props: any) => (
     <h2
-      className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-black text-white/90 sm:text-3xl"
+      className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-extrabold text-white/90 sm:text-3xl"
       {...props}
     />
   ),
   h2: (props: any) => (
     <h3
-      className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-black text-white/90 sm:text-2xl"
+      className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-extrabold text-white/90 sm:text-2xl"
       {...props}
     />
   ),
   h3: (props: any) => (
-    <h4 className="text-xl font-black text-white/90" {...props} />
+    <h4 className="text-xl font-extrabold text-white/90" {...props} />
   ),
   h4: (props: any) => (
-    <h5 className="text-lg font-medium text-white/90" {...props} />
+    <h5 className="text-lg font-bold text-white/90" {...props} />
   ),
   hr: (props: any) => (
     <hr
