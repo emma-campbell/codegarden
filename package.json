@@ -20,7 +20,7 @@
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.9",
     "classnames": "^2.3.2",
-    "cloudinary": "^1.32.0",
+    "cloudinary": "^1.33.0",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.9",
     "crypto": "^1.0.1",
