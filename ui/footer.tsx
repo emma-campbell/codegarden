@@ -29,7 +29,10 @@ export const Footer: FC = () => {
         <div className="text-sm flex flex-col space-y-1"></div>
       </div>
       <div className="grid xl:grid-cols-2">
-        <p>© Emma Campbell {moment().format("YYYY")}</p>
+        <div className="text-sm text-white/70">
+          <p>Emma Campbell</p>
+          <p>© 2022 - {moment().format("YYYY")}</p>
+        </div>
       </div>
     </footer>
   );

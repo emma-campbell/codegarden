@@ -30,7 +30,7 @@ export const TagList: FC<TagListProps> = ({ tags }) => {
             key={t.slug}
             className={classNames(
               "transform transition-all",
-              "rounded-xl bg-gradient-to-r p-1 surface-elevation-high",
+              "rounded-xl bg-gradient-to-r p-1 shadow-surface-elevation-high",
               getNextGradient()
             )}
           >
