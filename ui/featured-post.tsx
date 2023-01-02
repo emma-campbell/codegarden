@@ -18,7 +18,7 @@ export const FeaturedPost: FC<FeaturedPostProps> = ({ post, gradient }) => {
     <div
       className={cn(
         "transform hover:scale-[1.03] transition-all",
-        "rounded-xl w-full bg-gradient-to-r p-1 surface-elevation-high",
+        "rounded-xl w-full bg-gradient-to-r p-1 shadow-surface-elevation-high",
         gradient
       )}
       ref={intersectionRef}
