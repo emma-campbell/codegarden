@@ -2,7 +2,7 @@
 
 ![Home](blog_home.png)
 
-My personal portfolio and blog interwebs existence. A codegarden is a digital space for a developer to grow and nourish themselves into the best programmer they can be.
+My personal internet existence. A codegarden is a digital space for a developer to grow and nourish themselves into the best programmer they can be.
 
 ## What's it Built With?
 
