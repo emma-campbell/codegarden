@@ -45,6 +45,42 @@ Luckily, I have a quick blurb about setting up the database and necessary links 
 yarn dev
 ```
 
+## Repository Structure
+
+The repository is structure as follows
+
+```bash
+.
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE.md
+├── README.md
+├── content
+├── contentlayer.config.js
+├── lib
+├── next-env.d.ts
+├── next.config.js
+├── node_modules
+├── package.json
+├── pages
+├── postcss.config.js
+├── prisma
+├── public
+├── styles
+├── tailwind.config.js
+├── tsconfig.json
+├── ui
+└── yarn.lock
+```
+
+* `content` - articles/posts and related definitions
+* `lib` - resuable library code (like hooks)
+* `pages` - next pages
+* `primsa` - database ORM definitions
+* `public` - hosted assets
+* `styles` - css and styling files
+* `ui` - reusable components
+
 ## Contributing
 
 If you see an open issue and want to tackle it, please be my guest! I am happy to help you boast the number of repo's your contributing to (while, admittably there are other more import open-source projects to constribute to).
