@@ -53,7 +53,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "autoprefixer": "^10.4.13",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.2",
+    "husky": "^8.0.3",
     "postcss": "^8.4.20",
     "prettier": "^2.8.1",
     "prisma": "^4.8.0",
