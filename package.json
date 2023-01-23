@@ -16,7 +16,7 @@
     "@fontsource/inter": "^4.5.14",
     "@heroicons/react": "^2.0.13",
     "@prisma/client": "^4.9.0",
-    "@types/node": "18.11.17",
+    "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
     "classnames": "^2.3.2",
