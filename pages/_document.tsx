@@ -11,7 +11,7 @@ export default function Document() {
           href="https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png"
         />
       </Head>
-      <body className="bg-black overflow-x-hidden antialiased scroll-smooth relative selection:bg-purple-500/90 selection:text-white">
+      <body className="bg-black overflow-x-hidden h-screen antialiased scroll-smooth relative selection:bg-purple-500/90 selection:text-white">
         <Main />
         <NextScript />
       </body>
