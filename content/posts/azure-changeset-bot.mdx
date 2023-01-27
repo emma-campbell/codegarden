@@ -11,14 +11,14 @@ tags:
 ---
 
 <Aside>
-🌟This is a long article. For those who'd prefer to look at code, rather than read a longer article you can browse the code [here](https://github.com/emma-campbell/azure-changeset-bot)
+🌟This is a long article. For those who'd prefer to look at code, rather than read a longer article you can browse the code [here](https://github.com/emma-campbell/azure-changeset-bot).
 </Aside>
 
 In my time at [Hugo Health](https://hugo.health), when I am not working on data operations and scaling, I have been helping to facilitate a major refactor of our systems. A *huge* part of this is the way that we manage our packages.
 
 Admittedly, the way we used to do things was a bit of a mess. Most everyone there would probably agree with that sentiment. So, we decided to change things up. We had a few things we wanted to accomplish with these changes.
 
-1. We wanted human readable descriptions of the changes made to each project, but we didn't want to add to much extra effort into commiting these changes.
+1. We wanted human readable descriptions of the changes made to each project, but we didn't want too add to much extra effort into commiting these changes.
 2. We wanted to add [**Semantic Versioning**](https://semver.org). Semantic Versioning allows you to know at a glance what sort of changes the update contains.
 	1. **Patch** - Backwards compatible bug fix
 	2. **Minor** - Backwards compatible functionality
@@ -26,7 +26,7 @@ Admittedly, the way we used to do things was a bit of a mess. Most everyone ther
 
 We decided that the best way to go about doing this would be to use [`@changesets/cli`](https://github.com/changesets/changesets) to automatically version and generate a changelog for each of our packages.
 
-We had one issue with moving forward with this route -- there was no readibly available integrations with Azure DevOps. 
+We had one issue with moving forward with this route -- there was no readily available integrations with Azure DevOps. 
 
 # Why Changesets?
 
@@ -47,7 +47,7 @@ When you're completely done with your changes, just before opening the pull requ
 
 This command will automatically update the version of the package, and generate the corresponding changelog. It will bump the package to the _minimum_ version required within all included changeset files.
 
-Finally, using the command `yarn changeset publish` will publish the changes to to the registry.
+Finally, using the command `yarn changeset publish` will publish the changes to  the registry.
 
 # Planning our Bot
 
@@ -59,7 +59,7 @@ It seemed as if there was a geniune interest in accomplishing this, especially b
 
 We got to thinking that this would be a pretty good use case for [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview). Functions is a serverless solution, similar to [Vercel Serverless Functions](https://vercel.com/docs/concepts/functions/serverless-functions) and [AWS Lambda](https://aws.amazon.com/lambda/). These three services can accomplish roughly the same thing, but we went with Azure since we were already in their ecosystem. There was already existing functionality using Azure Pipelines to post to an external service on Pull Request Creation or Update.
 
-To brainstorm, we decided to map out the ideal steps to our pipeline steps.
+To brainstorm, we decided to map out the ideal steps to our pipeline.
 
 ![https://res.cloudinary.com/emmacampbell/image/upload/v1673888992/Pull_Request_Created_wnggpo.png](https://res.cloudinary.com/emmacampbell/image/upload/v1673888992/Pull_Request_Created_wnggpo.png)
 
@@ -67,14 +67,14 @@ Our bot will be responsible for executing the "Contains Changeset" and "Version 
 
 We have existing pull request checks that require that all comments be resolved prior to being able to merge. So the easiest way, by default, to implement this functionality would be to have our bot create a comment that blocks the merge and updates the comment when it finds the missing changeset.
 
-Changeset also allows an empty changeset for changes that aren't meant to be "released", per say. For example of you have commits adding developer tooling, changes to a `tsconfig`, etc.
+Changeset also allows an empty changeset for changes that aren't meant to be "released". For example commits containing developer tooling, changes to a `tsconfig`, etc.
 
 ## Bot Steps
 
-To accomplish the above, we need our bot to check for for two things.
+To accomplish the above, we need our bot to check for two things.
 
 1. Does the pull request contain any changesets? If it does, leave a **closed** comment on the PR confirming that it does, then move on to the next step.
-2. If the changeset requires a version bump (the changeset is _not_ empty), run `changeset version`, and push those changes to the PR.
+2. If the changeset requires a version bump (i.e. the changeset is _not_ empty), run `changeset version`, and push those changes to the PR.
 
 We can use the `azure-devops-node-api`, and a combinations of the packages from the `@changesets/changeset` monorepo to accomplish both of these tasks.
 
@@ -82,7 +82,7 @@ We can use the `azure-devops-node-api`, and a combinations of the packages from 
 
 For those unfamiliar with Azure Functions, getting it up and running on your machine is fairly simple, especially if you use Visual Studio Code.
 
-I'll run over the instructions for getting started. I am using MacOS, but the only step this affects is using the homebrew package manager to install Azure Functions Core Tools. For other operating systems, check out [Azure's documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cmacos%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools).
+I'll run over the instructions for getting started. I am using MacOS, but the only step this effects is using the homebrew package manager to install Azure Functions Core Tools. For other operating systems, check out [Azure's documentation](https://learn.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=v4%2Cmacos%2Ccsharp%2Cportal%2Cbash#install-the-azure-functions-core-tools).
 
 ## Setup
 
@@ -90,7 +90,7 @@ On MacOS, the only prerequisites here are having Homebrew and Visual Studio Code
 
 ### 1.  Install Azure Functions Core Tools
 
-Using homebrew, we will start by install the core tools.
+Using homebrew, we will start by installing the core tools.
 
 ```sh
 brew tap azure/functions && brew install azure-functions-core-tools@4
@@ -102,7 +102,7 @@ Use the install button [here](https://marketplace.visualstudio.com/items?itemNam
 
 ### 3. Create a New Project Directory
 
-Create a new directory to store your bot related functions in.
+Create a new directory to store your bot related functions
 
 ```sh
 mkdir azure-changeset-bot && git init
@@ -118,7 +118,7 @@ Select the Functions extension from the sidebar in VSCode, and then select the l
 
 It will ask you where you want to create the new function (default is the open directory in VSCode) and then what language you'd like to use. For this tutorial, we are using typescript.
 
-Finally, it will ask what kind of trigger you want to use. Select "HTTP Trigger", since it will be triggered using a POST request after a PR is created or updated.
+Finally, it will ask what kind of trigger you want to use. Select "HTTP Trigger", since it will be triggered using a `POST` request after a PR is created or updated.
 
 Then you will name, and select the authorization level of the function (I chose admin). If all goes according to plan, you should have a resulting directory that looks like this.
 
@@ -137,7 +137,7 @@ Then you will name, and select the authorization level of the function (I chose 
 
 ## Using Yarn instead of NPM
 
-At my job, we use yarn instead of NPM. These next few steps are option, but if you'd like to do the same changing these will incorporate yarn as the package manager.
+At my job, we use yarn instead of NPM. These next few steps are optional, but if you'd like to do the same these changes will incorporate yarn as the package manager.
 
 First, remove the `node_modules` folder, and generate a `yarn.lock` from the `package-lock.json`.
 
@@ -205,7 +205,7 @@ Open up a terminal, navigate to the directory you created, and run
 yarn watch
 ```
 
-this command with run `tsc` in watch mode, so it will rebuild automatically when you make changes.
+this command will run `tsc` in watch mode, so it will rebuild automatically when you make changes.
 
 Then, open the command pallete in VSCode and execute the "Tasks: Run Task" command.
 
@@ -223,13 +223,13 @@ yarn add azure-devops-node-api dotenv
 
 The only thing we will need in order to grant it access to your projects is a personal access token, which you can create by following [these instructions](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=Windows#create-a-pat).
 
-Once you have your token, create a `.env` file in the root directory of the project will the following
+Once you have your token, create a `.env` file in the root directory of the project with the following
 
 ```sh showLineNumbers title=".env"
 AZURE_PAT="<YOUR_TOKEN>"
 ```
 
-replacing `<YOUR_TOKEN>` with the token you generated. We will start off by making a utility directory to hold some functions that make working with the API code a little bit easier.
+replacing `<YOUR_TOKEN>` with the token you generated. We will start off by making a utility file to hold some functions that make working with the API code a little bit easier.
 
 ```sh
 touch utilities.ts
@@ -241,7 +241,7 @@ Open `utilities.ts` in VSCode.
 
 Using `azure-devops-node-api` isn't too complex, but does require a minor bit of set up. Namely, we need to define an authorization handler and use the token we generated.
 
-We will start by defining a method that will our environment variables for us.
+We will start by defining a method that will get our environment variables for us.
 
 ```typescript showLineNumbers title="utilities.ts"
 function getEnv(name: string): string {
@@ -442,7 +442,7 @@ export default httpTrigger;
 
 ## Writing the Bot
 
-Let's use a class to represent all the bot operations we wish to preform. Create a new file in the function directory, called `changebot.ts` and create a new class. Our constructor for this class will take the parameters `api`, to interact with Azure's GitApi and `pr` to have the relevant pull request information.
+Let's use a class to represent all the bot operations we wish to perform. Create a new file in the function directory, called `changebot.ts` and create a new class. Our constructor for this class will take the parameters `api` to interact with Azure's GitApi and `pr` to have the relevant pull request information.
 
 ```typescript showLineNumbers title="changebot.ts" {}
 import { IGitApi } from "azure-devops-node-api/GitApi";
@@ -552,7 +552,7 @@ Generally, we will want to do the following within this method.
 2. Filter those files for _unique_ changeset files
 3. Create the comment on the PR that displays the check status.
 
-we can update the list of changed files using the GitApi by doing the following
+We can update the list of changed files using the GitApi by doing the following
 
 ```typescript showLineNumbers title="changebot.ts > updateFiles()"
 /**
@@ -578,7 +578,7 @@ import {
 } from "azure-devops-node-api/interfaces/GitInterfaces";
 ```
 
-We can this use this to get a list of all changed files and search it for changesets.
+We can then use this to get a list of all changed files and search it for changesets.
 
 ```typescript showLineNumbers title="changebot.ts" {13-28}
 export default class Changebot {
@@ -679,6 +679,17 @@ export default class Changebot {
 }
 ```
 
+You will also need to update the imports in `changebot.ts` to the following:
+
+```typescript showLineNumbers title="changebot.ts" {3}
+import { IGitApi } from "azure-devops-node-api/GitApi";
+import {
+	CommentThreadStatus,
+	GitChange, 
+	GitPullRequest 
+} from "azure-devops-node-api/interfaces/GitInterfaces";
+```
+
 ### Creating Comments and Threads
 
 You may have noticed in the above snippet that I called `this.threads.setThreadStatus` and `this.threads.upsertThread`. To manage threads, I created a new file called `thread-manager.ts` with a class called `ThreadManager`. This class will also use Azure's GitApi to manage different threads on the PR.
@@ -700,23 +711,12 @@ export default class ThreadManager {
 
 `ThreadManager` will be responsible for:
 
-1. Upserting threads (Updating threads if they exist and creating new ones if they don't)
+1. Upserting threads (updating threads if they exist and creating new ones if they don't)
 2. Retrieving threads matching certain predicates
 3. Finding previous comments
-4. Posting Comments
+4. Posting comments
 
 Because this article is already lengthy and interacting with threads in Azure is well documented, I won't delve into details, but you can view the source code [here](https://github.com/emma-campbell/azure-changeset-bot/blob/main/changeset-check/thread-manager.ts).
-
-You will also need to update the imports in `changebot.ts` to the following:
-
-```typescript showLineNumbers title="changebot.ts" {3}
-import { IGitApi } from "azure-devops-node-api/GitApi";
-import {
-	CommentThreadStatus,
-	GitChange, 
-	GitPullRequest 
-} from "azure-devops-node-api/interfaces/GitInterfaces";
-```
 
 ## Generating The Changelog
 
@@ -884,6 +884,40 @@ export default class Changebot {
 From there, you can create a new thread in the same way that we did for the changeset check, and return the result of the function.
 
 # Wrapping Up
+
+Go back the the `changebot.ts` file, 
+
+```typescript showLineNumbers title="changebot.ts"
+export default class Changebot {
+	// ...
+	// .
+	// .
+
+	/**
+	 * Performs two tasks:
+	 * 1. Check that there is at least 1 changeset file
+	 * 2. Generates the changelog if the changeset is not empty
+	 * @returns `{ passed: true, threads: [...]}`
+	 */
+	public async check(): Promise<ChangebotResult> {
+		// Step 1 -- Are there Changesets?
+		const hasChangeset = await this.hasChangeset();
+		// Step 2 -- Create a new Changelog (if Step 1 passes)
+		if (hasChangeset.passed) {
+			await this.git.initialize(this.pr);
+			const createdChangelog = await this.generateChangelog();
+			return {
+				passed: hasChangeset.passed && createdChangelog.passed,
+				threads: [hasChangeset.threadId, createdChangelog.threadId]
+			}
+		}
+		return {
+			passed: hasChangeset.passed,
+			threads: [hasChangeset.threadId]
+		}
+	}
+}
+```
 
 Head back to the index file, and create a new `ChangeBot` instance to be able to run the check.
 
