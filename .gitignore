@@ -38,3 +38,4 @@ next-env.d.ts
 
 .contentlayer
 content/posts/.obsidian/**
+content/posts/.obsidian
