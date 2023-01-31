@@ -64,7 +64,7 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     // update the local swr cache so like count updates immediately for the user
     mutate(
       {
-        total: data.total + 1,
+        total: data?.total + 1,
         user: true,
       },
       false
