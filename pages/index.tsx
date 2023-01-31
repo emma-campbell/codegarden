@@ -4,7 +4,27 @@ import { Layout } from "@/ui/layout";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
+import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
+
 import Link from "next/link";
+
+const Socials = [
+  {
+    name: "Github",
+    url: "https://github.com/emma-campbell",
+    icon: BsGithub,
+  },
+  {
+    name: "Linkedin",
+    url: "https://www.linkedin.com/in/ec-campbell/",
+    icon: BsLinkedin,
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/spoonsandcode",
+    icon: BsTwitter,
+  },
+];
 
 export async function getStaticProps() {
   const posts = allPosts
@@ -32,12 +52,33 @@ export const Home = ({ posts }) => {
   return (
     <Layout>
       <section className="flex flex-col w-fit justify-start">
-        <div className="flex flex-col">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-1">
+        <div className="flex flex-col mb-4">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
             Emma Campbell 🤟
           </h1>
-          <p className="text-white/80 pb-2">Software Developer and Writer</p>
-          <p className="text-white/40"></p>
+          <p className="text-white/60 pb-2">
+            {"Hey! I'm Emma, a "}
+            <b>Software Engineer</b>
+            {" at "}
+            <a
+              className="underline decoration-white/70 underline-offset-2 transition-all hover:text-green-200 hover:decoration-green-200"
+              href="https://hugo.health"
+            >
+              Hugo Health
+            </a>
+            {" on the API and Data Integrations team. I am passionate about building tools that" +
+              " facilitate open health data protocols and help patients access their own health data," +
+              " with my own chronic illness experience helping to propel my fight."}
+          </p>
+        </div>
+        <div className="flex w-1/4 justify-between">
+          {Socials.map((s) => {
+            return (
+              <a href={s.url} key={s.name}>
+                <s.icon className="text-white/70 w-6 h-6 hover:text-white" />
+              </a>
+            );
+          })}
         </div>
       </section>
       <section className="flex flex-col w-fit justify-start">
