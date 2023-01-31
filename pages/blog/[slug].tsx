@@ -100,7 +100,7 @@ const PostPage = ({
             {post.title}
           </h1>
           <div className="mt-2 flex space-x-1 text-xs sm:text-lg text-white/50">
-            <p>{post.formattedDate.split(",")[0]}</p>
+            <p>{post.formattedDate}</p>
             <p>•</p>
             <ViewCounter slug={post.slug} />
             <p>•</p>

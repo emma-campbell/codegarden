@@ -27,9 +27,7 @@ export const FeaturedPost: FC<FeaturedPostProps> = ({ post, gradient }) => {
         <div className="flex flex-col bg-black rounded-lg px-4 py-2 justify-between h-full">
           <div className="tracking-tight mb-6">
             <h4 className="font-bold w-full text-lg">{post.title}</h4>
-            <p className="text-gray-100 text-sm">
-              {post.formattedDate.split(",")[0]}
-            </p>
+            <p className="text-gray-100 text-sm">{post.formattedDate}</p>
           </div>
           <div className="flex flex-row space-x-1 text-white/40 text-sm">
             {enabled ? <PostMetrics slug={post.slug} /> : null}
