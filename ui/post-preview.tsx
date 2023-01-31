@@ -30,7 +30,7 @@ export const PostPreview = ({
         </div>
         <p className="text-md opacity-100 pt-2">{post.description}</p>
         <div className="pt-2 flex flex-row justify-between text-xs text-gray-100 font-medium items-center align-center">
-          <p>{post.formattedDate.split(",")[0]}</p>
+          <p>{post.formattedDate}</p>
         </div>
       </Link>
     </>
