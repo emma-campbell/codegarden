@@ -3,15 +3,29 @@ import "../styles/globals.css";
 
 // fonts
 import "@fontsource/fira-code";
-import "@fontsource/inter/100.css";
-import "@fontsource/inter/200.css";
-import "@fontsource/inter/300.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/inter/800.css";
-import "@fontsource/inter/900.css";
+
+import "@fontsource/raleway/100.css";
+import "@fontsource/raleway/200.css";
+import "@fontsource/raleway/300.css";
+import "@fontsource/raleway/400.css";
+import "@fontsource/raleway/500.css";
+import "@fontsource/raleway/600.css";
+import "@fontsource/raleway/700.css";
+import "@fontsource/raleway/800.css";
+import "@fontsource/raleway/900.css";
+
+import "@fontsource/lato/100.css";
+import "@fontsource/lato/300.css";
+import "@fontsource/lato/400.css";
+import "@fontsource/lato/700.css";
+import "@fontsource/lato/900.css";
+
+import "@fontsource/open-sans/300.css";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/open-sans/500.css";
+import "@fontsource/open-sans/600.css";
+import "@fontsource/open-sans/700.css";
+import "@fontsource/open-sans/800.css";
 
 import { seo } from "@/lib/seo";
 import { AnimatePresence } from "framer-motion";

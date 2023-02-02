@@ -51,16 +51,17 @@ export const Blog = ({ posts }) => {
 
   return (
     <Layout>
-      <section className="flex flex-col w-full justify-start align-bottom">
-        <div className="w-full space-y-2">
-          <h1 className="text-3xl md:text-5xl font-extrabold">Blog</h1>
-          <p className="text-white/60 pb-4">
+      <section className="flex flex-col ">
+        <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Raleway] bg-clip-text text-transparent bg-gradient-to-r from-blue to-purple">
+          Blog
+        </h1>
+        <div className="space-y-2">
+          <p className="text-white/80">
             I&apos;ve written {count} articles since I started this blog in
             November 2022. I write about things like web development, health
-            information technology, and chronic illness (like axial psoriatic
-            arthritis).
+            information technology, and managing chronic illness.
           </p>
-          <p className="text-white/60 pb-4">
+          <p className="text-white/80">
             Use the search bar below to filter articles by their titles.
           </p>
           <div className="flex flex-col space-y-5">
