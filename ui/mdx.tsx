@@ -11,13 +11,13 @@ export const components = {
   Aside,
   h1: (props: any) => (
     <h2
-      className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-extrabold text-white/90 sm:text-3xl"
+      className="relative mt-3 border-t-2 border-white/10 pt-9 text-xl font-extrabold text-white/90 sm:text-3xl"
       {...props}
     />
   ),
   h2: (props: any) => (
     <h3
-      className="relative mt-3 border-t-2 border-orange-100/5 pt-9 text-xl font-extrabold text-white/90 sm:text-2xl"
+      className="relative mt-3 border-t-2 border-white/10 pt-9 text-xl font-extrabold text-white/90 sm:text-2xl"
       {...props}
     />
   ),
@@ -29,7 +29,7 @@ export const components = {
   ),
   hr: (props: any) => (
     <hr
-      className="relative border-t-2 border-orange-100/5 pt-9 sm:pt-10"
+      className="relative border-t-2 border-white/5 pt-9 sm:pt-10"
       {...props}
     />
   ),
@@ -56,7 +56,7 @@ export const components = {
   },
   ul: (props: any) => (
     <ul
-      className="space-y-3 [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-orange-100/20"
+      className="space-y-3 [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-purple/20"
       {...props}
     />
   ),
@@ -91,11 +91,11 @@ export const components = {
   },
   blockquote: (props: any) => (
     <blockquote
-      className="border-l-2 border-orange-200/10 pl-4 text-xl italic xl:!col-start-2 xl:!col-end-3"
+      className="border-l-2 border-purple/10 pl-4 text-xl italic xl:!col-start-2 xl:!col-end-3"
       {...props}
     />
   ),
   del: (props: any) => (
-    <del className="text-orange-100/70 line-through" {...props} />
+    <del className="text-purple/70 line-through" {...props} />
   ),
 };

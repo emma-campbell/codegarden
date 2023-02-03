@@ -1,30 +1,19 @@
 import { generateSocialImage } from "@/lib/generateSocialImage";
+import { useArticleCount } from "@/lib/useArticleCount";
+import { useStatistics } from "@/lib/useStatistics";
 import { FeaturedPost } from "@/ui/featured-post";
 import { Layout } from "@/ui/layout";
-import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
+
+import {
+  ArrowRightCircleIcon,
+  ArrowTrendingUpIcon,
+  HeartIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/solid";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
-import { BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
 
 import Link from "next/link";
-
-const Socials = [
-  {
-    name: "Github",
-    url: "https://github.com/emma-campbell",
-    icon: BsGithub,
-  },
-  {
-    name: "Linkedin",
-    url: "https://www.linkedin.com/in/ec-campbell/",
-    icon: BsLinkedin,
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/spoonsandcode",
-    icon: BsTwitter,
-  },
-];
 
 export async function getStaticProps() {
   const posts = allPosts
@@ -42,63 +31,53 @@ export async function getStaticProps() {
   return { props: { posts: posts, image: ogImage } };
 }
 
-const gradients = [
-  "from-green-300 to-orange-300",
-  "from-orange-300 to-yellow-300",
-  "from-yellow-300 to-green-300",
-];
-
 export const Home = ({ posts }) => {
+  const { views, likes } = useStatistics();
+  const { count, isError } = useArticleCount();
   return (
     <Layout>
-      <section className="flex flex-col w-fit justify-start">
-        <div className="flex flex-col mb-4">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4">
-            Emma Campbell 🤟
-          </h1>
-          <p className="text-white/60 pb-2">
-            {"Hey! I'm Emma, a "}
-            <b>Software Engineer</b>
-            {" at "}
-            <a
-              className="underline decoration-white/70 underline-offset-2 transition-all hover:text-green-200 hover:decoration-green-200"
-              href="https://hugo.health"
-            >
-              Hugo Health
-            </a>
-            {" on the API and Data Integrations team. I am passionate about building tools that" +
-              " facilitate open health data protocols and help patients access their own health data," +
-              " with my own chronic illness experience helping to propel my fight."}
+      <section className="flex flex-col justify-start">
+        <div className="grid gap-5">
+          <div className="flex flex-col">
+            <h1 className="text-3xl w-fit font-extrabold font-[Raleway] bg-clip-text text-transparent bg-gradient-to-r from-blue to-purple md:text-4xl">
+              Emma Campbell
+            </h1>
+            <h3 className="font-bold font-[Lato] text-white/60">
+              Software Engineer | APIs, Platform, and Data Integrations
+            </h3>
+          </div>
+
+          <p className="font-medium text-white/80">
+            Hey 👋 I&apos;m Emma and this is my digital space on the internet
+            where I like to write about things in my life. Things like building
+            software or managing chronic illness. In my freetime, I enjoy
+            reading, spending time with my dog, and listening to (or making)
+            music.
           </p>
         </div>
-        <div className="flex w-1/4 justify-between">
-          {Socials.map((s) => {
-            return (
-              <a href={s.url} key={s.name}>
-                <s.icon className="text-white/70 w-6 h-6 hover:text-white" />
-              </a>
-            );
-          })}
+        <div className="pt-5">
+          <div className="flex gap-2 font-[Lato] text-white/60">
+            <ArrowTrendingUpIcon className="w-5" />
+            <p>{views} views</p>
+          </div>
+
+          <div className="flex gap-2 font-[Lato] text-white/60">
+            <PencilSquareIcon className="w-5" />
+            <p>{count} articles</p>
+          </div>
+
+          <div className="flex gap-2 font-[Lato] text-white/60">
+            <HeartIcon className="w-5" />
+            <p>{likes} likes</p>
+          </div>
         </div>
       </section>
-      <section className="flex flex-col w-fit justify-start">
-        <div className="flex flex-row w-full pb-2 pt-2">
-          <h1 className="text-2xl font-bold">Latest Writing</h1>
-        </div>
-        <div className="flex flex-col gap-6 md:flex-row mb-4">
-          {posts?.slice(0, 3).map((article, i) => {
-            return (
-              <FeaturedPost
-                key={article.slug}
-                post={article}
-                gradient={gradients[i]}
-              />
-            );
-          })}
-        </div>
+      <section className="grid gap-2">
+        <h1 className="text-2xl font-bold">Last Article</h1>
+        <FeaturedPost key={posts[0].slug} post={posts[0]} gradient={posts[0]} />
         <Link
           href="/blog"
-          className="flex flex-row justify-start text-gray-100 font-medium hover:underline [&>*]:hover:text-white transition-all"
+          className="flex flex-row justify-start text-white/50 font-medium hover:underline [&>*]:hover:text-white transition-all"
         >
           <p>All Posts</p>
           <ArrowRightCircleIcon className="w-4" />

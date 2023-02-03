@@ -6,11 +6,7 @@ type TagListProps = {
   tags: Tag[];
 };
 
-const gradients = [
-  "from-green-300 to-orange-300",
-  "from-orange-300 to-yellow-300",
-  "from-yellow-300 to-green-300",
-];
+const gradients = ["from-purple to-blue", "from-blue to-purple"];
 
 let count = 0;
 
