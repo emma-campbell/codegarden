@@ -10,12 +10,7 @@ export default function Document() {
         <meta name="theme-color" content="#262626" />
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self' vitals.vercel-insights.com"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="https://res.cloudinary.com/emmacampbell/image/upload/v1668909709/bgblur_u33jee.png"
+          content="default-src 'self'; script-src-elem vercel.live *.vercel.app 'unsafe-inline'; connect-src vercel.live *.vercel.app vitals.vercel-insights.com; style-src 'self' 'unsafe-inline'"
         />
       </Head>
       <body className="bg-black h-screen antialiased scroll-smooth relative selection:bg-purple-500/90 selection:text-white">
