@@ -8,6 +8,10 @@ export default function Document() {
     >
       <Head>
         <meta name="theme-color" content="#262626" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; vitals.vercel-insights.com"
+        />
         <link
           rel="preload"
           as="image"
