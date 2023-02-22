@@ -10,7 +10,7 @@ export default function Document() {
         <meta name="theme-color" content="#262626" />
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; vitals.vercel-insights.com"
+          content="default-src 'self' vitals.vercel-insights.com"
         />
         <link
           rel="preload"
