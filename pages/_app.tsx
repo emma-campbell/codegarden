@@ -32,6 +32,7 @@ import { AnimatePresence } from "framer-motion";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
+import { Analytics } from "@vercel/analytics/react";
 
 export async function getStaticProps() {
   return { seo: seo };
@@ -46,6 +47,7 @@ export default function App({
   return (
     <>
       <DefaultSeo {...seo} />
+      <Analytics />
       <AnimatePresence mode="wait" initial={false}>
         <Component {...pageProps} key={router.asPath} />
       </AnimatePresence>
