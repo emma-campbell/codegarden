@@ -10,7 +10,7 @@ export default function Document() {
         <meta name="theme-color" content="#262626" />
         <meta
           httpEquiv="Content-Security-Policy"
-          content="default-src 'self' https://www.emmacampbell.dev 'unsafe-eval'; script-src-elem vercel.live *.vercel.app https://www.emmacampbell.dev 'unsafe-inline' 'unsafe-eval'; connect-src vercel.live *.vercel.app https://www.emmacampbell.dev vitals.vercel-insights.com; style-src 'self' 'unsafe-inline'; img-src res.cloudinary.com"
+          content="default-src 'self' https://www.emmacampbell.dev 'unsafe-eval'; script-src-elem vercel.live *.vercel.app *.vercel-insights.com https://www.emmacampbell.dev 'self' 'unsafe-inline' 'unsafe-eval'; connect-src vercel.live *.vercel.app https://www.emmacampbell.dev *.vercel-insights.com 'self'; style-src 'self' 'unsafe-inline'; img-src res.cloudinary.com 'self'"
         />
       </Head>
       <body className="bg-black h-screen antialiased scroll-smooth relative selection:bg-purple-500/90 selection:text-white">
