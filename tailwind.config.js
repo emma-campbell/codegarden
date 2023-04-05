@@ -3,10 +3,10 @@ const { fontFamily } = require("tailwindcss/defaultTheme");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
     "./ui/**/*.{ts,tsx}",
     "./lib/**/*.{js,ts}",
-    "./content/posts/**/*.mdx",
+    "./container/**/*.{ts,tsx}",
   ],
   darkMode: "class",
   theme: {
@@ -55,5 +55,5 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/line-clamp")],
+  plugins: [require("@tailwindcss/forms")],
 };

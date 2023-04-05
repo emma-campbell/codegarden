@@ -1,7 +1,7 @@
 import useSWR, { SWRConfiguration } from "swr";
 
 async function getArticleCount(): Promise<number> {
-  const res = await fetch("/api/count");
+  const res = await fetch("/count");
   if (!res.ok) {
     throw new Error("An error occurred while fetching the data.");
   }
@@ -10,7 +10,7 @@ async function getArticleCount(): Promise<number> {
 
 export const useArticleCount = (config?: SWRConfiguration) => {
   const { data: count, error } = useSWR<number>(
-    `/api/count`,
+    `/count`,
     () => getArticleCount(),
     {
       dedupingInterval: 60000,

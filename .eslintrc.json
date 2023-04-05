@@ -2,12 +2,7 @@
   "extends": ["next/core-web-vitals", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "import/no-unresolved": [
-      2,
-      {
-        "ignore": ["contentlayer/generated", "next-contentlayer/hooks"]
-      }
-    ],
+    "import/no-unresolved": [2],
     "prettier/prettier": ["error"],
     "react-hooks/exhaustive-deps": ["off"]
   }
