@@ -1,17 +1,17 @@
-import { getPost, getPosts } from "@/lib/sanity";
-import { Post, Series } from "@/types";
-import { Layout } from "@/ui/layout";
-import LikeCounter from "@/ui/likes-counter";
-import { SeriesList } from "@/ui/series";
-import ViewCounter from "@/ui/view-counter";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { components } from "@/ui/mdx";
-import rehypePrettyCode from "rehype-pretty-code";
 import {
   rehypePrettyCodeClasses,
   rehypePrettyCodeOptions,
 } from "@/lib/rehypePrettyCode";
+import { getPost, getPosts } from "@/lib/sanity";
+import { Post } from "@/types";
+import { Layout } from "@/ui/layout";
+import LikeCounter from "@/ui/likes-counter";
+import { components } from "@/ui/mdx";
 import { TableOfContents } from "@/ui/post/table-of-contents";
+import { SeriesList } from "@/ui/series";
+import ViewCounter from "@/ui/view-counter";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const NavItems = [
   {

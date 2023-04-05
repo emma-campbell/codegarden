@@ -17,6 +17,7 @@ const NavigationItems = [
     label: "Home",
   },
 ];
+
 export const Books: FC<BooksProps> = ({ books }) => {
   const reading = books?.filter((b) => b.status === BookStatus.IN_PROGRESS);
   const complete = books?.filter((b) => b.status === BookStatus.COMPLETE);
