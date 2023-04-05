@@ -1,4 +1,4 @@
-import { Book } from "contentlayer/generated";
+import { Book } from "@/types";
 import { FC } from "react";
 
 type BookListProps = {
@@ -19,17 +19,17 @@ export const BookListItem: FC<BookListProps> = ({ books }) => {
               <p className="text-sm">{b.authors?.join(", ")}</p>
             </div>
             <div className="flex justify-start md:justify-end space-x-4">
-              {b.start ? (
+              {b.started ? (
                 <div>
-                  <p className="text-xs">{b.startedAt}</p>
+                  <p className="text-xs">{b.started}</p>
                   <p className="text-xs">STARTED</p>
                 </div>
               ) : null}
-              {b.end ? <p>-</p> : null}
-              {b.end ? (
+              {b.ended ? <p>-</p> : null}
+              {b.ended ? (
                 <div className="flex space-x-4">
                   <div>
-                    <p className="text-xs">{b.endedAt}</p>
+                    <p className="text-xs">{b.ended}</p>
                     <p className="text-xs">COMPLETED</p>
                   </div>
                 </div>

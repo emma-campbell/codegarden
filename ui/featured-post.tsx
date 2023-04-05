@@ -1,4 +1,5 @@
-import { getPartialPost } from "@/lib/contentlayer";
+"use client";
+
 import { useEnabledOnFirstIntersection } from "@/lib/useEnabledOnFirstIntersection";
 import cn from "classnames";
 import Link from "next/link";
@@ -7,8 +8,7 @@ import { FC } from "react";
 import { PostMetrics } from "./post-metrics";
 
 type FeaturedPostProps = {
-  post: NonNullable<ReturnType<typeof getPartialPost>>;
-  gradient?: string;
+  post: any;
 };
 
 export const FeaturedPost: FC<FeaturedPostProps> = ({ post }) => {

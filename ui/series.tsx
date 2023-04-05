@@ -1,10 +1,12 @@
-import React, { FC, ReactNode } from "react";
-import { getPartialPost } from "../lib/contentlayer";
+"use client";
+
+import { Series } from "@/types";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import cx from "clsx";
-import Link from "next/link";
-import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "../lib/constants";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import React, { FC, ReactNode } from "react";
+import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "../lib/constants";
 
 type TitleProps = {
   children?: ReactNode;
@@ -20,13 +22,19 @@ const Title: FC<TitleProps> = ({ children }) => {
 };
 
 type SeriesProps = {
-  series: NonNullable<ReturnType<typeof getPartialPost>["series"]>;
+  series: Series;
   interactive?: boolean;
+  current: string;
 };
 
-export const Series: FC<SeriesProps> = ({ series, interactive }) => {
+export const SeriesList: FC<SeriesProps> = ({
+  series,
+  interactive,
+  current,
+}) => {
   const [isOpen, setIsOpen] = React.useState(!interactive);
-  const index = series.posts?.findIndex((post) => post?.isCurrent) + 1;
+  const index =
+    series.items?.findIndex((post) => post.article.slug === current) + 1;
 
   return (
     <div className="rounded bg-white/10 p-5 shadow-surface-elevation-low lg:px-8 lg:py-7">
@@ -38,10 +46,10 @@ export const Series: FC<SeriesProps> = ({ series, interactive }) => {
           }}
         >
           <Title>
-            {series?.title}
+            {series?.name}
             <span className="font-normal text-white/50">
               {" "}
-              &middot; {index} of {series.posts?.length}
+              &middot; {index} of {series.items?.length}
             </span>
           </Title>
 
@@ -56,7 +64,7 @@ export const Series: FC<SeriesProps> = ({ series, interactive }) => {
           </div>
         </button>
       ) : (
-        <Title>{series.title}</Title>
+        <Title>{series.name}</Title>
       )}
       {isOpen && (
         <motion.div
@@ -78,33 +86,28 @@ export const Series: FC<SeriesProps> = ({ series, interactive }) => {
           <hr className="my-5 border-t-2 border-white/5" />
 
           <ul className="text-base">
-            {series.posts?.map((post) => (
+            {series.items?.map((post) => (
               <li
-                key={post.slug}
+                key={post.article.slug}
                 className={cx(
                   "relative my-3 pl-7 before:absolute before:left-1 before:top-[9px] before:h-1.5 before:w-1.5 before:rounded-full",
                   {
                     "before:bg-white/90 before:ring-[3px] before:ring-yellow-300/20 before:ring-offset-1 before:ring-offset-black/10":
-                      post.isCurrent,
-                    "before:bg-white/30":
-                      post.status === "published" && !post.isCurrent,
-                    "before:bg-white/10": post.status !== "published",
+                      post.article.slug === current,
+                    "before:bg-white/30": post.article.slug !== current,
+                    // "before:bg-white/10": post.status !== "published",
                   }
                 )}
               >
-                {post.status === "published" ? (
-                  post.isCurrent ? (
-                    <span className="text-white/90">{post.title}</span>
-                  ) : (
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
-                    >
-                      {post.title}
-                    </Link>
-                  )
+                {post.article.slug === current ? (
+                  <span className="text-white/90">{post.article.title}</span>
                 ) : (
-                  <span className="text-white/40">{post.title}</span>
+                  <Link
+                    href={`/blog/${post.article.slug}`}
+                    className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
+                  >
+                    {post.article.title}
+                  </Link>
                 )}
               </li>
             ))}

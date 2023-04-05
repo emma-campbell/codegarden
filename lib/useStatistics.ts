@@ -1,7 +1,7 @@
 import useSWR, { SWRConfiguration } from "swr";
 
 async function getTotalViews(): Promise<number> {
-  const res = await fetch("/api/views");
+  const res = await fetch("/views");
   if (!res.ok) {
     throw new Error("An error occurred while fetching the data.");
   }
@@ -9,7 +9,7 @@ async function getTotalViews(): Promise<number> {
 }
 
 async function getTotalLikes(): Promise<number> {
-  const res = await fetch("/api/likes");
+  const res = await fetch("/likes");
   if (!res.ok) {
     throw new Error("An error occurred while fetching the data.");
   }
@@ -18,7 +18,7 @@ async function getTotalLikes(): Promise<number> {
 
 export const useStatistics = (config?: SWRConfiguration) => {
   const { data: views, error: viewsError } = useSWR<number>(
-    `/api/views`,
+    `/views`,
     () => getTotalViews(),
     {
       dedupingInterval: 60000,
@@ -27,7 +27,7 @@ export const useStatistics = (config?: SWRConfiguration) => {
   );
 
   const { data: likes, error: likesError } = useSWR<number>(
-    `/api/likes`,
+    `/likes`,
     () => getTotalLikes(),
     {
       dedupingInterval: 60000,

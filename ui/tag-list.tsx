@@ -1,9 +1,8 @@
 import classNames from "classnames";
-import { Tag } from "contentlayer/generated";
 import { FC } from "react";
 
 type TagListProps = {
-  tags: Tag[];
+  tags: string[];
 };
 
 const gradients = ["from-purple to-blue", "from-blue to-purple"];
@@ -23,7 +22,7 @@ export const TagList: FC<TagListProps> = ({ tags }) => {
       {tags.map((t) => {
         return (
           <div
-            key={t.slug}
+            key={t}
             className={classNames(
               "transform transition-all",
               "rounded-xl bg-gradient-to-r p-1 shadow-surface-elevation-high mr-2 mt-2",
@@ -31,7 +30,7 @@ export const TagList: FC<TagListProps> = ({ tags }) => {
             )}
           >
             <div className="bg-black rounded-lg px-4 py-2 justify-between h-full">
-              <p className="font-medium text-sm">{t.title}</p>
+              <p className="font-medium text-sm">{t}</p>
             </div>
           </div>
         );

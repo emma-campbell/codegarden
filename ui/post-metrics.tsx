@@ -1,8 +1,8 @@
 import { usePolling } from "@/lib/usePolling";
 import { usePostLikes } from "@/lib/usePostLikes";
 import { usePostViews } from "@/lib/usePostViews";
-import { Metric } from "@/ui/metric";
-import { LoadingDots } from "@/ui/loading";
+import { Metric } from "ui/metric";
+import { LoadingDots } from "ui/loading";
 import React from "react";
 
 export const PostMetrics = ({ slug }: { slug: string }) => {
