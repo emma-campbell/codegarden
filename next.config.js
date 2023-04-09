@@ -6,6 +6,9 @@ const nextConfig = {
     appDir: true,
     serverComponentsExternalPackages: ["shiki", "vscode-oniguruma"],
   },
+  images: {
+    domains: ["cdn.sanity.io"],
+  },
 };
 
 module.exports = nextConfig;

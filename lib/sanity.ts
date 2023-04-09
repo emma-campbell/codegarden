@@ -48,10 +48,18 @@ export async function getPost(slug: string): Promise<Post> {
 }
 
 export async function getBooks() {
-  const books = await sanity.fetch('*[_type == "book"]');
+  const books = await sanity.fetch(
+    '*[_type == "book" && status != "in progress"]'
+  );
   return books as Book[];
 }
 
+export async function getCurrentlyReading() {
+  const reading = await sanity.fetch(
+    '*[_type == "book" && status == "in progress"]{authors, slug, started, title, type, cover { asset->{ ..., metadata }}}[0]'
+  );
+  return reading as Book;
+}
 export async function getSeries(name: string) {
   const series = await sanity.fetch(`*[name == "${name}"]`);
   return series as Series;

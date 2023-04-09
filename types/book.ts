@@ -1,4 +1,5 @@
 import { SanityImage } from "./sanity-image";
+import { SanityImageAssetDocument } from "@sanity/client";
 
 export enum BookType {
   BOOK = "book",
@@ -16,7 +17,8 @@ export interface Book {
   slug: string;
   authors: string[];
   type: BookType;
-  cover?: SanityImage;
+  cover?: SanityImageAssetDocument;
+  image?: string;
   started?: string;
   ended?: string;
   status: BookStatus;

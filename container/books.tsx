@@ -3,13 +3,9 @@
 import { Book, BookStatus } from "@/types";
 import { Accordion, AccordionItem } from "@/ui/accordion";
 import { BookListItem } from "@/ui/book-list";
+import { BookPreview } from "@/ui/books/book-preview";
 import { Layout } from "@/ui/layout";
 import { NavAlign } from "@/ui/layout/navigation";
-import { FC } from "react";
-
-type BooksProps = {
-  books?: Book[];
-};
 
 const NavigationItems = [
   {
@@ -18,8 +14,7 @@ const NavigationItems = [
   },
 ];
 
-export const Books: FC<BooksProps> = ({ books }) => {
-  const reading = books?.filter((b) => b.status === BookStatus.IN_PROGRESS);
+export const Books = ({ current, books }: { current: Book; books: Book[] }) => {
   const complete = books?.filter((b) => b.status === BookStatus.COMPLETE);
   const queued = books?.filter((b) => b.status === BookStatus.QUEUED);
 
@@ -35,16 +30,9 @@ export const Books: FC<BooksProps> = ({ books }) => {
       </p>
 
       <section>
+        <h2 className="text-lg font-semibold pb-4">Currently Reading</h2>
+        <BookPreview className="pb-16" book={current} />
         <Accordion>
-          <AccordionItem label="In Progress" isOpen={true}>
-            {reading?.length != null && reading?.length > 0 ? (
-              <BookListItem books={reading} />
-            ) : (
-              <p className="font-medium text-sm">
-                Oops, there&apos;s nothing here!
-              </p>
-            )}
-          </AccordionItem>
           <AccordionItem label="Complete">
             {complete?.length != null && complete?.length > 0 ? (
               <BookListItem books={complete} />
