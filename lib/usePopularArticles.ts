@@ -1,8 +1,7 @@
 import useSWR, { SWRConfiguration } from "swr";
 
-// TODO: refactor to use new 'popular' route
 async function getPopularArticles(): Promise<any[]> {
-  const res = await fetch("/api/popular");
+  const res = await fetch("/popular");
   if (!res.ok) {
     throw new Error("An error occurred while fetching the data.");
   }
@@ -11,7 +10,7 @@ async function getPopularArticles(): Promise<any[]> {
 
 export const usePopularArticles = (config?: SWRConfiguration) => {
   const { data, error } = useSWR<any[]>(
-    "/api/popular",
+    "/popular",
     () => getPopularArticles(),
     {
       dedupingInterval: 60000,

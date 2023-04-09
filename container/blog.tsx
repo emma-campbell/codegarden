@@ -6,6 +6,9 @@ import { NavAlign, NavigationItem } from "@/ui/layout/navigation";
 import { SearchInput } from "@/ui/search";
 import { PostList } from "@/ui/post/list";
 import { ChangeEvent, FC, useState } from "react";
+import { useArticleCount } from "@/lib/useArticleCount";
+import { usePopularArticles } from "@/lib/usePopularArticles";
+import classNames from "classnames";
 
 type BlogProps = {
   posts?: Post[];
@@ -24,12 +27,7 @@ export const Blog: FC<BlogProps> = ({ posts }) => {
   const [showTopPosts, setShowTopPosts] = useState(true);
   const [results, setResults] = useState(posts);
 
-  // const { topPosts, isLoading, isError } = usePopularArticles();
-  // const {
-  //   count,
-  //   isLoading: countIsLoading,
-  //   isError: countIsError,
-  // } = useArticleCount();
+  const { topPosts, isLoading, isError } = usePopularArticles();
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value != "") {
@@ -69,17 +67,15 @@ export const Blog: FC<BlogProps> = ({ posts }) => {
           </div>
         </div>
       </section>
-      {/* <section
+      <section
         className={classNames(
           "w-full space-y-5",
           showTopPosts ? null : "hidden"
         )}
       >
         <h2 className="text-xl md:text-2xl font-bold">Popular Posts</h2>
-        {topPosts?.map((article) => {
-          return <PostPreview key={article?.slug} post={article} />;
-        })}
-      </section> */}
+        <PostList posts={topPosts} />
+      </section>
       <section className="w-full space-y-5">
         <h2 className="text-xl md:text-2xl font-bold">All Posts</h2>
         <PostList posts={results} />
