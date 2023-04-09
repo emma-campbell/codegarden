@@ -28,6 +28,7 @@ export async function getLatestPost() {
     '*[_type == "post"] | order(published desc) {title, slug, description, published}[0]'
   );
   post.slug = post?.slug?.current;
+  post.published = moment(post.published).format("MMMM Do, YYYY");
 
   return post as Post;
 }
