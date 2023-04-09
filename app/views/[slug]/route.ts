@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
   const path = req.nextUrl.pathname;
   const slug = path.replace("/views/", "");
 

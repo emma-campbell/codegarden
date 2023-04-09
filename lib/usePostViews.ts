@@ -24,7 +24,7 @@ async function updatePostViews(slug: string): Promise<Views> {
 
 export const usePostViews = (slug: string, config?: SWRConfiguration) => {
   const { data, error, mutate } = useSWR<Views>(
-    `/api/views/${slug}`,
+    `/views/${slug}`,
     () => getPostViews(slug),
     {
       dedupingInterval: 60000,
