@@ -1,5 +1,6 @@
 import useSWR, { SWRConfiguration } from "swr";
 
+// TODO: refactor to use new 'popular' route
 async function getPopularArticles(): Promise<any[]> {
   const res = await fetch("/api/popular");
   if (!res.ok) {
