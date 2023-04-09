@@ -3,13 +3,14 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "yarn copy-shiki && next dev",
+    "build": "yarn copy-shiki && next build",
     "start": "next start",
     "lint": "next lint --fix",
     "staged": "lint-staged",
     "prepare": "husky install",
-    "format": "prettier --write"
+    "format": "prettier --write",
+    "copy-shiki": "cp node_modules/shiki/languages/* shiki/languages && cp node_modules/shiki/themes/* shiki/themes"
   },
   "dependencies": {
     "@fontsource/fira-code": "^4.5.13",
@@ -36,6 +37,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-use": "^17.4.0",
+    "rehype-parse": "^8.0.4",
     "rehype-pretty-code": "^0.9.4",
     "shiki": "^0.14.1",
     "swr": "^2.0.0"
