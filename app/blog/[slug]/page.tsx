@@ -11,6 +11,7 @@ import { TableOfContents } from "@/ui/post/table-of-contents";
 import { SeriesList } from "@/ui/series";
 import ViewCounter from "@/ui/view-counter";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { Suspense } from "react";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const NavItems = [
@@ -26,7 +27,7 @@ const NavItems = [
 
 export async function generateStaticParams() {
   const posts: Post[] = await getPosts();
-  return posts.map((p) => {
+  return posts.map(async (p) => {
     slug: p.slug;
   });
 }
@@ -50,32 +51,34 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           </div>
         </div>
 
-        <TableOfContents body={post.content} path={`/blog/${slug}`} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <TableOfContents body={post.content} path={`/blog/${slug}`} />
 
-        {/* Post Series */}
+          {/* Post Series */}
 
-        {post.series.length > 0 ? (
-          <SeriesList
-            series={post.series[0]}
-            interactive={true}
-            current={slug}
+          {post.series.length > 0 ? (
+            <SeriesList
+              series={post.series[0]}
+              interactive={true}
+              current={slug}
+            />
+          ) : null}
+
+          {/* Post Content */}
+          {/* @ts-expect-error */}
+          <MDXRemote
+            source={post.content}
+            components={components}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [
+                  [rehypePrettyCode, rehypePrettyCodeOptions],
+                  [rehypePrettyCodeClasses],
+                ],
+              },
+            }}
           />
-        ) : null}
-
-        {/* Post Content */}
-        {/* @ts-expect-error */}
-        <MDXRemote
-          source={post.content}
-          components={components}
-          options={{
-            mdxOptions: {
-              rehypePlugins: [
-                [rehypePrettyCode, rehypePrettyCodeOptions],
-                [rehypePrettyCodeClasses],
-              ],
-            },
-          }}
-        />
+        </Suspense>
       </Layout>
     </>
   );

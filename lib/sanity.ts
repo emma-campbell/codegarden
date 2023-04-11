@@ -33,6 +33,16 @@ export async function getLatestPost() {
   return post as Post;
 }
 
+export async function getPostData(slug: string): Promise<Post> {
+  const post = await sanity.fetch(
+    `*[slug.current == "${slug}"]{content, "series": *[references(^._id)]{name, items[]{order,article->{title, "slug": slug.current}}}}[0]`
+  );
+  post.series?.items?.forEach((a) => {
+    a.slug = a.slug?.current;
+  });
+  return post as Post;
+}
+
 export async function getPost(slug: string): Promise<Post> {
   const post = await sanity.fetch(
     `*[slug.current == "${slug}"]{title, published, slug, content, "series": *[references(^._id)]{name, items[]{order,article->{title, "slug": slug.current}}}}[0]`
