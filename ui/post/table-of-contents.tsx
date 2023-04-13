@@ -5,27 +5,8 @@ import { motion } from "framer-motion";
 import GithubSlugger from "github-slugger";
 import { useRouter } from "next/navigation";
 
-export const TableOfContents = ({
-  body,
-  path,
-}: {
-  body: string;
-  path: string;
-}) => {
-  const slugger = new GithubSlugger();
+export const TableOfContents = ({ headings, path }) => {
   const router = useRouter();
-
-  const regex = /\n\n(?<flag>#{1,6})\s+(?<content>.+)/g;
-  const headings = Array.from(body.matchAll(regex)).map(({ groups }) => {
-    const flag = groups?.flag;
-    const content = groups?.content;
-    return {
-      heading: flag?.length,
-      text: content,
-      slug: content ? slugger.slug(content) : undefined,
-    };
-  });
-
   return (
     <>
       <motion.div
