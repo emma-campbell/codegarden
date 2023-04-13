@@ -1,18 +1,13 @@
 "use client";
 
-import { Post } from "@/types";
+import { usePopularArticles } from "@/lib/usePopularArticles";
+import { getPosts } from "@/lib/content";
 import { Layout } from "@/ui/layout";
 import { NavAlign, NavigationItem } from "@/ui/layout/navigation";
-import { SearchInput } from "@/ui/search";
 import { PostList } from "@/ui/post/list";
-import { ChangeEvent, FC, useState } from "react";
-import { useArticleCount } from "@/lib/useArticleCount";
-import { usePopularArticles } from "@/lib/usePopularArticles";
+import { SearchInput } from "@/ui/search";
 import classNames from "classnames";
-
-type BlogProps = {
-  posts?: Post[];
-};
+import { ChangeEvent, FC, useState } from "react";
 
 const nav: NavigationItem[] = [
   {
@@ -21,7 +16,7 @@ const nav: NavigationItem[] = [
   },
 ];
 
-export const Blog: FC<BlogProps> = ({ posts }) => {
+export const Blog = ({ posts }: { posts: ReturnType<typeof getPosts> }) => {
   const [search, setSearch] = useState("");
 
   const [showTopPosts, setShowTopPosts] = useState(true);
@@ -49,7 +44,7 @@ export const Blog: FC<BlogProps> = ({ posts }) => {
 
   return (
     <Layout navItems={nav} alignNav={NavAlign.RIGHT}>
-      <section className=" ">
+      <section>
         <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Raleway] bg-clip-text text-transparent bg-gradient-to-r from-blue to-purple">
           Blog
         </h1>

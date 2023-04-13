@@ -1,10 +1,15 @@
-import { Post } from "@/types";
 import Link from "next/link";
 import { PostMetrics } from "@/ui/post-metrics";
 import { Suspense } from "react";
 import { PostPreviewLoading } from "./loading";
+import { getPost } from "@/lib/content";
+import moment from "moment";
 
-export const PostPreview = ({ post }: { post: Post }) => {
+export const PostPreview = ({
+  post,
+}: {
+  post: NonNullable<ReturnType<typeof getPost>>;
+}) => {
   return (
     <>
       <Suspense fallback={<PostPreviewLoading />}>
@@ -16,6 +21,10 @@ export const PostPreview = ({ post }: { post: Post }) => {
             <h5 className="text-md font-bold font-[Raleway]">{post.title}</h5>
             <div className="flex flex-row justify-between font-medium text-white/50 text-sm items-center">
               <div className="flex flex-row space-x-2">
+                <p>
+                  {moment(post.published, "YYYY-MM-DD").format("MMM Do, YYYY")}
+                </p>
+                <p>&middot;</p>
                 <PostMetrics slug={post.slug} />
                 {/* <p>&middot;</p> */}
                 {/* <ReadingTime
@@ -24,12 +33,6 @@ export const PostPreview = ({ post }: { post: Post }) => {
               /> */}
               </div>
             </div>
-          </div>
-          <p className="text-sm opacity-100 text-white/70 pt-2">
-            {post.description}
-          </p>
-          <div className="pt-2 flex flex-row justify-between text-xs text-white/50 font-medium items-center align-center">
-            <p>{post.published}</p>
           </div>
         </Link>
       </Suspense>

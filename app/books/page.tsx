@@ -1,9 +1,8 @@
 import Books from "@/container/books";
-import { getBooks } from "@/lib/sanity";
+import { allBooks } from "contentlayer/generated";
 
 const Page = async () => {
-  const books = await getBooks();
-  return <Books books={books} />;
+  return <Books books={allBooks} />;
 };
 
 export default Page;

@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import prisma from "@/lib/prisma";
-import { getPosts } from "@/lib/sanity";
-import { Post } from "@/types";
+import { Post, allPosts } from "contentlayer/generated";
 
 export async function GET(req: NextRequest) {
   try {
@@ -13,7 +12,6 @@ export async function GET(req: NextRequest) {
     });
 
     const articles: Partial<Post>[] = [];
-    const allPosts = await getPosts();
 
     top?.forEach(async (item) => {
       const post = allPosts.find((p) => p.slug === item.slug);

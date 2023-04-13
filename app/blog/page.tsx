@@ -1,8 +1,8 @@
 import Blog from "@/container/blog";
-import { getPosts } from "@/lib/sanity";
+import { getPosts } from "@/lib/content";
 
-const Page = async () => {
-  const posts = await getPosts();
+const Page = () => {
+  const posts = getPosts();
   return <Blog posts={posts} />;
 };
 

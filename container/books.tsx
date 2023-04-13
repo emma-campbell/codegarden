@@ -1,10 +1,10 @@
 "use client";
 
-import { Book, BookStatus } from "@/types";
 import { Accordion, AccordionItem } from "@/ui/accordion";
 import { BookListItem } from "@/ui/book-list";
 import { Layout } from "@/ui/layout";
 import { NavAlign } from "@/ui/layout/navigation";
+import { Book } from "contentlayer/generated";
 import { FC } from "react";
 
 type BooksProps = {
@@ -19,9 +19,9 @@ const NavigationItems = [
 ];
 
 export const Books: FC<BooksProps> = ({ books }) => {
-  const reading = books?.filter((b) => b.status === BookStatus.IN_PROGRESS);
-  const complete = books?.filter((b) => b.status === BookStatus.COMPLETE);
-  const queued = books?.filter((b) => b.status === BookStatus.QUEUED);
+  const reading = books?.filter((b) => b.status === "in progress");
+  const complete = books?.filter((b) => b.status === "completed");
+  const queued = books?.filter((b) => b.status === "queued");
 
   return (
     <Layout alignNav={NavAlign.RIGHT} navItems={NavigationItems}>

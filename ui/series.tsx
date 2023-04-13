@@ -1,12 +1,12 @@
 "use client";
 
-import { Series } from "@/types";
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
-import cx from "clsx";
-import { motion } from "framer-motion";
-import Link from "next/link";
 import React, { FC, ReactNode } from "react";
+import cx from "clsx";
+import Link from "next/link";
+import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "../lib/constants";
+import { motion } from "framer-motion";
+import { getSeries } from "@/lib/content";
 
 type TitleProps = {
   children?: ReactNode;
@@ -21,20 +21,16 @@ const Title: FC<TitleProps> = ({ children }) => {
   );
 };
 
-type SeriesProps = {
-  series: Series;
-  interactive?: boolean;
-  current: string;
-};
-
-export const SeriesList: FC<SeriesProps> = ({
+export const Series = ({
   series,
   interactive,
-  current,
+}: {
+  series: NonNullable<ReturnType<typeof getSeries>>;
+  interactive?: boolean;
+  current: string;
 }) => {
   const [isOpen, setIsOpen] = React.useState(!interactive);
-  const index =
-    series.items?.findIndex((post) => post.article.slug === current) + 1;
+  const index = series.posts?.findIndex((post) => post?.isCurrent) + 1;
 
   return (
     <div className="rounded bg-white/10 p-5 shadow-surface-elevation-low lg:px-8 lg:py-7">
@@ -46,10 +42,10 @@ export const SeriesList: FC<SeriesProps> = ({
           }}
         >
           <Title>
-            {series?.name}
+            {series?.title}
             <span className="font-normal text-white/50">
               {" "}
-              &middot; {index} of {series.items?.length}
+              &middot; {index} of {series.posts?.length}
             </span>
           </Title>
 
@@ -64,7 +60,7 @@ export const SeriesList: FC<SeriesProps> = ({
           </div>
         </button>
       ) : (
-        <Title>{series.name}</Title>
+        <Title>{series.title}</Title>
       )}
       {isOpen && (
         <motion.div
@@ -86,28 +82,33 @@ export const SeriesList: FC<SeriesProps> = ({
           <hr className="my-5 border-t-2 border-white/5" />
 
           <ul className="text-base">
-            {series.items?.map((post) => (
+            {series.posts?.map((post) => (
               <li
-                key={post.article.slug}
+                key={post.slug}
                 className={cx(
                   "relative my-3 pl-7 before:absolute before:left-1 before:top-[9px] before:h-1.5 before:w-1.5 before:rounded-full",
                   {
                     "before:bg-white/90 before:ring-[3px] before:ring-yellow-300/20 before:ring-offset-1 before:ring-offset-black/10":
-                      post.article.slug === current,
-                    "before:bg-white/30": post.article.slug !== current,
-                    // "before:bg-white/10": post.status !== "published",
+                      post.isCurrent,
+                    "before:bg-white/30":
+                      post.status === "published" && !post.isCurrent,
+                    "before:bg-white/10": post.status !== "published",
                   }
                 )}
               >
-                {post.article.slug === current ? (
-                  <span className="text-white/90">{post.article.title}</span>
+                {post.status === "published" ? (
+                  post.isCurrent ? (
+                    <span className="text-white/90">{post.title}</span>
+                  ) : (
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
+                    >
+                      {post.title}
+                    </Link>
+                  )
                 ) : (
-                  <Link
-                    href={`/blog/${post.article.slug}`}
-                    className={cx(LINK_STYLES, FOCUS_VISIBLE_OUTLINE)}
-                  >
-                    {post.article.title}
-                  </Link>
+                  <span className="text-white/40">{post.title}</span>
                 )}
               </li>
             ))}

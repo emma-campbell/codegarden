@@ -1,4 +1,3 @@
-import { getLatestPost } from "@/lib/sanity";
 import { FeaturedPost } from "@/ui/featured-post";
 import { Layout } from "@/ui/layout";
 import { NavigationItem } from "@/ui/layout/navigation";
@@ -13,8 +12,7 @@ const nav: NavigationItem[] = [
   },
 ];
 
-const Page = async () => {
-  const post = await getLatestPost();
+const Page = () => {
   return (
     <Layout navItems={nav}>
       <section className="flex flex-col justify-start">
@@ -38,21 +36,20 @@ const Page = async () => {
         </div>
         <SiteMetrics />
       </section>
-      {post != null ? (
-        <section className="grid gap-2">
-          <h1 className="text-2xl font-bold">Last Article</h1>
-          <FeaturedPost key={post.slug} post={post} />
-          <Link
-            href={{
-              pathname: "/blog",
-            }}
-            className="flex flex-row justify-start text-white/50 font-medium hover:underline [&>*]:hover:text-white transition-all"
-          >
-            <p>All Posts</p>
-            <ArrowRightCircleIcon className="w-4" />
-          </Link>
-        </section>
-      ) : null}
+
+      <section className="grid gap-2">
+        <h1 className="text-2xl font-bold">Last Article</h1>
+        <FeaturedPost />
+        <Link
+          href={{
+            pathname: "/blog",
+          }}
+          className="flex flex-row justify-start text-white/50 font-medium hover:underline [&>*]:hover:text-white transition-all"
+        >
+          <p>All Posts</p>
+          <ArrowRightCircleIcon className="w-4" />
+        </Link>
+      </section>
     </Layout>
   );
 };
