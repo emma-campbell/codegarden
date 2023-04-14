@@ -11,21 +11,27 @@ export const components = {
   Aside,
   h1: (props: any) => (
     <h2
-      className="relative mt-3 border-t-2 border-white/10 pt-9 text-xl font-extrabold text-white/90 sm:text-3xl"
+      className="relative mt-3 border-t-2 border-white/10 pt-9 text-xl font-bold font-[Cal Sans] text-white/90 sm:text-3xl"
       {...props}
     />
   ),
   h2: (props: any) => (
     <h3
-      className="relative mt-3 border-t-2 border-white/10 pt-9 text-xl font-extrabold text-white/90 sm:text-2xl"
+      className="relative mt-3 border-t-2 border-white/10 pt-9 text-xl font-extrabold font-[Cal Sans] text-white/90 sm:text-2xl"
       {...props}
     />
   ),
   h3: (props: any) => (
-    <h4 className="text-xl font-extrabold text-white/90" {...props} />
+    <h4
+      className="text-xl font-extrabold font-[Cal Sans] text-white/90"
+      {...props}
+    />
   ),
   h4: (props: any) => (
-    <h5 className="text-lg font-bold text-white/90" {...props} />
+    <h5
+      className="text-lg font-bold font-[Cal Sans] text-white/90"
+      {...props}
+    />
   ),
   hr: (props: any) => (
     <hr
@@ -56,7 +62,7 @@ export const components = {
   },
   ul: (props: any) => (
     <ul
-      className="space-y-3 [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-purple/20"
+      className="space-y-3 [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-white/20"
       {...props}
     />
   ),

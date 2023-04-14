@@ -18,10 +18,10 @@ const Page = () => {
       <section className="flex flex-col justify-start">
         <div className="grid gap-5 pb-5">
           <div className="flex flex-col">
-            <h1 className="text-3xl w-fit font-extrabold font-[Raleway] bg-clip-text text-transparent bg-gradient-to-r from-blue to-purple md:text-4xl">
+            <h1 className="text-3xl w-fit font-bold font-[Cal Sans] md:text-4xl">
               Emma Campbell
             </h1>
-            <h3 className="font-bold font-[Lato] text-white/60">
+            <h3 className="font-medium text-white/60">
               Software Engineer | APIs, Platform, and Data Integrations
             </h3>
           </div>

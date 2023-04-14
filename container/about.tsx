@@ -6,7 +6,7 @@ export const About = () => {
   return (
     <Layout>
       <div>
-        <h1 className="text-3xl md:text-4xl font-extrabold font-[Raleway] mb-4">
+        <h1 className="text-3xl md:text-4xl font-extrabold font-[Cal Sans] mb-4">
           About Me
         </h1>
         <p className="text-white/70">
@@ -15,7 +15,7 @@ export const About = () => {
         </p>
       </div>
       <section id="bio" className="space-y-2">
-        <h2 className="text-2xl font-bold font-[Raleway] mb-2">Biography</h2>
+        <h2 className="text-2xl font-bold font-[Cal Sans] mb-2">Biography</h2>
         <div className="space-y-4">
           <p className="text-md text-white/70">
             I grew up wanting to be a doctor. No, seriously. I think medicine is
@@ -51,7 +51,7 @@ export const About = () => {
         </div>
       </section>
       <section id="education">
-        <h2 className="text-2xl font-bold font-[Raleway] mb-2">Education</h2>
+        <h2 className="text-2xl font-bold font-[Cal Sans] mb-2">Education</h2>
         <div className="mb-2 text-white/70">
           <p className="text-md font-semibold">University of Rochester</p>
           <p className="text-sm">Bachelors in Computer Science</p>

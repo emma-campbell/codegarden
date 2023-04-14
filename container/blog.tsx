@@ -45,7 +45,7 @@ export const Blog = ({ posts }: { posts: ReturnType<typeof getPosts> }) => {
   return (
     <Layout navItems={nav} alignNav={NavAlign.RIGHT}>
       <section>
-        <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Raleway] bg-clip-text text-transparent bg-gradient-to-r from-blue to-purple">
+        <h1 className="text-3xl w-fit md:text-4xl font-bold font-[Cal Sans] pb-2">
           Blog
         </h1>
         <div className="space-y-2">
@@ -54,7 +54,7 @@ export const Blog = ({ posts }: { posts: ReturnType<typeof getPosts> }) => {
             in November 2022. I write about things like web development, health
             information technology, and managing chronic illness.
           </p>
-          <p className="text-white/80">
+          <p className="text-white/80 pb-4">
             Use the search bar below to filter articles by their titles.
           </p>
           <div className="flex flex-col space-y-5">
@@ -68,11 +68,15 @@ export const Blog = ({ posts }: { posts: ReturnType<typeof getPosts> }) => {
           showTopPosts ? null : "hidden"
         )}
       >
-        <h2 className="text-xl md:text-2xl font-bold">Popular Posts</h2>
+        <h2 className="text-xl md:text-2xl font-bold font-[Cal Sans]">
+          Popular Posts
+        </h2>
         <PostList posts={topPosts} />
       </section>
       <section className="w-full space-y-5">
-        <h2 className="text-xl md:text-2xl font-bold">All Posts</h2>
+        <h2 className="text-xl md:text-2xl font-bold font-[Cal Sans]">
+          All Posts
+        </h2>
         <PostList posts={results} />
       </section>
     </Layout>

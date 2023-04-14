@@ -25,7 +25,7 @@ export const Books: FC<BooksProps> = ({ books }) => {
 
   return (
     <Layout alignNav={NavAlign.RIGHT} navItems={NavigationItems}>
-      <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Raleway] bg-clip-text text-transparent bg-gradient-to-r from-blue to-purple">
+      <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Cal Sans]">
         Books
       </h1>
       <p className="text-white/80">

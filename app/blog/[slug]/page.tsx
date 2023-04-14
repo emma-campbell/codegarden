@@ -37,7 +37,9 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       <Layout alignNav="left" navItems={NavItems}>
         {/* Title of the Post */}
         <div className="xl:!col-end-5">
-          <h1 className="text-3xl md:text-5xl font-extrabold">{post.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-bold font-[Cal Sans]">
+            {post.title}
+          </h1>
           <div className="mt-2 flex space-x-1 text-xs text-white/50 sm:text-lg">
             <p>{moment(post.published, "YYYY-mm-dd").format("MMM Do, YYYY")}</p>
             <p>•</p>
