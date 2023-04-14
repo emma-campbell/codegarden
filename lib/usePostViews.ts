@@ -4,12 +4,12 @@ export type Views = {
   total: number;
 };
 
-const API_URL = `/api/views`;
+const API_URL = `/views`;
 
 async function getPostViews(slug: string): Promise<Views> {
   const res = await fetch(API_URL + `/${slug}`);
   if (!res.ok) {
-    throw new Error("An error occurred while fetching the data.");
+    throw new Error(await res.json());
   }
   return res.json();
 }
@@ -24,7 +24,7 @@ async function updatePostViews(slug: string): Promise<Views> {
 
 export const usePostViews = (slug: string, config?: SWRConfiguration) => {
   const { data, error, mutate } = useSWR<Views>(
-    `/api/views/${slug}`,
+    `/views/${slug}`,
     () => getPostViews(slug),
     {
       dedupingInterval: 60000,

@@ -1,11 +1,7 @@
 import { Book } from "contentlayer/generated";
-import { FC } from "react";
+import moment from "moment";
 
-type BookListProps = {
-  books: Book[];
-};
-
-export const BookListItem: FC<BookListProps> = ({ books }) => {
+export const BookListItem = ({ books }: { books: Book[] }) => {
   return (
     <>
       {books.map((b) => {
@@ -21,7 +17,9 @@ export const BookListItem: FC<BookListProps> = ({ books }) => {
             <div className="flex justify-start md:justify-end space-x-4">
               {b.start ? (
                 <div>
-                  <p className="text-xs">{b.startedAt}</p>
+                  <p className="text-xs">
+                    {moment(b.start).format("MMM Do, YYYY")}
+                  </p>
                   <p className="text-xs">STARTED</p>
                 </div>
               ) : null}
@@ -29,7 +27,9 @@ export const BookListItem: FC<BookListProps> = ({ books }) => {
               {b.end ? (
                 <div className="flex space-x-4">
                   <div>
-                    <p className="text-xs">{b.endedAt}</p>
+                    <p className="text-xs">
+                      {moment(b.end).format("MMM Do, YYYY")}
+                    </p>
                     <p className="text-xs">COMPLETED</p>
                   </div>
                 </div>

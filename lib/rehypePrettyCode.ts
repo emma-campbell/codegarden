@@ -1,5 +1,12 @@
+import { join } from "path";
 import { type Options } from "rehype-pretty-code";
 import { visit } from "unist-util-visit";
+import * as fs from "fs/promises";
+import * as shiki from "shiki";
+
+const shikiPath = (): string => {
+  return join(process.cwd(), "shiki");
+};
 
 // div.BLOCK > pre.PRE > code.CODE
 const BLOCK =
@@ -100,8 +107,37 @@ export function rehypePrettyCodeClasses() {
   };
 }
 
+const touched = { current: false };
+
+// "Touch" the shiki assets so that Vercel will include them in the production
+// bundle. This is required because shiki itself dynamically access these files,
+// so Vercel doesn't know about them by default
+const touchShikiPath = (): void => {
+  if (touched.current) return; // only need to do once
+  fs.readdir(shikiPath()); // fire and forget
+  touched.current = true;
+};
+
+const getHighlighter: Options["getHighlighter"] = async (options) => {
+  touchShikiPath();
+
+  const highlighter = await shiki.getHighlighter({
+    // This is technically not compatible with shiki's interface but
+    // necessary for rehype-pretty-code to work
+    // - https://rehype-pretty-code.netlify.app/ (see Custom Highlighter)
+    ...(options as any),
+    paths: {
+      languages: `${shikiPath()}/languages/`,
+      themes: `${shikiPath()}/themes/`,
+    },
+  });
+
+  return highlighter;
+};
+
 export const rehypePrettyCodeOptions: Partial<Options> = {
   theme: "one-dark-pro",
+  getHighlighter,
   tokensMap: {
     // VScode command palette: Inspect Editor Tokens and Scopes
     // https://github.com/Binaryify/OneDark-Pro/blob/47c66a2f2d3e5c85490e1aaad96f5fab3293b091/themes/OneDark-Pro.json

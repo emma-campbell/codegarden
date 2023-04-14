@@ -1,10 +1,12 @@
+"use client";
+
 import React, { FC, ReactNode } from "react";
-import { getPartialPost } from "../lib/contentlayer";
 import cx from "clsx";
 import Link from "next/link";
 import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { FOCUS_VISIBLE_OUTLINE, LINK_STYLES } from "../lib/constants";
 import { motion } from "framer-motion";
+import { getSeries } from "@/lib/content";
 
 type TitleProps = {
   children?: ReactNode;
@@ -19,12 +21,14 @@ const Title: FC<TitleProps> = ({ children }) => {
   );
 };
 
-type SeriesProps = {
-  series: NonNullable<ReturnType<typeof getPartialPost>["series"]>;
+export const Series = ({
+  series,
+  interactive,
+}: {
+  series: NonNullable<ReturnType<typeof getSeries>>;
   interactive?: boolean;
-};
-
-export const Series: FC<SeriesProps> = ({ series, interactive }) => {
+  current: string;
+}) => {
   const [isOpen, setIsOpen] = React.useState(!interactive);
   const index = series.posts?.findIndex((post) => post?.isCurrent) + 1;
 

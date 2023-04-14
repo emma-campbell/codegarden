@@ -1,15 +1,15 @@
-import { usePolling } from "@/lib/usePolling";
-import { usePostLikes } from "@/lib/usePostLikes";
+"use client";
+
 import { HandThumbUpIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
 import { LoadingDots } from "./loading";
 import { Metric } from "./metric";
+import { usePostLikes } from "@/lib/usePostLikes";
+import { usePolling } from "@/lib/usePolling";
 
 export default function LikeCounter({ slug }) {
   const interval = 5000;
   const { shouldPoll, intersectionRef } = usePolling(interval);
-
-  const { user, likes, isError, isLoading, increment, decrement } =
+  const { user, likes, isLoading, isError, increment, decrement } =
     usePostLikes(slug, {
       refreshInterval: shouldPoll ? interval : 0,
     });

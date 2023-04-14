@@ -6,7 +6,7 @@ export type Likes = {
   user?: boolean;
 };
 
-const API_URL = `/api/likes`;
+const API_URL = `/likes`;
 
 async function getPostLikes(slug: string): Promise<Likes> {
   const res = await fetch(`${API_URL}/${slug}`);
@@ -64,7 +64,7 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
     // update the local swr cache so like count updates immediately for the user
     mutate(
       {
-        total: data?.total + 1,
+        total: data.total ? data?.total + 1 : 1,
         user: true,
       },
       false
@@ -80,7 +80,7 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
       return;
     }
 
-    mutate({ total: data.total - 1, user: false }, false);
+    mutate({ total: data?.total ? data?.total - 1 : 0, user: false }, false);
 
     setLiked(false);
     deletePostLikes(slug);

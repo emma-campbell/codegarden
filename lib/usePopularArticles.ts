@@ -1,10 +1,7 @@
 import useSWR, { SWRConfiguration } from "swr";
-import { getPartialPost } from "./contentlayer";
 
-async function getPopularArticles(): Promise<
-  ReturnType<typeof getPartialPost>[]
-> {
-  const res = await fetch("/api/popular");
+async function getPopularArticles(): Promise<any[]> {
+  const res = await fetch("/popular");
   if (!res.ok) {
     throw new Error("An error occurred while fetching the data.");
   }
@@ -12,8 +9,8 @@ async function getPopularArticles(): Promise<
 }
 
 export const usePopularArticles = (config?: SWRConfiguration) => {
-  const { data, error } = useSWR<ReturnType<typeof getPartialPost>[]>(
-    "/api/popular",
+  const { data, error } = useSWR<any[]>(
+    "/popular",
     () => getPopularArticles(),
     {
       dedupingInterval: 60000,

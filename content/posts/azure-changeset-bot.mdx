@@ -1,13 +1,13 @@
 ---
 title: Using Azure Functions to Create a Changeset Bot
 description: "Currently at work we are overhauling the way we manage our packages, including requiring semantic versioning. To enforce our new rules around version, we created a changeset bot to enforce versioning and descriptions of changes in every PR."
-publishedAt: "2023-01-16"
+published: "2023-01-16"
 status: "published"
 tags:
-  - { title: "@changesets/cli", slug: "changesets" }
-  - { title: "Azure DevOps", slug: "azure-devops" }
-  - { title: "Azure Functions", slug: "azure-functions" }
-  - { title: "Developer Tooling", slug: "developer-tooling" }
+  - { value: "@changesets/cli" }
+  - { value: "Azure DevOps" }
+  - { value: "Azure Functions" }
+  - { value: "Developer Tooling" }
 ---
 
 <Aside>
@@ -125,9 +125,9 @@ Then you will name, and select the authorization level of the function (I chose 
 ```sh
 .
 ├── changeset-check
-│   ├── function.json
-│   ├── index.ts
-│   └── sample.dat
+│   ├── function.json
+│   ├── index.ts
+│   └── sample.dat
 ├── host.json
 ├── local.settings.json
 ├── package-lock.json
