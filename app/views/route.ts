@@ -1,16 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import prisma from "@/lib/prisma";
+import { db } from "@/lib/db";
 
 export async function GET(req: NextRequest) {
   try {
-    const agg = await prisma.stats.aggregate({
-      _sum: {
-        views: true,
-      },
-    });
-
-    return NextResponse.json(agg._sum.views, { status: 200 });
+    const data = await db.selectFrom("stats").select(["views"]).execute();
+    return NextResponse.json(
+      data.reduce((acc, curr) => acc + curr.views, 0),
+      { status: 200 }
+    );
   } catch (e: any) {
     return NextResponse.json({ message: e.message }, { status: 500 });
   }

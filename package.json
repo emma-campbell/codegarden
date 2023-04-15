@@ -17,7 +17,7 @@
     "@fontsource/inter": "^4.5.14",
     "@fontsource/open-sans": "^4.5.14",
     "@heroicons/react": "^2.0.14",
-    "@prisma/client": "^4.12.0",
+    "@planetscale/database": "^1.7.0",
     "@sanity/client": "^5.4.2",
     "@vercel/analytics": "^0.1.10",
     "cal-sans": "^1.0.1",
@@ -28,8 +28,10 @@
     "date-fns": "^2.29.3",
     "framer-motion": "^10.11.2",
     "github-slugger": "^2.0.0",
+    "kysely": "^0.24.2",
+    "kysely-planetscale": "^1.3.0",
     "moment": "^2.29.4",
-    "next": "^13.3.0",
+    "next": "13.3.0",
     "next-contentlayer": "^0.3.1",
     "next-mdx-remote": "^4.4.1",
     "react": "18.2.0",
@@ -41,6 +43,7 @@
     "rehype-pretty-code": "^0.9.4",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "server-only": "^0.0.1",
     "shiki": "^0.14.1",
     "swr": "^2.1.2"
   },
@@ -51,16 +54,15 @@
     "@types/react-dom": "18.0.10",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.38.0",
-    "eslint-config-next": "^13.3.0",
+    "eslint-config-next": "13.3.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.0",
     "postcss": "^8.4.21",
     "prettier": "^2.8.7",
-    "prisma": "^4.12.0",
     "tailwindcss": "^3.3.1",
-    "typescript": "5.0.2"
+    "typescript": "^5.0.4"
   },
   "lint-staged": {
     "*.{tsx,ts}": [

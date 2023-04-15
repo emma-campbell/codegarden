@@ -1,26 +1,27 @@
 "use client";
 
-import { useArticleCount } from "@/lib/useArticleCount";
-import { useStatistics } from "@/lib/useStatistics";
-import {
-  ArrowTrendingUpIcon,
-  HeartIcon,
-  PencilSquareIcon,
-} from "@heroicons/react/24/solid";
-import { Suspense } from "react";
+import { fetcher } from "@/lib/fetcher";
 import { LoadingDots } from "@/ui/loading";
 import { Metric } from "@/ui/metric";
+import {
+  ArrowTrendingUpIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/solid";
+import { allPosts } from "contentlayer/generated";
+import { Suspense } from "react";
+import useSWR from "swr";
 
 export const SiteMetrics = () => {
-  const { views, likes } = useStatistics();
-  const { count, isError } = useArticleCount();
+  const { data } = useSWR<Number>("/views", fetcher);
+  const count = allPosts.length;
+
   return (
     <>
       <div className="flex gap-2 font-[Lato] text-white/60">
         <ArrowTrendingUpIcon className="w-5" />
         <div className="flex space-x-1">
           <Suspense fallback={<LoadingDots />}>
-            <Metric stat={views} />
+            <Metric stat={data as number} />
           </Suspense>
           <p>views</p>
         </div>
@@ -33,16 +34,6 @@ export const SiteMetrics = () => {
             <Metric stat={count} />
           </Suspense>
           <p>articles</p>
-        </div>
-      </div>
-
-      <div className="flex gap-2 font-[Lato] text-white/60">
-        <HeartIcon className="w-5" />
-        <div className="flex space-x-1">
-          <Suspense fallback={<LoadingDots />}>
-            <Metric stat={likes} />
-          </Suspense>
-          <p>likes</p>
         </div>
       </div>
     </>

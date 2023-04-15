@@ -1,14 +1,13 @@
 import { getPost, getSeries } from "@/lib/content";
 import { Layout } from "@/ui/layout";
-import LikeCounter from "@/ui/likes-counter";
 import { components } from "@/ui/mdx";
 import { TableOfContents } from "@/ui/post/table-of-contents";
 import { Series } from "@/ui/series";
-import ViewCounter from "@/ui/view-counter";
+import { ViewCounter } from "@/ui/view-counter";
 import { allPosts } from "contentlayer/generated";
+import moment from "moment";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { Suspense } from "react";
-import moment from "moment";
 
 const NavItems = [
   {
@@ -43,9 +42,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           <div className="mt-2 flex space-x-1 text-xs text-white/50 sm:text-lg">
             <p>{moment(post.published, "YYYY-mm-dd").format("MMM Do, YYYY")}</p>
             <p>•</p>
-            <ViewCounter slug={slug} />
-            <p>•</p>
-            <LikeCounter slug={slug} />
+            <ViewCounter slug={slug} track={true} />
           </div>
         </div>
 
