@@ -12,7 +12,8 @@ const nav: NavigationItem[] = [
   },
 ];
 
-const Page = () => {
+const Page = async () => {
+  const Post: JSX.Element = await FeaturedPost();
   return (
     <Layout navItems={nav}>
       <section className="flex flex-col justify-start">
@@ -39,7 +40,7 @@ const Page = () => {
 
       <section className="grid gap-2">
         <h1 className="text-2xl font-bold">Last Article</h1>
-        <FeaturedPost />
+        {Post}
         <Link
           href={{
             pathname: "/blog",
