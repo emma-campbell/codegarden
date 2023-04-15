@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { PostMetrics } from "@/ui/post-metrics";
-import { Suspense } from "react";
-import { PostPreviewLoading } from "./loading";
 import { getPost } from "@/lib/content";
 import moment from "moment";
+import Link from "next/link";
+import { Suspense } from "react";
+import { ViewCounter } from "../view-counter";
+import { PostPreviewLoading } from "./loading";
 
 export const PostPreview = ({
   post,
@@ -22,12 +22,12 @@ export const PostPreview = ({
               {post.title}
             </h5>
             <div className="flex flex-row justify-between font-medium text-white/50 text-sm items-center">
-              <div className="flex flex-row space-x-2">
+              <div className="flex flex-row space-x-1">
                 <p>
                   {moment(post.published, "YYYY-MM-DD").format("MMM Do, YYYY")}
                 </p>
                 <p>&middot;</p>
-                <PostMetrics slug={post.slug} />
+                <ViewCounter slug={post.slug} track={false} />
                 {/* <p>&middot;</p> */}
                 {/* <ReadingTime
                 minutes={post.readingTime?.minutes}

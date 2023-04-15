@@ -1,30 +1,36 @@
 "use client";
-
 import { Suspense, useEffect } from "react";
 
-import { usePolling } from "@/lib/usePolling";
-import { usePostViews } from "@/lib/usePostViews";
+import { Stats } from "@/lib/db";
+import { fetcher } from "@/lib/fetcher";
 import { LoadingDots } from "./loading";
 import { Metric } from "./metric";
+import useSWR from "swr";
 
-export default function ViewCounter({ slug }) {
-  const interval = 5000;
-  const { shouldPoll, intersectionRef } = usePolling(interval);
-
-  const { views, isLoading, isError, increment } = usePostViews(slug, {
-    revalidateOnMount: false,
-    refreshInterval: shouldPoll ? interval : 0,
-    dedupingInterval: interval,
-  });
+export function ViewCounter({
+  slug,
+  track,
+}: {
+  slug?: string;
+  track: boolean;
+}) {
+  const { data } = useSWR<Stats>(`/views/${slug}`, fetcher);
+  let views = data?.views || 0;
 
   useEffect(() => {
-    increment();
-  }, []);
+    const register = () =>
+      fetch(`/views/${slug}`, {
+        method: "POST",
+      });
+    if (track) {
+      register();
+    }
+  }, [slug]);
 
   return (
-    <div className="flex space-x-1" ref={intersectionRef}>
+    <div className="flex space-x-1">
       <Suspense fallback={<LoadingDots />}>
-        <Metric key={views} stat={views} />
+        <Metric key={"views"} stat={views} />
       </Suspense>
       <p>views</p>
     </div>

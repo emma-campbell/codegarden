@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { Post, allPosts } from "contentlayer/generated";
+import { allPosts } from "contentlayer/generated";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -9,19 +9,11 @@ export async function GET(req: NextRequest) {
       .selectFrom("stats")
       .select(["slug", "views"])
       .orderBy("views", "desc")
-      .limit(3)
-      .execute();
+      .executeTakeFirstOrThrow();
 
-    const articles: Partial<Post>[] = [];
+    const post = allPosts.find((p) => p.slug === data.slug);
 
-    data?.forEach(async (item) => {
-      const post = allPosts.find((p) => p.slug === item.slug);
-      if (post != null) {
-        articles.push(post);
-      }
-    });
-
-    return NextResponse.json(articles, { status: 200 });
+    return NextResponse.json(post, { status: 200 });
   } catch (e: any) {
     return NextResponse.json({ message: e }, { status: 500 });
   }
