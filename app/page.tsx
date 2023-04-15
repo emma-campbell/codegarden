@@ -4,6 +4,7 @@ import { NavigationItem } from "@/ui/layout/navigation";
 import { SiteMetrics } from "@/ui/site-metrics";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { Suspense } from "react";
 
 const nav: NavigationItem[] = [
   {
@@ -35,11 +36,12 @@ const Page = async () => {
             music.
           </p>
         </div>
-        <SiteMetrics />
+        <Suspense>
+          <SiteMetrics />
+        </Suspense>
       </section>
 
       <section className="grid gap-2">
-        <h1 className="text-2xl font-bold">Last Article</h1>
         {Post}
         <Link
           href={{

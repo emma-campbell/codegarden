@@ -6,17 +6,14 @@ import moment from "moment";
 import { Suspense } from "react";
 import { PostPreviewLoading } from "./post/loading";
 import { ViewCounter } from "./view-counter";
+import { Post } from "contentlayer/generated";
 
-async function getFeaturedPost() {
+async function getFeaturedPost(): Promise<Post> {
   const data = headers();
   const protocol = data.get("x-forwarded-proto");
   const host = data.get("host");
 
   const res = await fetch(`${protocol}://${host}/best`);
-  if (!res.ok) {
-    const error = await res.json();
-    throw Error(error);
-  }
   return res.json();
 }
 

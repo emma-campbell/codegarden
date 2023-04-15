@@ -1,3 +1,5 @@
+import "server-only";
+
 import { getPost, getSeries } from "@/lib/content";
 import { Layout } from "@/ui/layout";
 import { components } from "@/ui/mdx";
