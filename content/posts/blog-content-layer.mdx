@@ -95,12 +95,12 @@ There's two more schemas I need to define: `Tag` and `Series`. Tags will be used
 to properly divide post topics, while Series will link togther posts that are sequential.
 
 ```typescript showLineNumbers title="./content/definitions/tag.tsx"
-import { definedNestedType } from "contentlayer/source-files";
+import { defineNestedType } from "contentlayer/source-files";
 
 // define tags elsewhere (in a constants file)
 import { tagNames, tagSlugs } from "../../lib/contentlayer";
 
-export const Tag = definedNestedType(() => ({
+export const Tag = defineNestedType(() => ({
   name: "Tag",
   fields: {
     title: {
@@ -118,9 +118,9 @@ export const Tag = definedNestedType(() => ({
 ```
 
 ```typescript showLineNumbers title="./content/definitions/series.tsx"
-import { definedNestedType } from "contentlayer/source-files";
+import { defineNestedType } from "contentlayer/source-files";
 
-export const Series = definedNestedType(() => ({
+export const Series = defineNestedType(() => ({
   name: "Series",
   fields: {
     title: {
@@ -211,9 +211,7 @@ then, add it to `contentlayer.config.js`
 
 ```js showLineNumbers title="contentlayer.config.js" {5, 11}
 import { makeSource } from "contentlayer/source-files";
-
 import { Post } from "./content/defintions/post";
-
 import remarkGfm from "remark-gfm";
 
 export default makeSource({
@@ -239,9 +237,7 @@ then, add it to the list of rehype plugins in your `contentlayer.config.js`.
 
 ```js showLineNumbers title="contentlayer.config.js" {6,7,15,16,17,18,19,20,21,22,23,24}
 import { makeSource } from "contentlayer/source-files";
-
 import { Post } from "./content/defintions/post";
-
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-heading";
@@ -272,10 +268,8 @@ content.
 
 ```typescript showLineNumbers title="./content/definitions/post.tsx" {6,10-34}
 import { defineDocumentType } from "contentlayer/source-files";
-
 import { Tag } from "./tag";
 import { Series } from "./series";
-
 import GithubSlugger from "github-slugger";
 
 export const Post = defineDocumentType(() => ({
@@ -316,10 +310,8 @@ We need to generate a slug in order to render a page per post using Next.js. Add
 
 ```ts showLineNumbers title="./content/definitions/post.tsx" {12-16}
 import { defineDocumentType } from "contentlayer/source-files";
-
 import { Tag } from "./tag";
 import { Series } from "./series";
-
 import GithubSlugger from "github-slugger";
 
 export const Post = defineDocumentType(() => ({

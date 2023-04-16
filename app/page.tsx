@@ -4,6 +4,8 @@ import { NavigationItem } from "@/ui/layout/navigation";
 import { SiteMetrics } from "@/ui/site-metrics";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { Suspense } from "react";
+import { Metadata } from "next";
 
 const nav: NavigationItem[] = [
   {
@@ -11,6 +13,11 @@ const nav: NavigationItem[] = [
     url: "/blog",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Home | Emma Campbell",
+  description: "My personal slice of the internet.",
+};
 
 const Page = async () => {
   const Post: JSX.Element = await FeaturedPost();
@@ -35,11 +42,12 @@ const Page = async () => {
             music.
           </p>
         </div>
-        <SiteMetrics />
+        <Suspense>
+          <SiteMetrics />
+        </Suspense>
       </section>
 
       <section className="grid gap-2">
-        <h1 className="text-2xl font-bold">Last Article</h1>
         {Post}
         <Link
           href={{
