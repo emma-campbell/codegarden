@@ -11,7 +11,7 @@ type BooksProps = {
   books?: Book[];
 };
 
-const NavigationItems = [
+const NavItems = [
   {
     url: "/",
     label: "Home",
@@ -24,7 +24,7 @@ export const Books: FC<BooksProps> = ({ books }) => {
   const queued = books?.filter((b) => b.status === "queued");
 
   return (
-    <Layout alignNav={NavAlign.RIGHT} navItems={NavigationItems}>
+    <Layout alignNav={NavAlign.RIGHT} navItems={NavItems}>
       <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Cal Sans]">
         Books
       </h1>

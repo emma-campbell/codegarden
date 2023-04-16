@@ -28,6 +28,25 @@ export async function generateStaticParams() {
   });
 }
 
+export async function generateMetadata({ params }) {
+  const post = await getPost(params.slug);
+
+  return {
+    title: `${post.title} | Emma Campbell`,
+    description: post.description,
+    authors: {
+      name: "Emma Campbell",
+      url: "https://emmacampbell.dev",
+    },
+    keywords: post.tags?.map((tag) => tag.value),
+    creator: "Emma Campbell",
+    twitter: {
+      card: "summary_large_image",
+      creator: "@spoonsandcode",
+    },
+  };
+}
+
 const Page = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
   const post: NonNullable<ReturnType<typeof getPost>> = getPost(slug);
