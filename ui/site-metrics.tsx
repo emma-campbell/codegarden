@@ -17,7 +17,7 @@ export const SiteMetrics = () => {
 
   return (
     <>
-      <div className="flex gap-2 font-[Lato] text-white/60">
+      <div className="flex gap-2 font-medium font-[Open Sans] text-white/60">
         <ArrowTrendingUpIcon className="w-5" />
         <div className="flex space-x-1">
           <Suspense fallback={<LoadingDots />}>
@@ -27,7 +27,7 @@ export const SiteMetrics = () => {
         </div>
       </div>
 
-      <div className="flex gap-2 font-[Lato] text-white/60">
+      <div className="flex gap-2 font-medium font-[Open Sans] text-white/60">
         <PencilSquareIcon className="w-5" />
         <div className="flex space-x-1">
           <Suspense fallback={<LoadingDots />}>
