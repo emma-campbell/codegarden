@@ -41,7 +41,7 @@ const Page = async () => {
             blog in November 2022. I write about things like web development,
             health information technology, and managing chronic illness.
           </p>
-          <p className="text-white/80 pb-4">
+          <p className="text-white/80">
             Use the search bar below to filter articles by their titles.
           </p>
         </div>
