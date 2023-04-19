@@ -15,7 +15,7 @@
   "dependencies": {
     "@fontsource/fira-code": "^4.5.13",
     "@fontsource/open-sans": "^4.5.14",
-    "@heroicons/react": "^2.0.14",
+    "@heroicons/react": "^2.0.17",
     "@planetscale/database": "^1.7.0",
     "@vercel/analytics": "^0.1.10",
     "cal-sans": "^1.0.1",
