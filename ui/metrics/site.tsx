@@ -1,18 +1,24 @@
-"use client";
-
-import { fetcher } from "@/lib/fetcher";
-import { LoadingDots } from "@/ui/loading";
-import { Metric } from "@/ui/metric";
+import { Metric } from "@/ui/metrics/metric";
 import {
   ArrowTrendingUpIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/solid";
 import { allPosts } from "contentlayer/generated";
+import { headers } from "next/headers";
 import { Suspense } from "react";
-import useSWR from "swr";
+import { LoadingMetric } from "./loading";
 
-export const SiteMetrics = () => {
-  const { data } = useSWR<Number>("/views", fetcher);
+async function getTotalViews() {
+  const data = headers();
+  const protocol = data.get("x-forwarded-proto");
+  const host = data.get("host");
+
+  const res = await fetch(`${protocol}://${host}/views`);
+  return res.json();
+}
+
+export const SiteMetrics = async () => {
+  const data = await getTotalViews();
   const count = allPosts.length;
 
   return (
@@ -20,7 +26,7 @@ export const SiteMetrics = () => {
       <div className="flex gap-2 font-medium font-[Open Sans] text-white/60">
         <ArrowTrendingUpIcon className="w-5" />
         <div className="flex space-x-1">
-          <Suspense fallback={<LoadingDots />}>
+          <Suspense fallback={<LoadingMetric />}>
             <Metric stat={data as number} />
           </Suspense>
           <p>views</p>
@@ -30,7 +36,7 @@ export const SiteMetrics = () => {
       <div className="flex gap-2 font-medium font-[Open Sans] text-white/60">
         <PencilSquareIcon className="w-5" />
         <div className="flex space-x-1">
-          <Suspense fallback={<LoadingDots />}>
+          <Suspense fallback={<LoadingMetric />}>
             <Metric stat={count} />
           </Suspense>
           <p>articles</p>

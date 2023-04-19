@@ -1,7 +1,7 @@
 import { FeaturedPost } from "@/ui/featured-post";
 import { Layout } from "@/ui/layout";
 import { NavigationItem } from "@/ui/layout/navigation";
-import { SiteMetrics } from "@/ui/site-metrics";
+import { SiteMetrics } from "@/ui/metrics/site";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 
 const Page = async () => {
   const Post: JSX.Element = await FeaturedPost();
+  const metrics: JSX.Element = await SiteMetrics();
+
   return (
     <Layout navItems={nav}>
       <section className="flex flex-col justify-start">
@@ -42,9 +44,7 @@ const Page = async () => {
             music.
           </p>
         </div>
-        <Suspense>
-          <SiteMetrics />
-        </Suspense>
+        <Suspense>{metrics}</Suspense>
       </section>
 
       <section className="grid gap-2">
