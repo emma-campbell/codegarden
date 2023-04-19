@@ -21,7 +21,7 @@ export const LoadingDots = () => {
     },
     animate: {
       y: "15%",
-      opacity: 1
+      opacity: 1,
     },
   };
 
@@ -33,7 +33,12 @@ export const LoadingDots = () => {
   };
 
   return (
-    <motion.span variants={container} initial="initial" animate="animate" className="space-x-1">
+    <motion.span
+      variants={container}
+      initial="initial"
+      animate="animate"
+      className="space-x-1"
+    >
       <motion.span
         variants={dotVariants}
         transition={dotTransition}

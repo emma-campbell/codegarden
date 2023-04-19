@@ -4,7 +4,7 @@ import { Suspense, useEffect } from "react";
 import { Stats } from "@/lib/db";
 import { fetcher } from "@/lib/fetcher";
 import { LoadingDots } from "./loading";
-import { Metric } from "./metric";
+import { Metric } from "./metrics/metric";
 import useSWR from "swr";
 
 export function ViewCounter({
