@@ -15,7 +15,9 @@ export async function GET(req: NextRequest) {
     const articles: Partial<Post>[] = [];
 
     data?.forEach(async (item) => {
-      const post = allPosts.find((p) => p.slug === item.slug);
+      const post = allPosts
+        .filter((p) => p.status != "draft")
+        .find((p) => p.slug === item.slug);
       if (post != null) {
         articles.push(post);
       }
