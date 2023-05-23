@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter, Fira_Code } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Navigation } from "@/ui/layout/navigation";
 import { Footer } from "@/ui/layout/footer";
@@ -44,6 +45,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           {children}
           <Footer />
         </main>
+        <Analytics />
       </body>
     </html>
   );
