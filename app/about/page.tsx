@@ -1,13 +1,5 @@
-import { Layout } from "@/ui/layout";
 import { Metadata } from "next";
 import { FC } from "react";
-
-const NavItems = [
-  {
-    url: "/",
-    label: "Home",
-  },
-];
 
 export const metadata: Metadata = {
   title: "About Me | Emma Campbell",
@@ -16,66 +8,30 @@ export const metadata: Metadata = {
 
 const Page: FC = () => {
   return (
-    <Layout navItems={NavItems}>
-      <div>
-        <h1 className="text-3xl md:text-4xl font-extrabold font-[Cal Sans] mb-4">
-          About Me
-        </h1>
-        <p className="text-white/70">
-          Hello 👋🏼 My name is Emma. I am a 24 year old software engineer
-          currently living in the DMV area. Nice to digitally meet you!
+    <>
+      <h1 className="text-5xl sm:text-[96px] font-heading font-bold leading-extra-tight pb-8">
+        About Me
+      </h1>
+      <section className="space-y-4 text-white/80 font-medium">
+        <p>
+          I&apos;m a 24 year old software engineer working remotely in the DMV
+          area. It&apos;s nice to digitally meet you!
         </p>
-      </div>
-      <section id="bio" className="space-y-2">
-        <h2 className="text-2xl font-bold font-[Cal Sans] mb-2">Biography</h2>
-        <div className="space-y-4">
-          <p className="text-md text-white/70">
-            I grew up wanting to be a doctor. No, seriously. I think medicine is
-            fascinating and I was always enamoured with the idea of helping
-            people. I spent some time in the classes, and I was enjoying the
-            stuff I was learning. Biology and the human body are fascinating!
-            Then, I got to chemistry. Yuck 🤮
-          </p>
-          <p className="text-md text-white/70">
-            So, I switched. I had always thought outer space was cool, and I did
-            well in physics in high school, so I decided to give physics and
-            astronomy a try. I did well, and as a part of the course work I was
-            required to take a class called &quot;Introduction to
-            Programming&quot;. The class was in python, and I fell in love with
-            it.
-          </p>
-          <p className="text-md text-white/70">
-            So, I switched again. I decided to major in Computer Science.
-            Besides learning to program, I grew to become well-versed in the
-            theory that makes great software and even better at learning how to
-            problem solve.
-          </p>
-          <p className="text-md text-white/70">
-            During my senior year, I was diagnosed with Psoriatic Axial
-            Spondyloarthitis. A mouthful, yes, but I had to learn how to manage
-            a life altering condition. I knew I wanted to help others in
-            predicaments like my own, so I joined{" "}
-            <a className="underline hover:bg-green-300 hover:text-white transition ease-in-out">
-              Hugo Health
-            </a>{" "}
-            to help facilitate research and communities to help others like me.
-          </p>
-        </div>
+        <p>
+          I&apos;m currently working as a Software Engineer II @{" "}
+          <b>Hugo Health</b>, a health tech company with the goal of
+          decentralizing clinical research in the US. We are a small team, and I
+          am responsible for many of our backend services including maintaining
+          our EHR integrations, ETL processes, and a lot of internal tooling.
+        </p>
+        <p>
+          When I am not coding, I spend a lot of time <b>reading</b>, playing
+          video games, lifting weights, or obsessing over my dog. Music is one
+          of my passions. I play a few instruments and to find me sitting in
+          silence is pretty rare.
+        </p>
       </section>
-      <section id="education">
-        <h2 className="text-2xl font-bold font-[Cal Sans] mb-2">Education</h2>
-        <div className="mb-2 text-white/70">
-          <p className="text-md font-semibold">University of Rochester</p>
-          <p className="text-sm">Bachelors in Computer Science</p>
-        </div>
-        <div className="text-white/70 text-sm">
-          Data Structures & Algorithms, Computational Theory, Computer
-          Organization, Introduction to Artificial Intelligence, Human-Computer
-          Interaction, Social Implications of Computing, Web Development,
-          Advanced Frontend Web Design
-        </div>
-      </section>
-    </Layout>
+    </>
   );
 };
 

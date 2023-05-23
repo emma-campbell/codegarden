@@ -15,8 +15,8 @@ type TitleProps = {
 const Title: FC<TitleProps> = ({ children }) => {
   return (
     <div>
-      <div className="text-sm uppercase text-white/50">Series</div>
-      <div className="text-lg font-medium">{children}</div>
+      <div className="text-sm font-heading text-white/50">series</div>
+      <div className="text-lg font-bold">{children}</div>
     </div>
   );
 };
@@ -43,7 +43,7 @@ export const Series = ({
         >
           <Title>
             {series?.title}
-            <span className="font-normal text-white/50">
+            <span className="font-medium text-white/50">
               {" "}
               &middot; {index} of {series.posts?.length}
             </span>

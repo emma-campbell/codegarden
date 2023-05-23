@@ -13,29 +13,17 @@ export const Aside = ({
   title?: string;
 }) => {
   return (
-    <div
-      className={clsx("relative", {
-        "xl:!col-start-2": position === "left",
-        "xl:!col-start-4": position === "right",
-      })}
-    >
+    <div className="bg-white/10 px-2 py-2 rounded-md mt-2 mb-2">
+      {title ? (
+        <div className="mb-2 text-base italic text-opacity-100">{title}</div>
+      ) : null}
       <div
-        className={clsx("relative xl:absolute xl:top-0 xl:left-0 xl:right-0", {
-          "z-10 border-l-2 border-white/5 bg-gray-100 pl-4 shadow-[0_0_30px_20px] shadow-gray-200 xl:border-t-2 xl:border-l-0 xl:py-6 xl:pl-0":
+        className={clsx({
+          "text-sm italic text-white/60 [&>span[data-rehype-pretty-code-fragment]]:!text-[11px]":
             styled,
         })}
       >
-        {title ? (
-          <div className="mb-2 text-base italic text-opacity-100">{title}</div>
-        ) : null}
-        <div
-          className={clsx({
-            "text-sm italic text-white/60 [&>span[data-rehype-pretty-code-fragment]]:!text-[11px]":
-              styled,
-          })}
-        >
-          {children}
-        </div>
+        {children}
       </div>
     </div>
   );

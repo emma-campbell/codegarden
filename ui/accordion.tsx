@@ -18,12 +18,12 @@ export const AccordionItem: FC<AccordionItemProps> = ({
     <div className="border-b last:border-none bg-clip-border">
       <div className="">
         <div className="flex justify-between mx-2 my-2">
-          <h4 className="font-semibold font-[Lato]">{label}</h4>
+          <h4 className="font-semibold">{label}</h4>
           <button onClick={(e) => setOpen(!open)}>
             {open ? (
-              <ChevronUpIcon className="text-white w-4" />
+              <ChevronUpIcon className="w-4" />
             ) : (
-              <ChevronDownIcon className="text-white w-4" />
+              <ChevronDownIcon className="w-4" />
             )}
           </button>
         </div>

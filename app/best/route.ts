@@ -11,7 +11,9 @@ export async function GET(req: NextRequest) {
       .orderBy("views", "desc")
       .executeTakeFirstOrThrow();
 
-    const post = allPosts.find((p) => p.slug === data.slug);
+    const post = allPosts
+      .filter((p) => p.status != "draft")
+      .find((p) => p.slug === data.slug);
 
     return NextResponse.json(post, { status: 200 });
   } catch (e: any) {
