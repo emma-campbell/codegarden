@@ -11,7 +11,9 @@ export const BookListItem = ({ books }: { books: Book[] }) => {
             key={b.title}
           >
             <div>
-              <h5 className="text-white font-medium text-md">{b.title}</h5>
+              <h5 className="text-white font-medium text-md font-heading">
+                {b.title}
+              </h5>
               <p className="text-sm">{b.authors?.join(", ")}</p>
             </div>
             <div className="flex justify-start md:justify-end space-x-4">

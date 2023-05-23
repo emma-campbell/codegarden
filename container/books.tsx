@@ -2,37 +2,24 @@
 
 import { Accordion, AccordionItem } from "@/ui/accordion";
 import { BookListItem } from "@/ui/book-list";
-import { Layout } from "@/ui/layout";
-import { NavAlign } from "@/ui/layout/navigation";
-import { Book } from "contentlayer/generated";
-import { FC } from "react";
 
-type BooksProps = {
-  books?: Book[];
-};
-
-const NavItems = [
-  {
-    url: "/",
-    label: "Home",
-  },
-];
-
-export const Books: FC<BooksProps> = ({ books }) => {
+export const Books = ({ books }) => {
   const reading = books?.filter((b) => b.status === "in progress");
   const complete = books?.filter((b) => b.status === "completed");
   const queued = books?.filter((b) => b.status === "queued");
 
   return (
-    <Layout alignNav={NavAlign.RIGHT} navItems={NavItems}>
-      <h1 className="text-3xl w-fit md:text-4xl font-extrabold font-[Cal Sans]">
-        Books
-      </h1>
-      <p className="text-white/80">
-        My goal for 2023 is to read more. Books, articles, you name it. I built
-        this tool to help keep me accountable, and to track what I have been
-        reading.
-      </p>
+    <>
+      <section className="pb-4">
+        <h1 className="w-fit text-[96px] font-bold font-heading leading-extra-tight pb-8">
+          Books
+        </h1>
+        <p className="text-white/80">
+          My goal for 2023 is to read more. Books, articles, you name it. I
+          built this tool to help keep me accountable, and to track what I have
+          been reading.
+        </p>
+      </section>
 
       <section>
         <Accordion>
@@ -65,7 +52,7 @@ export const Books: FC<BooksProps> = ({ books }) => {
           </AccordionItem>
         </Accordion>
       </section>
-    </Layout>
+    </>
   );
 };
 

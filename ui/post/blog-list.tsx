@@ -5,12 +5,18 @@ import { PostList } from "./list";
 import { ChangeEvent, useState } from "react";
 import { Post, allPosts } from "contentlayer/generated";
 import { SearchInput } from "../search";
+import { compareDesc } from "date-fns";
 
-export const BlogPostList = ({ popular }: { popular: Post[] }) => {
+export const BlogPostList = () => {
+  const posts = allPosts
+    .filter((p) => p.status != "draft")
+    .sort((a, b) => {
+      return compareDesc(new Date(a.published), new Date(b.published));
+    });
   const [search, setSearch] = useState("");
 
   const [showTopPosts, setShowTopPosts] = useState(true);
-  const [results, setResults] = useState(allPosts);
+  const [results, setResults] = useState(posts);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.value != "") {
@@ -23,10 +29,10 @@ export const BlogPostList = ({ popular }: { popular: Post[] }) => {
 
     setResults(
       e.target.value != ""
-        ? allPosts?.filter((p) => {
+        ? posts?.filter((p) => {
             return p.title.toLowerCase().includes(e.target.value.toLowerCase());
           })
-        : allPosts
+        : posts
     );
   };
 
@@ -35,21 +41,7 @@ export const BlogPostList = ({ popular }: { popular: Post[] }) => {
       <div className="flex flex-col pb-4">
         <SearchInput search={search} onChange={onChange} />
       </div>
-      <section
-        className={classNames(
-          "w-full space-y-5 pb-4",
-          showTopPosts ? null : "hidden"
-        )}
-      >
-        <h2 className="text-xl md:text-2xl font-bold font-[Cal Sans]">
-          Popular Posts
-        </h2>
-        <PostList posts={popular} />
-      </section>
       <section className="w-full space-y-5">
-        <h2 className="text-xl md:text-2xl font-bold font-[Cal Sans]">
-          All Posts
-        </h2>
         <PostList posts={results} />
       </section>
     </div>

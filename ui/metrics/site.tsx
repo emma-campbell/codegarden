@@ -17,7 +17,7 @@ async function getTotalViews() {
   return res.json();
 }
 
-export const SiteMetrics = async () => {
+export const SiteMetrics = async (): Promise<JSX.Element> => {
   const data = await getTotalViews();
   const count = allPosts.length;
 

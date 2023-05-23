@@ -1,42 +1,55 @@
 "use client";
 
+import clsx from "clsx";
 import Link from "next/link";
-import { FC, ReactNode } from "react";
+import { usePathname } from "next/navigation";
 
-export enum NavAlign {
-  LEFT = "left",
-  RIGHT = "right",
-}
-
-export type NavigationItem = {
-  url: string;
-  label: string;
-  icon?: string | ReactNode;
+const navItems = {
+  "/": {
+    name: "home",
+  },
+  "/blog": {
+    name: "blog",
+  },
+  "/about": {
+    name: "about",
+  },
 };
 
-type NavigationProps = {
-  items?: NavigationItem[];
-  align?: NavAlign | string;
-};
+export const Navigation = () => {
+  let pathname = usePathname() || "/";
+  if (pathname.includes("/blog/")) {
+    pathname = "/blog";
+  }
 
-export const Navigation: FC<NavigationProps> = ({ items, align }) => {
   return (
-    <nav
-      className={`flex flex-row justify-${
-        align == NavAlign.LEFT ? "start" : "end"
-      } space-x-5`}
-    >
-      {items?.map((item) => {
-        return (
-          <Link
-            key={item.label}
-            href={item.url}
-            className="font-semibold text-xl text-white/80 hover:text-white"
-          >
-            {item.label}
-          </Link>
-        );
-      })}
-    </nav>
+    <aside className="md:w-[150px] md:flex-shrink-0 -mx-4 md:mx-0 md:px-0 p-y-0">
+      <div className="lg:sticky lg:top-20">
+        <nav
+          className="flex flex-row md:flex-col items-start relative px-8 md:px-0 pb-0 fade scroll-pr-6 md:relative"
+          id="nav"
+        >
+          <div className="font-heading font-bold text-[40px] flex flex-row md:flex-col items-start relative px-4 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative">
+            {Object.entries(navItems).map(([path, { name }]) => {
+              const isActive = path == pathname;
+              return (
+                <Link
+                  key={path}
+                  href={path}
+                  className={clsx(
+                    "transition-all hover:text-white/95 flex align-middle",
+                    {
+                      "text-white/60": !isActive,
+                    }
+                  )}
+                >
+                  {name}
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+      </div>
+    </aside>
   );
 };

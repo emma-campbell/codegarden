@@ -10,7 +10,7 @@ export const TableOfContents = ({ headings, path }) => {
   return (
     <>
       <motion.div
-        className="sticky top-6 hidden h-0 xl:!col-start-4 xl:row-start-2 xl:block"
+        className="sticky top-6 hidden relative h-0"
         initial={{ y: 300, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 300, opacity: 0 }}

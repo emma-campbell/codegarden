@@ -19,7 +19,7 @@ export const SearchInput = ({
             type="search"
             id="default_search"
             placeholder="Search for a post..."
-            className="bg-white/10 text-lg block p-1 pl-8 w-full rounded-full drop-shadow-md active:border-green-300 focus:border-green-300"
+            className="bg-white/10 text-lg block p-1 pl-8 w-full rounded-md drop-shadow-md"
             value={search}
             onChange={onChange}
           />

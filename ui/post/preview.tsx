@@ -28,11 +28,6 @@ export const PostPreview = ({
                 </p>
                 <p>&middot;</p>
                 <ViewCounter slug={post.slug} track={false} />
-                {/* <p>&middot;</p> */}
-                {/* <ReadingTime
-                minutes={post.readingTime?.minutes}
-                words={post.readingTime?.words}
-              /> */}
               </div>
             </div>
           </div>

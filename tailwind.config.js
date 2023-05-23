@@ -22,13 +22,17 @@ module.exports = {
         "transparent-black": "rgba(38, 38, 38, 0.6)",
         "transparent-gray": "rgba(55, 55, 55, 0.79)",
       },
+      lineHeight: {
+        "extra-tight": "0.85",
+      },
       spacing: {
         128: "32rem",
         144: "36rem",
       },
       fontFamily: {
-        sans: ["Open Sans", ...fontFamily.sans],
+        body: ["var(--font-inter)"],
         mono: ["Fira Code", ...fontFamily.mono],
+        heading: ["var(--font-cal-sans)"],
       },
       boxShadow: ({ theme }) => ({
         // inspired by https://www.joshwcomeau.com/shadow-palette/
