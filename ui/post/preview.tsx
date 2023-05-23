@@ -18,10 +18,8 @@ export const PostPreview = ({
           className="flex flex-col w-full [&_h5]:hover:underline transform hover:scale-[1.02] transition-all"
         >
           <div className="flex flex-col">
-            <h5 className="text-md font-semibold font-[Cal Sans]">
-              {post.title}
-            </h5>
-            <div className="flex flex-row justify-between font-medium text-white/50 text-sm items-center">
+            <h5 className="text-md font-semibold font-heading">{post.title}</h5>
+            <div className="flex flex-row justify-between font-medium font-mono text-white/50 text-sm items-center">
               <div className="flex flex-row space-x-1">
                 <p>
                   {moment(post.published, "YYYY-MM-DD").format("MMM Do, YYYY")}
