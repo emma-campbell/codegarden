@@ -24,18 +24,13 @@ const Socials = [
 
 export const Footer: FC = () => {
   return (
-    <footer className="pb-4">
+    <footer className="pb-4 font-[Cal Sans] font-bold">
       <hr className="border-white/20 border-t-2" />
       <div className="mt-8 mb-12 grid space-y-2 sm:space-y-0 sm:grid-cols-3">
-        <div className="text-sm flex flex-col space-y-1">
-          <Link href="/about" className="text-white/30 hover:text-white/70">
-            About Me
-          </Link>
-          <Link href="/books" className="text-white/30 hover:text-white/70">
-            Reading
-          </Link>
-          {/* <p className="text-white/30">Resume</p> */}
-          {/* <p className="text-white/30">Contact</p> */}
+        <div className="text-sm flex flex-col space-y-1 text-white/30 hover:text-white/70">
+          <Link href="/books">reading</Link>
+          <Link href="/bookmarks">bookmarks</Link>
+          <Link href="/snippets">snippets</Link>
         </div>
         <div className="text-sm flex flex-col space-y-1"></div>
       </div>
