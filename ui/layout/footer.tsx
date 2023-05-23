@@ -31,14 +31,13 @@ export const Footer: FC = () => {
           <Link href="/books" className="hover:text-white/95">
             reading
           </Link>
-          {/* <Link href="/bookmarks" className="hover:text-white/95">
+          <Link href="/bookmarks" className="hover:text-white/95">
             bookmarks
           </Link>
           <Link href="/snippets" className="hover:text-white/95">
             snippets
-          </Link> */}
+          </Link>
         </div>
-        <div className="text-sm flex flex-col space-y-1"></div>
       </div>
       <div className="grid xl:grid-cols-2">
         <div className="text-sm text-white/70">

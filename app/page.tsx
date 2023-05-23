@@ -1,5 +1,7 @@
 import { FeaturedPost } from "@/ui/featured-post";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Home | Emma Campbell",
@@ -31,6 +33,14 @@ const Page = async () => {
           Trending Article
         </h3>
         {Post}
+        <Link
+          href="/blog"
+          className=" text-white/60 transition-all fade hover:text-white/95"
+        >
+          <p className="font-semibold flex">
+            All Posts <ArrowRightIcon className="w-4" />
+          </p>
+        </Link>
       </section>
     </>
   );

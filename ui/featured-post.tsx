@@ -31,11 +31,12 @@ export async function FeaturedPost() {
         >
           <div className="flex flex-col bg-black rounded-lg justify-between h-full">
             <div className="tracking-tight mb-6">
-              <h4 className="font-bold font-heading w-full text-lg font-bold font-[Cal Sans]">
+              <h4 className="font-bold font-heading w-full text-xl font-bold font-heading">
                 {data.title}
               </h4>
-              <div className="text-white/50 text-sm font-mono flex font-bold">
-                <p>{moment(data.published).format("MMM Do, YYYY")} •</p>
+              <div className="text-white/50 text-sm font-mono flex font-semibold space-x-2">
+                <p>{moment(data.published).format("MMM Do, YYYY")}</p>
+                <p>•</p>
                 <ViewCounter slug={data.slug} track={false} />
               </div>
             </div>

@@ -39,17 +39,17 @@ export async function generateMetadata({ params }) {
 
 const Page = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
+
   const post: NonNullable<ReturnType<typeof getPost>> = getPost(slug);
   const Content = getMDXComponent(post.body.code);
 
   return (
     <div className="space-y-2">
-      {/* Title of the Post */}
       <section>
         <h1 className="font-bold font-heading text-5xl sm:text-[72px] leading-extra-tight relative max-w-4xl">
           {post.title}
         </h1>
-        <div className="mt-2 flex space-x-1 text-xs text-white/50 sm:text-lg font-mono">
+        <div className="mt-2 flex space-x-1 text-xs text-white/60 sm:text-lg font-mono font-semibold">
           <p>{moment(post.published, "YYYY-mm-dd").format("MMM Do, YYYY")}</p>
           <p>•</p>
           <ViewCounter slug={slug} track={true} />
@@ -69,7 +69,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
         ) : null}
 
         {/* Post Content */}
-        <div className="space-y-4">
+        <div className="space-y-4 font-medium">
           <Content components={components} />
         </div>
       </Suspense>
