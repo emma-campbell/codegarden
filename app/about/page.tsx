@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const Page: FC = () => {
   return (
     <>
-      <h1 className="text-[96px] font-heading font-bold leading-extra-tight pb-8">
+      <h1 className="text-5xl sm:text-[96px] font-heading font-bold leading-extra-tight pb-8">
         About Me
       </h1>
       <section className="space-y-4 text-white/80 font-semibold">

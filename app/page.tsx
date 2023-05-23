@@ -13,10 +13,10 @@ const Page = async () => {
   return (
     <>
       <section className="flex flex-col justify-start">
-        <h1 className="font-bold font-heading md:text-[96px] leading-extra-tight">
+        <h1 className="text-5xl font-bold font-heading sm:text-[96px] leading-extra-tight">
           Emma
         </h1>
-        <h1 className="font-bold font-heading md:text-[96px] leading-extra-tight pb-12">
+        <h1 className="text-5xl font-bold font-heading sm:text-[96px] leading-extra-tight pb-12">
           Campbell
         </h1>
         <p className="font-medium text-white/80">

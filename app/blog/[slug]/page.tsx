@@ -10,21 +10,12 @@ import moment from "moment";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { Suspense } from "react";
 
-const NavItems = [
-  {
-    url: "/",
-    label: "Home",
-  },
-  {
-    url: "/blog",
-    label: "Blog",
-  },
-];
-
 export async function generateStaticParams() {
-  return allPosts.map((p) => {
-    slug: p.slug;
-  });
+  return allPosts
+    .filter((p) => p.status != "draft")
+    .map((p) => {
+      slug: p.slug;
+    });
 }
 
 export async function generateMetadata({ params }) {
@@ -55,7 +46,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
     <div className="space-y-2">
       {/* Title of the Post */}
       <section>
-        <h1 className="font-bold font-heading text-[72px] leading-extra-tight relative max-w-4xl">
+        <h1 className="font-bold font-heading text-5xl sm:text-[72px] leading-extra-tight relative max-w-4xl">
           {post.title}
         </h1>
         <div className="mt-2 flex space-x-1 text-xs text-white/50 sm:text-lg font-mono">

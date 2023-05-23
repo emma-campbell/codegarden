@@ -11,7 +11,7 @@ export const Books = ({ books }) => {
   return (
     <>
       <section className="pb-4">
-        <h1 className="w-fit text-[96px] font-bold font-heading leading-extra-tight pb-8">
+        <h1 className="w-fit text-5xl sm:text-[96px] font-bold font-heading leading-extra-tight pb-8">
           Books
         </h1>
         <p className="text-white/80">

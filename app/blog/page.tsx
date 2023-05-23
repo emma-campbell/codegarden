@@ -11,7 +11,7 @@ const Page = async () => {
   return (
     <>
       <section className="pb-8">
-        <h1 className="text-[96px] font-heading font-bold leading-extra-tight pb-8">
+        <h1 className="text-5xl lg:text-[96px] font-heading font-bold leading-extra-tight pb-8">
           Blog
         </h1>
         <p className="text-white/80">
