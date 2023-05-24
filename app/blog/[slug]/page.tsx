@@ -43,14 +43,16 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const post: NonNullable<ReturnType<typeof getPost>> = getPost(slug);
   const Content = getMDXComponent(post.body.code);
 
+  console.info(post.published);
+
   return (
     <div className="space-y-2">
       <section>
-        <h1 className="font-bold font-heading text-5xl sm:text-[72px] leading-extra-tight relative max-w-4xl">
+        <h1 className="font-bold font-heading text-5xl sm:text-[72px] leading-extra-tight relative max-w-4xl pb-2">
           {post.title}
         </h1>
         <div className="mt-2 flex space-x-1 text-xs text-white/60 sm:text-lg font-mono font-semibold">
-          <p>{moment(post.published, "YYYY-mm-dd").format("MMM Do, YYYY")}</p>
+          <p>{moment(post.published).format("MMM Do, YYYY")}</p>
           <p>•</p>
           <ViewCounter slug={slug} track={true} />
         </div>
@@ -69,7 +71,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
         ) : null}
 
         {/* Post Content */}
-        <div className="space-y-4 font-medium">
+        <div className="space-y-4 font-medium text-white/80 [&_h1,h2,h3,h4]:text-white">
           <Content components={components} />
         </div>
       </Suspense>

@@ -97,7 +97,7 @@ export const components = {
   },
   blockquote: (props: any) => (
     <blockquote
-      className="border-l-2 border-purple/10 pl-4 text-xl italic xl:!col-start-2 xl:!col-end-3"
+      className="border-l-2 border-green/50 bg-green/40 rounded-md pl-4 py-2 italic text-md xl:!col-start-2 xl:!col-end-3"
       {...props}
     />
   ),

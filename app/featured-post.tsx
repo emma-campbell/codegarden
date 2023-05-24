@@ -1,11 +1,9 @@
 import { headers } from "next/headers";
 import Link from "next/link";
 
+import { ViewCounter } from "@/ui/view-counter";
 import { Post } from "contentlayer/generated";
 import moment from "moment";
-import { Suspense } from "react";
-import { PostPreviewLoading } from "@/ui/post/loading";
-import { ViewCounter } from "@/ui/view-counter";
 
 async function getFeaturedPost(): Promise<Post> {
   const data = headers();
