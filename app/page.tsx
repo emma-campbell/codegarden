@@ -13,8 +13,7 @@ export const metadata: Metadata = {
 const Page = () => {
   return (
     <>
-      <Loading />
-      {/* <section className="flex flex-col justify-start">
+      <section className="flex flex-col justify-start">
         <h1 className="text-5xl font-bold font-heading sm:text-[96px] leading-extra-tight">
           Emma
         </h1>
@@ -32,9 +31,9 @@ const Page = () => {
         <h3 className="font-bold font-heading text-xl text-white/60 pb-4">
           Trending Article
         </h3>
-        <Suspense fallback={<Loading />}> */}
-
-      {/* <FeaturedPost />
+        <Suspense fallback={<Loading />}>
+          {/* @ts-expect-error Async Server Component */}
+          <FeaturedPost />
         </Suspense>
         <Link
           href="/blog"
@@ -44,7 +43,7 @@ const Page = () => {
             All Posts <ArrowRightIcon className="w-4" />
           </p>
         </Link>
-      </section> */}
+      </section>
     </>
   );
 };
