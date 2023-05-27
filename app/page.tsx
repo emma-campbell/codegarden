@@ -1,4 +1,4 @@
-import { FeaturedPost } from "app/featured-post";
+import { FeaturedPost } from "@/ui/post/featured";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -10,10 +10,11 @@ export const metadata: Metadata = {
   description: "My personal slice of the internet.",
 };
 
-const Page = async () => {
+const Page = () => {
   return (
     <>
-      <section className="flex flex-col justify-start">
+      <Loading />
+      {/* <section className="flex flex-col justify-start">
         <h1 className="text-5xl font-bold font-heading sm:text-[96px] leading-extra-tight">
           Emma
         </h1>
@@ -31,9 +32,9 @@ const Page = async () => {
         <h3 className="font-bold font-heading text-xl text-white/60 pb-4">
           Trending Article
         </h3>
-        <Suspense fallback={<Loading />}>
-          {/* @ts-expect-error Async Server Component */}
-          <FeaturedPost />
+        <Suspense fallback={<Loading />}> */}
+
+      {/* <FeaturedPost />
         </Suspense>
         <Link
           href="/blog"
@@ -43,7 +44,7 @@ const Page = async () => {
             All Posts <ArrowRightIcon className="w-4" />
           </p>
         </Link>
-      </section>
+      </section> */}
     </>
   );
 };

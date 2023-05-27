@@ -1,5 +1,6 @@
 import { BlogPostList } from "@/ui/post/blog-list";
 import { allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,7 +8,13 @@ export const metadata: Metadata = {
   description: "Search through the articles I have written.",
 };
 
-const Page = async () => {
+const Page = () => {
+  const posts = allPosts
+    .filter((p) => p.status === "published")
+    .sort((a, b) => {
+      return compareDesc(new Date(a.published), new Date(b.published));
+    });
+
   return (
     <>
       <section className="pb-8">
@@ -15,13 +22,13 @@ const Page = async () => {
           Blog
         </h1>
         <p className="text-white/80">
-          I&apos;ve written {allPosts?.length} articles since I started this
-          blog in November 2022. My writing isn&apos;t just related to coding. I
-          also try to write about the tricks I&apos;ve learned to manage my ADHD
-          and psoriatic arthritis to (sorta) function as an adult.
+          I&apos;ve written {posts?.length} articles since I started this blog
+          in November 2022. My writing isn&apos;t just related to coding. I also
+          try to write about the tricks I&apos;ve learned to manage my ADHD and
+          psoriatic arthritis to (sorta) function as an adult.
         </p>
       </section>
-      <BlogPostList />
+      <BlogPostList posts={posts} />
     </>
   );
 };

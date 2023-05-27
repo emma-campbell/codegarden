@@ -1,29 +1,26 @@
 "use client";
 
-import classNames from "classnames";
-import { PostList } from "./list";
-import { ChangeEvent, useState } from "react";
-import { Post, allPosts } from "contentlayer/generated";
+import { Post } from "contentlayer/generated";
+import { ChangeEvent, Suspense, useState } from "react";
 import { SearchInput } from "../search";
-import { compareDesc } from "date-fns";
+import { PostList } from "./list";
+import { PostPreviewLoading } from "./loading";
 
-export const BlogPostList = () => {
-  const posts = allPosts
-    .filter((p) => p.status != "draft")
-    .sort((a, b) => {
-      return compareDesc(new Date(a.published), new Date(b.published));
-    });
+export const PostListLoading = ({ posts }: { posts: Post[] }) => {
+  return (
+    <>
+      {posts.map((p) => (
+        <PostPreviewLoading key={p.slug} />
+      ))}
+    </>
+  );
+};
+export const BlogPostList = ({ posts }: { posts: Post[] }) => {
   const [search, setSearch] = useState("");
 
-  const [showTopPosts, setShowTopPosts] = useState(true);
   const [results, setResults] = useState(posts);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value != "") {
-      setShowTopPosts(false);
-    } else {
-      setShowTopPosts(true);
-    }
     e.preventDefault();
     setSearch(e.target.value);
 
@@ -42,7 +39,9 @@ export const BlogPostList = () => {
         <SearchInput search={search} onChange={onChange} />
       </div>
       <section className="w-full space-y-5">
-        <PostList posts={results} />
+        <Suspense fallback={<PostListLoading posts={posts} />}>
+          <PostList posts={results} />
+        </Suspense>
       </section>
     </div>
   );

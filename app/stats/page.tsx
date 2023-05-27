@@ -1,4 +1,3 @@
-// import { LoadingDots } from "@/ui/loading";
 import { allPosts } from "contentlayer/generated";
 import { headers } from "next/headers";
 import { Suspense } from "react";
@@ -16,6 +15,15 @@ async function getTotalViews(): Promise<number> {
 
 const Page = async () => {
   const totalViews = await getTotalViews();
+  const totalPosts = allPosts.filter((p) => p.status != "draft").length;
+  console.log(
+    allPosts.map((p) => ({
+      title: p.title,
+      status: p.status,
+    }))
+  );
+
+  console.log(allPosts.length);
 
   return (
     <>
@@ -29,9 +37,7 @@ const Page = async () => {
         </p>
       </section>
       <section className="font-medium text-white/80">
-        <p>
-          {allPosts.filter((p) => p.status != "draft").length} articles written
-        </p>
+        <p>{totalPosts} articles written</p>
         <div>
           <Suspense fallback={<p>loading..</p>}>
             <p>{totalViews} total views</p>
