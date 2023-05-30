@@ -1,16 +1,15 @@
-import { FeaturedPost } from "app/featured-post";
+import { FeaturedPost } from "@/ui/post/featured";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "Home | Emma Campbell",
   description: "My personal slice of the internet.",
 };
 
-const Page = async () => {
+const Page = () => {
   return (
     <>
       <section className="flex flex-col justify-start">
@@ -31,10 +30,8 @@ const Page = async () => {
         <h3 className="font-bold font-heading text-xl text-white/60 pb-4">
           Trending Article
         </h3>
-        <Suspense fallback={<Loading />}>
-          {/* @ts-expect-error Async Server Component */}
-          <FeaturedPost />
-        </Suspense>
+        {/* @ts-expect-error Async Server Component */}
+        <FeaturedPost />
         <Link
           href="/blog"
           className=" text-white/60 transition-all fade hover:text-white/95"

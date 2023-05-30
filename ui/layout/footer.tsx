@@ -26,7 +26,7 @@ export const Footer: FC = () => {
   return (
     <footer className="mt-12 pb-4 font-heading font-bold">
       <hr className="border-white/20 border-t-2" />
-      <div className="mt-8 mb-12 grid space-y-2 sm:space-y-0 sm:grid-cols-3">
+      <div className="mt-8 mb-12 grid space-y-2 sm:space-y-0 sm:grid-cols-2">
         <div className="text-md flex flex-col text-white/60">
           <Link href="/books" className="hover:text-white/95">
             reading
@@ -37,12 +37,9 @@ export const Footer: FC = () => {
           <Link href="/snippets" className="hover:text-white/95">
             snippets
           </Link>
-        </div>
-      </div>
-      <div className="grid xl:grid-cols-2">
-        <div className="text-sm text-white/70">
-          <p>Emma Campbell</p>
-          <p>© 2022 - {moment().format("YYYY")}</p>
+          <Link href="/stats" className="hover:text-white/95">
+            stats
+          </Link>
         </div>
         <div className="flex flex-row justify-end">
           <div className="grid grid-cols-3 gap-4">
@@ -54,6 +51,12 @@ export const Footer: FC = () => {
               );
             })}
           </div>
+        </div>
+      </div>
+      <div className="grid xl:grid-cols-2">
+        <div className="text-sm text-white/70">
+          <p>Emma Campbell</p>
+          <p>© 2022 - {moment().format("YYYY")}</p>
         </div>
       </div>
     </footer>

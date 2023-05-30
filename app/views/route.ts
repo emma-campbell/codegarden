@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   try {
     const data = await db.selectFrom("stats").select(["views"]).execute();
     return NextResponse.json(
-      data.reduce((acc, curr) => acc + curr.views, 0),
+      data.reduce((acc, curr) => acc + Number(curr.views), 0),
       { status: 200 }
     );
   } catch (e: any) {

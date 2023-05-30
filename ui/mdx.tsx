@@ -62,7 +62,7 @@ export const components = {
   },
   ul: (props: any) => (
     <ul
-      className="space-y-3 [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-3 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-white/20"
+      className="space-y-3 [li>&]:mt-3 [&>li]:relative [&>li]:pl-7 before:[&>li]:absolute before:[&>li]:left-1 before:[&>li]:top-2.5 before:[&>li]:h-1.5 before:[&>li]:w-1.5 before:[&>li]:rounded-full before:[&>li]:bg-white/20"
       {...props}
     />
   ),
@@ -97,7 +97,7 @@ export const components = {
   },
   blockquote: (props: any) => (
     <blockquote
-      className="border-l-2 border-purple/10 pl-4 text-xl italic xl:!col-start-2 xl:!col-end-3"
+      className="border-l-2 border-purple/50 bg-purple/40 rounded-md pl-4 py-2 italic text-md"
       {...props}
     />
   ),
