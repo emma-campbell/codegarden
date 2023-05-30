@@ -43,8 +43,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
   const post: NonNullable<ReturnType<typeof getPost>> = getPost(slug);
   const Content = getMDXComponent(post.body.code);
 
-  console.info(post.published);
-
   return (
     <div className="space-y-2">
       <section>
