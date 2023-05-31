@@ -4,18 +4,27 @@
 
 My personal internet existence. A codegarden is a digital space for a developer to grow and nourish themselves into the best programmer they can be.
 
-## What's it Built With?
+## What's it built with?
 
 Wanna know what I used to build it without diving too far into the source code? Yeah?! Well, here you go.
 
-- Static Site Rendering: [Next.js](https://nextjs.org)
+- Framework (Next13 /app dir): [Next.js](https://nextjs.org)
 - Deployment: [Vercel](https://vercel.com/)
 - CMS/Content: [contentlayer](https://www.contentlayer.dev)
 - Styles: [tailwindcss](https://tailwindcss.com)
 - Database: [Planetscale](https://planetscale.com)
-- ORM: [Prisma](https://www.prisma.io)
 
 Not to mention my blood, sweat, and tears. Maybe some banging my head on the table as well.
+
+## What's still to come?
+
+- [ ] move all api routes to a `/api` folder
+- [ ] redesign `/reading`
+- [ ] create `/snippets`
+- [ ] create `/bookmarks`
+- [ ] add error boundaries
+- [ ] custom 404 page
+- [ ] custom 500 page
 
 ## Running Locally
 
