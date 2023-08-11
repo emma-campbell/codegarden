@@ -53,8 +53,7 @@ export const TableOfContents = ({ headings, path }) => {
                 className="text-sm text-gray-100 hover:text-white"
                 onClick={() => {
                   window.scrollTo({ top: 0 });
-                  // @ts-expect-error
-                  router.push(path, { shallow: true });
+                  router.push(path);
                 }}
               >
                 Back to top

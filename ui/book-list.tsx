@@ -16,9 +16,9 @@ export const BookListItem = ({ books }: { books: Book[] }) => {
               </h5>
               <p className="text-sm">{b.authors?.join(", ")}</p>
             </div>
-            <div className="flex justify-start md:justify-end space-x-4 col-span-1">
+            <div className="flex justify-start space-x-4 col-span-1">
               {b.start ? (
-                <div>
+                <div className="w-[90px]">
                   <p className="text-xs">
                     {moment(b.start).format("MMM Do, YYYY")}
                   </p>

@@ -2,7 +2,6 @@ import { FeaturedPost } from "@/ui/post/featured";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Home | Emma Campbell",
@@ -30,7 +29,6 @@ const Page = () => {
         <h3 className="font-bold font-heading text-xl text-white/60 pb-4">
           Trending Article
         </h3>
-        {/* @ts-expect-error Async Server Component */}
         <FeaturedPost />
         <Link
           href="/blog"
