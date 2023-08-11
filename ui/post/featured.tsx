@@ -9,9 +9,14 @@ import { PostPreviewLoading } from "./loading";
 
 async function getFeaturedPost(): Promise<Post> {
   const data = headers();
-  const protocol = data.get("x-forwarded-proto");
   const host = data.get("host");
+  const protocol = host == "localhost:3000" ? "http" : "https";
 
+  console.log(protocol);
+  console.log(host);
+  // const res = await fetch(`/best`, {
+  //   cache: "reload",
+  // });
   const res = await fetch(`${protocol}://${host}/best`, {
     cache: "reload",
   });

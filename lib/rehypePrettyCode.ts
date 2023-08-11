@@ -153,6 +153,6 @@ export const rehypePrettyCodeOptions: Partial<Options> = {
     node.properties.className = [""];
   },
   onVisitHighlightedLine(node) {
-    node.properties.className.push(HIGHLIGHTED_LINE);
+    node?.properties?.className?.push(HIGHLIGHTED_LINE);
   },
 };
