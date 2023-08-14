@@ -17,7 +17,7 @@
     "@fontsource/inter": "^5.0.8",
     "@heroicons/react": "^2.0.18",
     "@planetscale/database": "^1.7.0",
-    "@vercel/analytics": "^1.0.1",
+    "@vercel/analytics": "^1.0.2",
     "cal-sans": "^1.0.1",
     "classnames": "^2.3.2",
     "clsx": "^1.2.1",
