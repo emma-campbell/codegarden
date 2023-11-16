@@ -3,6 +3,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { AnimatedDiv } from "@/ui/animation/div";
+import { container, content } from "@/lib/variants";
 
 const navItems = {
   "/": {
@@ -29,25 +31,31 @@ export const Navigation = () => {
           className="flex flex-row sm:flex-col items-start relative px-6 md:px-0 pb-0 fade scroll-pr-6 md:relative"
           id="nav"
         >
-          <div className="font-heading font-bold space-x-2 md:space-x-0 text-2xl sm:text-[40px] flex flex-row md:flex-col items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6">
+          <AnimatedDiv
+            className="font-heading font-bold space-x-2 md:space-x-0 text-2xl sm:text-[40px] flex flex-row md:flex-col items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6"
+            variants={container}
+            initial="hidden"
+            animate="visible"
+          >
             {Object.entries(navItems).map(([path, { name }]) => {
               const isActive = path == pathname;
               return (
-                <Link
-                  key={path}
-                  href={path}
-                  className={clsx(
-                    "transition-all hover:text-white/95 flex align-middle leading-extra-tight sm:leading-tight",
-                    {
-                      "text-white/60": !isActive,
-                    }
-                  )}
-                >
-                  {name}
-                </Link>
+                <AnimatedDiv variants={content} key={path}>
+                  <Link
+                    href={path}
+                    className={clsx(
+                      "transition-all hover:text-white/95 flex align-middle leading-extra-tight sm:leading-tight",
+                      {
+                        "text-white/60": !isActive,
+                      }
+                    )}
+                  >
+                    {name}
+                  </Link>
+                </AnimatedDiv>
               );
             })}
-          </div>
+          </AnimatedDiv>
         </nav>
       </div>
     </aside>
