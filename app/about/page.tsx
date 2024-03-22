@@ -14,7 +14,7 @@ const Page: FC = () => {
       </h1>
       <section className="space-y-4 text-white/80 font-medium">
         <p>
-          I&apos;m a 24 year old software engineer working remotely in the DMV
+          I&apos;m a 25 year old software engineer working remotely in the DMV
           area. It&apos;s nice to digitally meet you!
         </p>
         <p>

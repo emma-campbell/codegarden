@@ -1,7 +1,4 @@
-import { FeaturedPost } from "@/ui/post/featured";
-import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import { Metadata } from "next";
-import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Home | Emma Campbell",
@@ -24,20 +21,6 @@ const Page = () => {
           applications is at the heart of what I do. I love to learn and teach,
           mainly by writing about the things that I do.
         </p>
-      </section>
-      <section className="flex flex-col justify-start mt-8">
-        <h3 className="font-bold font-heading text-xl text-white/60 pb-4">
-          Trending Article
-        </h3>
-        <FeaturedPost />
-        <Link
-          href="/blog"
-          className=" text-white/60 transition-all fade hover:text-white/95"
-        >
-          <p className="font-semibold flex">
-            All Posts <ArrowRightIcon className="w-4" />
-          </p>
-        </Link>
       </section>
     </>
   );
