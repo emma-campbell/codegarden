@@ -8,11 +8,8 @@ const navItems = {
   "/": {
     name: "home",
   },
-  "https://www.spooklore.com/notebook": {
+  "https://spookyemma.com": {
     name: "blog",
-  },
-  "/about": {
-    name: "about",
   },
 };
 
