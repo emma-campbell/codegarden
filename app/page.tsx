@@ -17,9 +17,9 @@ const Page = () => {
         </h1>
         <p className="font-medium text-white/80">
           I am a <b>software engineer</b>, currently working at{" "}
-          <b>Hugo Health</b>. Building functional, performant, and impactful
-          applications is at the heart of what I do. I love to learn and teach,
-          mainly by writing about the things that I do.
+          <b>Arboretum Lifesciences</b>. Building functional, performant, and
+          impactful applications is at the heart of what I do. I love to learn
+          and teach, mainly by writing about the things that I do.
         </p>
       </section>
     </>
