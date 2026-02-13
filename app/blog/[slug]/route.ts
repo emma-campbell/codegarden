@@ -5,5 +5,5 @@ export async function GET(req: NextRequest) {
   const path = req.nextUrl.pathname;
   const slug = path.replace("/blog/", "");
 
-  redirect(`https://spooklore.com/notebook/${slug}`);
+  redirect(`https://spookyemma.com/notebook/${slug}`);
 }
