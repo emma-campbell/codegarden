@@ -23,12 +23,14 @@ const Socials = [
 ];
 
 export const Footer: FC = () => {
+  const year = moment().year();
+
   return (
     <footer className="mt-12 pb-4 font-heading font-bold">
       <hr className="border-white/20 border-t-2" />
       <div className="pt-4 text-sm text-white/70">
         <p>Emma Campbell</p>
-        <p>© 2022 - 2024</p>
+        <p>© 2022 - {year}</p>
       </div>
     </footer>
   );
