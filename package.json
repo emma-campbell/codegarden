@@ -15,10 +15,10 @@
   "dependencies": {
     "@fontsource/fira-code": "^5.0.8",
     "@fontsource/inter": "^5.0.8",
-    "@vercel/analytics": "^1.0.1",
     "cal-sans": "^1.0.1",
     "clsx": "^1.2.1",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "posthog-js": "^1.116.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^3.2.0",
