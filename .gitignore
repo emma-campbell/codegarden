@@ -8,12 +8,10 @@
 # testing
 /coverage
 
-# next.js
-.next/
-/out/
-
-# production
+# svelte-kit
+.svelte-kit/
 /build
+/.vercel_build_output
 
 # misc
 .DS_Store
@@ -34,7 +32,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 .contentlayer
 content/posts/.obsidian/**

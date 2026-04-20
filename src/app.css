@@ -1,0 +1,22 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource/fira-code/400.css";
+@import "@fontsource/fira-code/500.css";
+
+@font-face {
+  font-family: "Cal Sans";
+  src: url("cal-sans/fonts/webfonts/CalSans-SemiBold.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-fira-code: "Fira Code", ui-monospace, monospace;
+  --font-cal-sans: "Cal Sans", system-ui, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

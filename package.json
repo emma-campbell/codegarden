@@ -3,51 +3,49 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint --fix",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write .",
     "staged": "lint-staged",
-    "prepare": "husky install",
-    "format": "prettier --write"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@fontsource/fira-code": "^5.0.8",
     "@fontsource/inter": "^5.0.8",
     "@vercel/analytics": "^1.0.1",
     "cal-sans": "^1.0.1",
-    "classnames": "^2.3.2",
     "clsx": "^1.2.1",
-    "framer-motion": "^10.11.2",
-    "moment": "^2.29.4",
-    "next": "^13.5.9",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "server-only": "^0.0.1",
-    "swr": "^2.2.1"
+    "moment": "^2.29.4"
   },
   "devDependencies": {
+    "@sveltejs/adapter-auto": "^3.2.0",
+    "@sveltejs/kit": "^2.5.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "@tailwindcss/forms": "^0.5.4",
     "@types/node": "^20.4.10",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.47.0",
-    "eslint-config-next": "^13.5.9",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-svelte": "^2.35.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "postcss": "^8.4.27",
     "prettier": "^3.0.1",
+    "prettier-plugin-svelte": "^3.1.2",
+    "svelte": "^4.2.12",
+    "svelte-check": "^3.6.4",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6"
+    "tslib": "^2.6.2",
+    "typescript": "^5.1.6",
+    "vite": "^5.1.4"
   },
   "lint-staged": {
-    "*.{tsx,ts}": [
-      "eslint --fix",
+    "*.{svelte,ts,js,css}": [
       "prettier --write"
     ]
-  }
+  },
+  "type": "module"
 }
